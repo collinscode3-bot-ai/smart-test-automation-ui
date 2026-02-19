@@ -1,20 +1,23 @@
 [
   {
     "id": 1,
-    "name": "Q3 Brand Audit",
-    "description": "A comprehensive audit of the brand for the third quarter.",
-    "color": "purple"
+    "title": "Q3 Brand Audit",
+    "description": "Reviewing current visual assets across all regional distribution centers for compliance...",
+    "iconType": "folder",
+    "status": "Active"
   },
   {
     "id": 2,
-    "name": "Website Redesign",
-    "description": "Redesigning the corporate website for better user engagement.",
-    "color": "green"
+    "title": "Website Redesign",
+    "description": "Customer portal enhancement project focusing on mobile-first tracking interface...",
+    "iconType": "globe",
+    "status": "In Progress"
   },
   {
     "id": 3,
-    "name": "App Launch 2.0",
-    "description": "Preparation and launch of the new mobile app version 2.0.",
-    "color": "yellow"
+    "title": "App Launch 2024",
+    "description": "Deployment plan for the next generation logistics management application...",
+    "iconType": "rocket",
+    "status": "Planned"
   }
 ]

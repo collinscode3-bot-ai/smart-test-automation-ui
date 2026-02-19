@@ -15,14 +15,14 @@ import { Observable } from 'rxjs';
         <div *ngFor="let project of projects$ | async"
              class="project-item"
              (click)="onProjectClick(project)">
-          <div class="icon-box" [ngClass]="project.color || 'purple'">
-            <ng-container [ngSwitch]="project.color">
-              <svg *ngSwitchCase="'green'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 2 2 4-4"/></svg>
-              <svg *ngSwitchCase="'yellow'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 3-3 8.82-8.82L10 4.36 1.18 13.18 4 16l-1 5Zm15-18 3 3-3 3-3-3 3-3Z"/></svg>
+          <div class="icon-box" [ngClass]="project.iconType">
+            <ng-container [ngSwitch]="project.iconType">
+              <svg *ngSwitchCase="'globe'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <svg *ngSwitchCase="'rocket'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-5c1.62-2.2 5-3 5-3l1 1"/><path d="M12 15v5s3.03-.55 5-2c2.2-1.62 3-5 3-5l-1-1"/></svg>
               <svg *ngSwitchDefault xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
             </ng-container>
           </div>
-          <span class="project-name">{{ project.name }}</span>
+          <span class="project-name">{{ project.title }}</span>
         </div>
       </div>
     </aside>
@@ -74,9 +74,9 @@ import { Observable } from 'rxjs';
       display: flex;
       align-items: center;
       justify-content: center;
-      &.purple { background-color: #F5F3FF; color: #7C3AED; }
-      &.green { background-color: #ECFDF5; color: #10B981; }
-      &.yellow { background-color: #FFFBEB; color: #F59E0B; }
+      &.folder { background-color: #F5F3FF; color: #7C3AED; }
+      &.globe { background-color: #ECFDF5; color: #10B981; }
+      &.rocket { background-color: #FFFBEB; color: #F59E0B; }
     }
     .project-name {
       font-size: 15px;

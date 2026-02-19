@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './shared/components/layout/layout.component';
-import { ProjectDetailsComponent } from './features/projects/project-details/project-details.component';
-import { TestSuiteDetailsComponent } from './features/projects/test-suite-details/test-suite-details.component';
+import { ProjectDashboardComponent } from './features/projects/project-dashboard/project-dashboard.component';
 
 const routes: Routes = [
   {
@@ -11,16 +10,12 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'projects/create',
+        redirectTo: 'projects',
         pathMatch: 'full'
       },
       {
-        path: 'projects/create',
-        component: ProjectDetailsComponent
-      },
-      {
-        path: 'projects/test-suite',
-        component: TestSuiteDetailsComponent
+        path: 'projects',
+        component: ProjectDashboardComponent
       }
     ]
   }
