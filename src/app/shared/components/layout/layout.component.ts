@@ -1,16 +1,14 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
   template: `
     <div class="layout-wrapper">
       <app-header></app-header>
-      <app-search-bar></app-search-bar>
+      <app-search-bar *ngIf="showGlobalSearch"></app-search-bar>
       <main class="main-container">
         <div class="content-flex">
-          <div class="sidebar-column">
-            <app-sidebar></app-sidebar>
-          </div>
           <div class="page-content">
             <router-outlet></router-outlet>
           </div>
@@ -37,13 +35,11 @@ import { Component } from '@angular/core';
     }
     .content-flex {
       display: flex;
-      gap: 40px;
-    }
-    .sidebar-column {
-      flex: 0 0 300px;
+      justify-content: center;
     }
     .page-content {
       flex: 1;
+      max-width: 1000px;
     }
     .footer {
       padding: 40px;
@@ -53,4 +49,10 @@ import { Component } from '@angular/core';
     }
   `]
 })
-export class LayoutComponent {}
+export class LayoutComponent {
+  constructor(private router: Router) {}
+
+  get showGlobalSearch(): boolean {
+    return this.router.url !== '/projects';
+  }
+}

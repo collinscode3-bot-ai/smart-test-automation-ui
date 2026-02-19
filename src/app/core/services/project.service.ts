@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { Project } from '../models/project.model';
 
 @Injectable({
@@ -13,8 +13,30 @@ export class ProjectService {
 
   constructor(private http: HttpClient) {}
 
-  getProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.projectsUrl);
+  /**
+   * Fetches projects with optional pagination and search filtering.
+   * @param page The page number to retrieve.
+   * @param searchTerm The term to filter projects by.
+   */
+  getProjects(page: number = 1, searchTerm: string = ''): Observable<Project[]> {
+    // TODO: API Call - Replace with actual backend integration
+    return this.http.get<Project[]>(this.projectsUrl).pipe(
+      map(projects => {
+        let filtered = projects;
+        if (searchTerm) {
+          const term = searchTerm.toLowerCase();
+          filtered = projects.filter(p =>
+            p.title.toLowerCase().includes(term) ||
+            p.description.toLowerCase().includes(term)
+          );
+        }
+
+        // Simple client-side pagination for the placeholder
+        const pageSize = 5;
+        const start = (page - 1) * pageSize;
+        return filtered.slice(start, start + pageSize);
+      })
+    );
   }
 
   selectProject(project: Project | null): void {

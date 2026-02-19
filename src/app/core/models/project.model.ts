@@ -1,6 +1,7 @@
 export interface Project {
   id: number;
-  name: string;
+  title: string;
   description: string;
-  color?: string;
+  iconType: 'folder' | 'globe' | 'rocket';
+  status: string;
 }
