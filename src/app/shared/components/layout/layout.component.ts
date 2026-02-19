@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
   template: `
     <div class="layout-wrapper">
-      <app-header></app-header>
-      <app-search-bar></app-search-bar>
+      <app-header *ngIf="!isTestSuitePage"></app-header>
+      <app-search-bar *ngIf="!isTestSuitePage"></app-search-bar>
       <main class="main-container">
-        <div class="content-flex">
-          <div class="sidebar-column">
+        <div class="content-flex" [class.centered]="isTestSuitePage">
+          <div class="sidebar-column" *ngIf="!isTestSuitePage">
             <app-sidebar></app-sidebar>
           </div>
           <div class="page-content">
@@ -16,7 +17,7 @@ import { Component } from '@angular/core';
           </div>
         </div>
       </main>
-      <footer class="footer">
+      <footer class="footer" *ngIf="!isTestSuitePage">
         <p>© 2024 Project Entry Tool. All rights reserved.</p>
       </footer>
     </div>
@@ -45,6 +46,9 @@ import { Component } from '@angular/core';
     .page-content {
       flex: 1;
     }
+    .content-flex.centered {
+      justify-content: center;
+    }
     .footer {
       padding: 40px;
       text-align: center;
@@ -53,4 +57,10 @@ import { Component } from '@angular/core';
     }
   `]
 })
-export class LayoutComponent {}
+export class LayoutComponent {
+  constructor(public router: Router) {}
+
+  get isTestSuitePage(): boolean {
+    return this.router.url === '/projects/test-suite';
+  }
+}

@@ -98,13 +98,13 @@ import { Router } from '@angular/router';
       max-width: 900px;
     }
     .header-section {
-      margin: 32px 0;
+      margin: 12px 0 16px;
     }
     .page-title {
-      font-size: 36px;
+      font-size: 24px;
       font-weight: 800;
       color: #312E81;
-      margin-bottom: 12px;
+      margin-bottom: 4px;
       letter-spacing: -0.02em;
     }
     .page-description {
@@ -113,18 +113,18 @@ import { Router } from '@angular/router';
     }
     .form-card {
       background: white;
-      border-radius: 16px;
-      padding: 40px;
+      border-radius: 12px;
+      padding: 24px;
       border: 1px solid #E5E7EB;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
     .form-group {
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       label {
         display: block;
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 700;
-        margin-bottom: 12px;
+        margin-bottom: 8px;
         color: #312E81;
       }
     }
@@ -168,15 +168,15 @@ import { Router } from '@angular/router';
       color: #312E81;
     }
     .test-cases-section {
-      margin-top: 40px;
-      padding-top: 32px;
+      margin-top: 32px;
+      padding-top: 24px;
       border-top: 1px solid #F3F4F6;
     }
     .test-cases-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
     .test-cases-title {
       h3 {
@@ -208,7 +208,7 @@ import { Router } from '@angular/router';
     .empty-test-cases {
       border: 1px dashed #D1D5DB;
       border-radius: 12px;
-      padding: 60px 20px;
+      padding: 24px 20px;
       text-align: center;
       background-color: #FFFFFF;
     }
@@ -238,8 +238,8 @@ import { Router } from '@angular/router';
       justify-content: flex-end;
       align-items: center;
       gap: 32px;
-      margin-top: 40px;
-      padding-top: 32px;
+      margin-top: 32px;
+      padding-top: 24px;
       border-top: 1px solid #F3F4F6;
     }
     .btn-cancel {
@@ -258,8 +258,7 @@ import { Router } from '@angular/router';
       display: flex;
       justify-content: center;
       gap: 40px;
-      margin-top: 40px;
-      padding-bottom: 20px;
+      padding: 24px 0 8px;
     }
     .footer-item {
       display: flex;
@@ -296,6 +295,8 @@ export class TestSuiteDetailsComponent {
   onSave() {
     if (this.suiteForm.valid) {
       console.log('Suite data:', this.suiteForm.value);
+      // Navigate back or to a success page
+      this.router.navigate(['/projects/create']);
     } else {
       this.suiteForm.markAllAsTouched();
     }
