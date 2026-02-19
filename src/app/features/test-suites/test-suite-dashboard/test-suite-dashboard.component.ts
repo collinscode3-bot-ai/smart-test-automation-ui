@@ -16,8 +16,12 @@ import { SharedModule } from '../../../shared/shared.module';
   styleUrls: ['./test-suite-dashboard.component.scss']
 })
 export class TestSuiteDashboardComponent implements OnInit {
+  private currentPage$ = new BehaviorSubject<number>(1);
   testSuites$: Observable<TestSuite[]>;
+  paginatedSuites$: Observable<TestSuite[]>;
+  totalPages$: Observable<number[]>;
   searchControl = new FormControl('');
+  itemsPerPage = 5;
 
   constructor(
     private testSuiteService: TestSuiteService,
@@ -34,9 +38,35 @@ export class TestSuiteDashboardComponent implements OnInit {
         suites.filter(s => s.name.toLowerCase().includes(filter.toLowerCase()))
       )
     );
+
+    this.totalPages$ = this.testSuites$.pipe(
+      map(suites => {
+        const pages = Math.ceil(suites.length / this.itemsPerPage);
+        return Array.from({ length: pages }, (_, i) => i + 1);
+      })
+    );
+
+    this.paginatedSuites$ = combineLatest([this.testSuites$, this.currentPage$]).pipe(
+      map(([suites, page]) => {
+        const start = (page - 1) * this.itemsPerPage;
+        return suites.slice(start, start + this.itemsPerPage);
+      })
+    );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.searchControl.valueChanges.subscribe(() => {
+      this.currentPage$.next(1);
+    });
+  }
+
+  get currentPage(): number {
+    return this.currentPage$.value;
+  }
+
+  onPageChange(page: number): void {
+    this.currentPage$.next(page);
+  }
 
   onCreateTestSuite(): void {
     console.log('Create new test suite clicked');
