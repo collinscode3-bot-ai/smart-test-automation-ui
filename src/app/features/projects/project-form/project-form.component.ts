@@ -108,14 +108,14 @@ export class ProjectFormComponent implements OnInit {
       //   .subscribe(() => this.router.navigate(['/dashboard']));
 
       // Simulating successful save
-      this.router.navigate(['/projects']);
+      this.router.navigate(['/test-suites']);
     } else {
       console.log('Creating new project:', projectData);
       // TODO: this.projectService.create(projectData)
       //   .subscribe(() => this.router.navigate(['/dashboard']));
 
       // Simulating successful save
-      this.router.navigate(['/projects']);
+      this.router.navigate(['/test-suites']);
     }
   }
 

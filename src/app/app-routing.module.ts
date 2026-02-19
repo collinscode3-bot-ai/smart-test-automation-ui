@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './shared/components/layout/layout.component';
 import { ProjectDashboardComponent } from './features/projects/project-dashboard/project-dashboard.component';
 import { ProjectFormComponent } from './features/projects/project-form/project-form.component';
+import { TestSuiteDashboardComponent } from './features/test-suites/test-suite-dashboard/test-suite-dashboard.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
       {
         path: 'projects/edit/:id',
         component: ProjectFormComponent
+      },
+      {
+        path: 'test-suites',
+        component: TestSuiteDashboardComponent
       }
     ]
   }
