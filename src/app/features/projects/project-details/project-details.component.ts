@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ProjectService } from '../../../core/services/project.service';
 import { Project } from '../../../core/models/project.model';
 import { Subject, takeUntil } from 'rxjs';
@@ -139,7 +140,8 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
 
   constructor(
     private fb: FormBuilder,
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private router: Router
   ) {
     this.projectForm = this.fb.group({
       id: [null],
@@ -179,6 +181,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   onSubmit() {
     if (this.projectForm.valid) {
       console.log('Form submitted:', this.projectForm.value);
+      this.router.navigate(['/projects/test-suite']);
     } else {
       this.projectForm.markAllAsTouched();
     }
