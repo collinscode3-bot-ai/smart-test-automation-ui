@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProjectService } from '../../../core/services/project.service';
+import { Project } from '../../../core/models/project.model';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-project-details',
   template: `
     <div class="project-details-container">
-      <app-breadcrumb [items]="['Projects', 'Create New Project']"></app-breadcrumb>
+      <app-breadcrumb [items]="['Projects', isUpdateMode ? 'Update Project' : 'Create New Project']"></app-breadcrumb>
 
       <div class="form-card">
         <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
@@ -34,7 +37,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
           <div class="form-actions">
             <app-button variant="secondary" (click)="onCancel()">Cancel</app-button>
             <app-button type="submit" [showArrow]="true" [disabled]="projectForm.invalid">
-              Save and Proceed Further
+              {{ isUpdateMode ? 'Update Project' : 'Save and Proceed Further' }}
             </app-button>
           </div>
         </form>
@@ -129,14 +132,43 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     }
   `]
 })
-export class ProjectDetailsComponent {
+export class ProjectDetailsComponent implements OnInit, OnDestroy {
   projectForm: FormGroup;
+  isUpdateMode = false;
+  private destroy$ = new Subject<void>();
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private projectService: ProjectService
+  ) {
     this.projectForm = this.fb.group({
+      id: [null],
       name: ['', Validators.required],
       description: ['']
     });
+  }
+
+  ngOnInit(): void {
+    this.projectService.selectedProject$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(project => {
+        if (project) {
+          this.isUpdateMode = true;
+          this.projectForm.patchValue(project);
+        } else {
+          this.isUpdateMode = false;
+          this.projectForm.reset({
+            id: null,
+            name: '',
+            description: ''
+          });
+        }
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   isFieldInvalid(field: string): boolean {

@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Q3 Brand Audit",
+    "description": "A comprehensive audit of the brand for the third quarter.",
+    "color": "purple"
+  },
+  {
+    "id": 2,
+    "name": "Website Redesign",
+    "description": "Redesigning the corporate website for better user engagement.",
+    "color": "green"
+  },
+  {
+    "id": 3,
+    "name": "App Launch 2.0",
+    "description": "Preparation and launch of the new mobile app version 2.0.",
+    "color": "yellow"
+  }
+]
