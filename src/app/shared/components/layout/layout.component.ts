@@ -53,6 +53,6 @@ export class LayoutComponent {
   constructor(private router: Router) {}
 
   get showGlobalSearch(): boolean {
-    return !this.router.url.startsWith('/projects');
+    return !this.router.url.startsWith('/projects') && !this.router.url.startsWith('/test-suites');
   }
 }
