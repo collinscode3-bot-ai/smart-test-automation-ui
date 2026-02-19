@@ -175,3 +175,44 @@
     }
   }
 }
+
+.list-divider {
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 32px 0;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 40px;
+}
+
+.pagination-controls {
+  display: flex;
+  gap: 8px;
+
+  .page-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    border: 1px solid var(--border-color);
+    font-weight: 600;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+
+    &:hover {
+      background: #F9FAFB;
+    }
+
+    &.active {
+      background: var(--primary-color);
+      color: #FFFFFF;
+      border-color: var(--primary-color);
+    }
+  }
+}
