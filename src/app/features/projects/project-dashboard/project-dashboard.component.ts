@@ -69,7 +69,7 @@ export class ProjectDashboardComponent implements OnInit, OnDestroy {
 
   onEditProject(project: Project): void {
     this.projectService.selectProject(project);
-    this.router.navigate(['/projects/create']); // Assuming create and edit use the same form
+    this.router.navigate(['/projects/edit', project.id]);
   }
 
   onDeleteProject(project: Project): void {
