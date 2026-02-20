@@ -210,4 +210,16 @@ export class TestCaseFormComponent implements OnInit {
   addVerifications(): void {
     console.log('Opening Add Verifications dialog/panel...');
   }
+
+  /**
+   * Navigates to the Test Data Management view for the current test case.
+   */
+  addTestData(): void {
+    const caseId = this.testCaseId || 'new';
+    if (this.suiteId) {
+      this.router.navigate(['/test-suites', this.suiteId, 'test-cases', caseId, 'test-data', 'new']);
+    } else {
+      this.router.navigate(['/test-suites', 'temp', 'test-cases', caseId, 'test-data', 'new']);
+    }
+  }
 }
