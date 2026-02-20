@@ -65,7 +65,7 @@ export class ContractRegistrationComponent implements OnInit {
   private updateHeader(): void {
     const title = this.isEditMode ? 'Edit Contract Details' : 'Contract Details';
     const breadcrumbs = [
-      { label: 'Projects', route: '/projects' },
+      { label: 'Contracts', route: '/contracts/new' },
       { label: this.isEditMode ? 'Edit Contract' : 'New Contract', route: this.router.url }
     ];
     const description = 'Define the structural and baseline data for your test suites by providing schema definitions and initial state configurations.';
@@ -155,18 +155,13 @@ export class ContractRegistrationComponent implements OnInit {
   }
 
   /**
-   * Adds a new field property to the dynamic list.
-   * @param propertyName The name of the property to add.
+   * Navigates to the Contract Properties configuration view.
    */
-  addFieldProperty(propertyName: string = ''): void {
-    if (propertyName) {
-      this.fieldProperties.push(this.fb.control(propertyName));
+  onAddFieldProperties(): void {
+    if (this.contractId) {
+      this.router.navigate(['/contracts', this.contractId, 'properties']);
     } else {
-      // In a real app, this might open a modal or add an empty control for user input
-      const newProp = prompt('Enter field property name:');
-      if (newProp) {
-        this.fieldProperties.push(this.fb.control(newProp));
-      }
+      this.router.navigate(['/contracts/properties']);
     }
   }
 

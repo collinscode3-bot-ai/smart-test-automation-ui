@@ -90,8 +90,8 @@ export class TestCaseFormComponent implements OnInit {
   private updateHeader(): void {
     const title = this.isEditMode ? 'Edit TestCase Details' : 'TestCase Details';
     const breadcrumbs = [
-      { label: 'Projects', route: '/projects' },
-      { label: 'Test Suite', route: this.suiteId ? `/test-suites/edit/${this.suiteId}` : '/test-suites' },
+      { label: 'Test Suite', route: '/test-suites' },
+      { label: 'Suite Details', route: this.suiteId ? `/test-suites/edit/${this.suiteId}` : '/test-suites' },
       { label: 'TestCase Details', route: this.router.url }
     ];
     const description = 'Configure your test case parameters and associated contracts.';
@@ -129,6 +129,11 @@ export class TestCaseFormComponent implements OnInit {
 
   /**
    * Submission Logic: Handles both Create and Edit operations.
+   * Data persistence flow:
+   * 1. Validate form data.
+   * 2. Prepare payload from form values.
+   * 3. Call backend API (mocked below via placeholder).
+   * 4. Navigate back to the parent Test Suite form upon successful persistence.
    */
   saveTestCase(): void {
     if (this.testCaseForm.invalid) {
@@ -139,21 +144,21 @@ export class TestCaseFormComponent implements OnInit {
     const formData = this.testCaseForm.value;
     console.log('Saving test case data:', formData);
 
-    if (this.isEditMode && this.testCaseId) {
-      /*
-         API Placeholder:
-         PUT /api/test-cases/:id
-      */
-      console.log(`Updating test case ${this.testCaseId}`);
-      this.navigateBack();
-    } else {
-      /*
-         API Placeholder:
-         POST /api/test-cases
-      */
-      console.log('Creating new test case');
-      this.navigateBack();
-    }
+    /*
+       API Placeholder:
+       this.http.post('/api/test-cases', formData).subscribe({
+         next: (response) => {
+           console.log('Test case saved successfully:', response);
+           this.navigateBack();
+         },
+         error: (error) => {
+           console.error('Error saving test case:', error);
+         }
+       });
+    */
+
+    // Simulating success for the mock/redirect phase
+    this.navigateBack();
   }
 
   /**
@@ -190,6 +195,13 @@ export class TestCaseFormComponent implements OnInit {
         { id: 'c2', name: 'User Profile Definition', type: 'Provider Contract' }
       ]
     });
+  }
+
+  /**
+   * Navigates to the Contract Registration (Contract Master) view.
+   */
+  onAddContract(): void {
+    this.router.navigate(['/contracts/new']);
   }
 
   /**

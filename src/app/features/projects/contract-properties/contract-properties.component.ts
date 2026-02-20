@@ -79,8 +79,8 @@ export class ContractPropertiesComponent implements OnInit {
   private updateHeader(): void {
     const title = this.isEditMode ? 'Edit Property' : 'Contract Properties';
     const breadcrumbs = [
-      { label: 'Projects', route: '/projects' },
-      { label: 'Contract Details', route: `/projects/contracts/edit/${this.contractId || ''}` },
+      { label: 'Contracts', route: '/contracts/new' },
+      { label: 'Contract Details', route: `/contracts/edit/${this.contractId || ''}` },
       { label: 'Contract Properties', route: this.router.url }
     ];
     const description = 'Configure technical field-level validation and generation rules.';
@@ -192,7 +192,7 @@ export class ContractPropertiesComponent implements OnInit {
         API PLACEHOLDER: PUT /api/contracts/:contractId/properties/:id
         this.contractService.updateProperty(this.contractId!, this.propertyId!, formData).subscribe(() => {
           this.loadingService.hide();
-          this.router.navigate(['/projects/contracts', this.contractId, 'properties']);
+          this.router.navigate(['/contracts', this.contractId, 'properties']);
         });
         */
         console.log('Update successful');
@@ -218,7 +218,7 @@ export class ContractPropertiesComponent implements OnInit {
    */
   onEdit(prop: FieldProperty): void {
     if (this.contractId && prop.id) {
-      this.router.navigate(['/projects/contracts', this.contractId, 'properties', prop.id]);
+      this.router.navigate(['/contracts', this.contractId, 'properties', prop.id]);
     }
   }
 
