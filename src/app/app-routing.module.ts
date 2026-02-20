@@ -9,6 +9,7 @@ import { ContractRegistrationComponent } from './features/projects/contract-regi
 import { ContractPropertiesComponent } from './features/projects/contract-properties/contract-properties.component';
 import { TestDataManagementComponent } from './features/test-suites/test-data-management/test-data-management.component';
 import { VerificationsComponent } from './features/test-suites/verifications/verifications.component';
+import { VerificationPayloadComponent } from './features/test-suites/verifications/verification-payload/verification-payload.component';
 
 const routes: Routes = [
   {
@@ -83,6 +84,10 @@ const routes: Routes = [
   {
     path: 'test-suites/:suiteId/test-cases/:caseId/verifications',
     component: VerificationsComponent
+  },
+  {
+    path: 'test-suites/:suiteId/test-cases/:caseId/verifications/payload',
+    component: VerificationPayloadComponent
   }
 ];
 

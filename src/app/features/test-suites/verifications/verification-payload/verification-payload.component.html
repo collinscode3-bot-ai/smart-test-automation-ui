@@ -1,0 +1,140 @@
+<div class="payload-container">
+  <div class="payload-grid">
+    <!-- Entry Payloads Column -->
+    <div class="payload-column">
+      <div class="payload-card list-card">
+        <div class="card-header">
+          <div class="header-left">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="header-icon"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            <h2 class="card-title">EXISTING ENTRY PAYLOADS</h2>
+          </div>
+          <span class="total-badge">{{ entryPayloads.length }} TOTAL</span>
+        </div>
+        <div class="card-body">
+          <div class="payload-list">
+            <div *ngFor="let payload of entryPayloads" class="payload-item">
+              <div class="item-info">
+                <div class="payload-name">{{ payload.name }}</div>
+                <div class="payload-summary">{{ payload.summary }}</div>
+              </div>
+              <div class="item-actions">
+                <button class="action-btn edit" (click)="onEditEntry(payload)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                </button>
+                <button class="action-btn delete" (click)="onDeleteEntry(payload)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="payload-card detail-card">
+        <div class="card-header">
+          <div class="header-left">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="header-icon"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            <h2 class="card-title">ENTRY PAYLOAD DETAILS</h2>
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="entryForm">
+            <div class="form-group">
+              <label for="entryPayloadId">PAYLOAD ID</label>
+              <input type="text" id="entryPayloadId" formControlName="payloadId" placeholder="e.g. entry_request_v1" class="form-control">
+            </div>
+            <div class="form-group">
+              <div class="label-row">
+                <label for="entrySchema">SCHEMA CONTRACT (JSON)</label>
+                <button type="button" class="upload-link" (click)="onUploadEntry()">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  UPLOAD
+                </button>
+              </div>
+              <textarea id="entrySchema" formControlName="schema" placeholder='{ "type": "object", "properties": { ... } }' class="form-control json-textarea"></textarea>
+            </div>
+            <button type="button" class="register-btn" (click)="registerEntryPayload()">
+              {{ isEditingEntry ? 'UPDATE PAYLOAD' : 'REGISTER ENTRY PAYLOAD' }}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exit Payloads Column -->
+    <div class="payload-column">
+      <div class="payload-card list-card">
+        <div class="card-header">
+          <div class="header-left">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="header-icon rotate-180"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            <h2 class="card-title">EXISTING EXIT PAYLOADS</h2>
+          </div>
+          <span class="total-badge">{{ exitPayloads.length }} TOTAL</span>
+        </div>
+        <div class="card-body">
+          <div class="payload-list">
+            <div *ngFor="let payload of exitPayloads" class="payload-item">
+              <div class="item-info">
+                <div class="payload-name">{{ payload.name }}</div>
+                <div class="payload-summary">{{ payload.summary }}</div>
+              </div>
+              <div class="item-actions">
+                <button class="action-btn edit" (click)="onEditExit(payload)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                </button>
+                <button class="action-btn delete" (click)="onDeleteExit(payload)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="payload-card detail-card">
+        <div class="card-header">
+          <div class="header-left">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="header-icon rotate-180"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            <h2 class="card-title">EXIT PAYLOAD DETAILS</h2>
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="exitForm">
+            <div class="form-group">
+              <label for="exitPayloadId">PAYLOAD ID</label>
+              <input type="text" id="exitPayloadId" formControlName="payloadId" placeholder="e.g. exit_response_v1" class="form-control">
+            </div>
+            <div class="form-group">
+              <div class="label-row">
+                <label for="exitSchema">SCHEMA CONTRACT (JSON)</label>
+                <button type="button" class="upload-link" (click)="onUploadExit()">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  UPLOAD
+                </button>
+              </div>
+              <textarea id="exitSchema" formControlName="schema" placeholder='{ "type": "object", "properties": { ... } }' class="form-control json-textarea"></textarea>
+            </div>
+            <button type="button" class="register-btn" (click)="registerExitPayload()">
+              {{ isEditingExit ? 'UPDATE PAYLOAD' : 'REGISTER EXIT PAYLOAD' }}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="payload-footer">
+    <div class="footer-left">
+      <a href="javascript:void(0)">DOCUMENTATION</a>
+      <span class="separator">|</span>
+      <a href="javascript:void(0)">API REFERENCE</a>
+      <span class="separator">|</span>
+      <a href="javascript:void(0)">SUPPORT</a>
+    </div>
+    <div class="footer-right">
+      <span>System: Stable</span>
+      <span class="dot">•</span>
+      <span>Last updated: Oct 24, 2023 14:20 PM</span>
+    </div>
+  </footer>
+</div>
