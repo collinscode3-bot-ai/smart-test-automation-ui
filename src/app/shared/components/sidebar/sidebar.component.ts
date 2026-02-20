@@ -36,7 +36,7 @@ import { Component, OnInit } from '@angular/core';
 
         <div class="nav-group">
           <span class="group-label">TEST SUITES</span>
-          <a routerLink="/test-suites" routerLinkActive="active" class="nav-item" [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/test-suites" routerLinkActive="active" class="nav-item">
             <div class="nav-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7 12 12 3 7"/><path d="m21 12-9 5-9-5"/><path d="m21 17-9 5-9-5"/><path d="M12 22V12"/></svg>
             </div>

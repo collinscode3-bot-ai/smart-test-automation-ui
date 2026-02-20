@@ -7,6 +7,7 @@ import { TestSuiteFormComponent } from './features/test-suites/test-suite-form/t
 import { TestCaseFormComponent } from './features/test-suites/test-case-form/test-case-form.component';
 import { ContractRegistrationComponent } from './features/projects/contract-registration/contract-registration.component';
 import { ContractPropertiesComponent } from './features/projects/contract-properties/contract-properties.component';
+import { TestDataManagementComponent } from './features/test-suites/test-data-management/test-data-management.component';
 
 const routes: Routes = [
   {
@@ -61,6 +62,14 @@ const routes: Routes = [
   {
     path: 'test-suites/:suiteId/test-cases/edit/:id',
     component: TestCaseFormComponent
+  },
+  {
+    path: 'test-suites/:suiteId/test-data/new',
+    component: TestDataManagementComponent
+  },
+  {
+    path: 'test-suites/:suiteId/test-data/edit/:id',
+    component: TestDataManagementComponent
   }
 ];
 
