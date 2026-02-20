@@ -1,0 +1,227 @@
+.form-container {
+  padding: 40px 0;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 40px;
+
+  .form-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: #4338CA; // Deep Purple as requested
+    margin-bottom: 12px;
+  }
+
+  .form-subtitle {
+    font-size: 18px;
+    color: #6B7280;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.form-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
+  border: 1px solid #E5E7EB;
+  overflow: hidden;
+}
+
+.form-body {
+  padding: 40px;
+}
+
+.form-group {
+  margin-bottom: 32px;
+
+  label {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    color: #4338CA; // Purple labels to match design
+    margin-bottom: 12px;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 8px;
+    border: 1px solid #F3F4F6;
+    font-size: 16px;
+    color: #1F2937;
+    transition: all 0.2s;
+    background-color: #F9FAFB;
+
+    &:focus {
+      outline: none;
+      border-color: #FF6200; // Using specified orange
+      background-color: #FFFFFF;
+    }
+
+    &.invalid {
+      border-color: #EF4444;
+    }
+
+    &::placeholder {
+      color: #9CA3AF;
+    }
+  }
+
+  .textarea {
+    resize: vertical;
+    min-height: 140px;
+    line-height: 1.6;
+  }
+}
+
+.select-wrapper {
+  position: relative;
+
+  select {
+    appearance: none;
+    cursor: pointer;
+  }
+
+  .select-arrow {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #4338CA;
+    pointer-events: none;
+  }
+}
+
+.test-cases-section {
+  padding: 0 40px 40px;
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #4338CA;
+      margin-bottom: 4px;
+    }
+
+    .section-subtitle {
+      font-size: 14px;
+      color: #6B7280;
+    }
+  }
+
+  .add-btn {
+    --primary-color: #FF6200; // Local override for specific orange
+    --primary-hover-color: #E65900;
+  }
+}
+
+.dashed-container {
+  border: 2px dashed #E5E7EB;
+  border-radius: 12px;
+  padding: 64px 40px;
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .icon-box {
+    width: 56px;
+    height: 56px;
+    background: #F3F4F6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4338CA;
+    margin-bottom: 20px;
+    opacity: 0.6;
+  }
+
+  .empty-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #4B5563;
+    margin-bottom: 8px;
+  }
+
+  .empty-subtitle {
+    font-size: 15px;
+    color: #9CA3AF;
+    max-width: 320px;
+    line-height: 1.5;
+  }
+}
+
+.form-footer {
+  padding: 24px 40px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 40px;
+  border-top: 1px solid #F3F4F6;
+  background-color: #FFFFFF;
+
+  app-button {
+    --primary-color: #FF6200;
+    --primary-hover-color: #E65900;
+  }
+}
+
+.cancel-link {
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.submission-footer {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 40px;
+
+  .footer-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #6B7280;
+    letter-spacing: 0.15em;
+    opacity: 0.8;
+  }
+
+  .copyright {
+    font-size: 11px;
+    color: #9CA3AF;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}

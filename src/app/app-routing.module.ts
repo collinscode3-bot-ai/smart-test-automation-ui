@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProjectDashboardComponent } from './features/projects/project-dashboard/project-dashboard.component';
 import { ProjectFormComponent } from './features/projects/project-form/project-form.component';
 import { TestSuiteDashboardComponent } from './features/test-suites/test-suite-dashboard/test-suite-dashboard.component';
+import { TestSuiteFormComponent } from './features/test-suites/test-suite-form/test-suite-form.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,14 @@ const routes: Routes = [
   {
     path: 'test-suites',
     component: TestSuiteDashboardComponent
+  },
+  {
+    path: 'test-suites/new',
+    component: TestSuiteFormComponent
+  },
+  {
+    path: 'test-suites/edit/:id',
+    component: TestSuiteFormComponent
   }
 ];
 

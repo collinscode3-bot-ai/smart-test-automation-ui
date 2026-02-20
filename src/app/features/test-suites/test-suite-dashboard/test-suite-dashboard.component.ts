@@ -76,11 +76,11 @@ export class TestSuiteDashboardComponent implements OnInit {
   }
 
   onCreateTestSuite(): void {
-    console.log('Create new test suite clicked');
+    this.router.navigate(['/test-suites/new']);
   }
 
   onEditTestSuite(suite: TestSuite): void {
-    console.log('Edit test suite:', suite.name);
+    this.router.navigate(['/test-suites/edit', suite.id]);
   }
 
   onDeleteTestSuite(suite: TestSuite): void {
