@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectService } from '../../../core/services/project.service';
+import { HeaderService } from '../../../core/services/header.service';
 import { SharedModule } from '../../../shared/shared.module';
 import { Project } from '../../../core/models/project.model';
 
@@ -38,7 +39,8 @@ export class ProjectFormComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private headerService: HeaderService
   ) {
     this.initForm();
   }
@@ -49,6 +51,11 @@ export class ProjectFormComponent implements OnInit {
       this.isEditMode = true;
       this.loadProjectDetails(this.projectId);
     }
+
+    this.headerService.setHeader(this.isEditMode ? 'Update Project' : 'Create New Project', [
+      { label: 'Projects', route: '/projects' },
+      { label: this.isEditMode ? 'Update Project' : 'Create Project', route: this.router.url }
+    ]);
   }
 
   /**

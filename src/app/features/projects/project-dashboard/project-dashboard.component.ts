@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProjectService } from '../../../core/services/project.service';
+import { HeaderService } from '../../../core/services/header.service';
 import { Project } from '../../../core/models/project.model';
 import { BehaviorSubject, Observable, combineLatest, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, tap, takeUntil } from 'rxjs/operators';
@@ -28,6 +29,7 @@ export class ProjectDashboardComponent implements OnInit, OnDestroy {
 
   constructor(
     private projectService: ProjectService,
+    private headerService: HeaderService,
     private router: Router
   ) {
     this.projects$ = combineLatest([
@@ -41,6 +43,10 @@ export class ProjectDashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.headerService.setHeader('Project Details', [
+      { label: 'Projects', route: '/projects' }
+    ]);
+
     this.searchControl.valueChanges.pipe(
       debounceTime(300),
       distinctUntilChanged(),

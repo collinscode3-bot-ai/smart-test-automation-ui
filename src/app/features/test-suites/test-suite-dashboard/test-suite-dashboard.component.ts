@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TestSuiteService } from '../../../core/services/test-suite.service';
+import { HeaderService } from '../../../core/services/header.service';
 import { TestSuite } from '../../../core/models/test-suite.model';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -25,6 +26,7 @@ export class TestSuiteDashboardComponent implements OnInit {
 
   constructor(
     private testSuiteService: TestSuiteService,
+    private headerService: HeaderService,
     private router: Router
   ) {
     const suites$ = this.testSuiteService.getTestSuites();
@@ -55,6 +57,11 @@ export class TestSuiteDashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.headerService.setHeader('Test Suite Dashboard', [
+      { label: 'Projects', route: '/projects' },
+      { label: 'Test Suite Dashboard', route: '/test-suites' }
+    ]);
+
     this.searchControl.valueChanges.subscribe(() => {
       this.currentPage$.next(1);
     });

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
-import { LayoutComponent } from './components/layout/layout.component';
 import { ButtonComponent } from './components/button/button.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { RouterModule } from '@angular/router';
@@ -13,7 +12,6 @@ import { RouterModule } from '@angular/router';
     HeaderComponent,
     SidebarComponent,
     SearchBarComponent,
-    LayoutComponent,
     ButtonComponent,
     BreadcrumbComponent
   ],
@@ -25,7 +23,6 @@ import { RouterModule } from '@angular/router';
     HeaderComponent,
     SidebarComponent,
     SearchBarComponent,
-    LayoutComponent,
     ButtonComponent,
     BreadcrumbComponent
   ]
