@@ -5,6 +5,7 @@ import { ProjectFormComponent } from './features/projects/project-form/project-f
 import { TestSuiteDashboardComponent } from './features/test-suites/test-suite-dashboard/test-suite-dashboard.component';
 import { TestSuiteFormComponent } from './features/test-suites/test-suite-form/test-suite-form.component';
 import { TestCaseFormComponent } from './features/test-suites/test-case-form/test-case-form.component';
+import { ContractRegistrationComponent } from './features/projects/contract-registration/contract-registration.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,14 @@ const routes: Routes = [
   {
     path: 'projects/edit/:id',
     component: ProjectFormComponent
+  },
+  {
+    path: 'projects/contracts/new',
+    component: ContractRegistrationComponent
+  },
+  {
+    path: 'projects/contracts/edit/:id',
+    component: ContractRegistrationComponent
   },
   {
     path: 'test-suites',
