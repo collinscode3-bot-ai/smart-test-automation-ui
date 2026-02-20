@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,58 +13,60 @@ import { Component, OnInit } from '@angular/core';
       </div>
 
       <nav class="sidebar-nav">
+        <!-- Test Suite Section -->
         <div class="nav-group">
-          <span class="group-label">PROJECTS</span>
-          <a routerLink="/projects" routerLinkActive="active" class="nav-item">
-            <div class="nav-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-            </div>
-            <span class="nav-label">Projects Dashboard</span>
-          </a>
-          <a routerLink="/projects/create" routerLinkActive="active" class="nav-item">
-            <div class="nav-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-            </div>
-            <span class="nav-label">Create/Edit Project</span>
-          </a>
-          <a routerLink="/projects/contracts/new" routerLinkActive="active" class="nav-item">
-            <div class="nav-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
-            </div>
-            <span class="nav-label">New Contract</span>
-          </a>
-        </div>
-
-        <div class="nav-group">
-          <span class="group-label">TEST SUITES</span>
-          <a routerLink="/test-suites" routerLinkActive="active" class="nav-item">
+          <span class="group-label">TEST SUITE</span>
+          <a routerLink="/test-suites" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
             <div class="nav-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7 12 12 3 7"/><path d="m21 12-9 5-9-5"/><path d="m21 17-9 5-9-5"/><path d="M12 22V12"/></svg>
             </div>
-            <span class="nav-label">Test Suite Dashboard</span>
+            <span class="nav-label">TestSuiteDashboard</span>
           </a>
-          <a routerLink="/test-suites/new" routerLinkActive="active" class="nav-item">
+          <a routerLink="/test-suites/new" [class.active]="isRouteActive('/test-suites/new') || isRouteActive('/test-suites/edit')" class="nav-item">
             <div class="nav-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
             </div>
-            <span class="nav-label">Create/Edit Test Suite</span>
-          </a>
-          <a routerLinkActive="active" class="nav-item" [routerLink]="null" style="pointer-events: none; opacity: 0.6;">
-            <div class="nav-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-            </div>
-            <span class="nav-label">Test Case Details</span>
+            <span class="nav-label">TestSuiteForm (New/Edit)</span>
           </a>
         </div>
 
+        <!-- Test Case Section -->
         <div class="nav-group">
-          <span class="group-label">OTHER</span>
-          <a routerLink="/archives" routerLinkActive="active" class="nav-item">
+          <span class="group-label">TEST CASE</span>
+          <div [class.active]="isRouteActive('/test-cases')" class="nav-item" style="cursor: default;">
             <div class="nav-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8H3V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2Z"/><path d="M21 8v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8"/><path d="M10 12h4"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
             </div>
-            <span class="nav-label">Archives</span>
+            <span class="nav-label">TestCaseForm (Details)</span>
+          </div>
+        </div>
+
+        <!-- Contracts Section -->
+        <div class="nav-group">
+          <span class="group-label">CONTRACTS</span>
+          <a routerLink="/contracts/new" [class.active]="isRouteActive('/contracts/new') || isRouteActive('/contracts/edit')" class="nav-item">
+            <div class="nav-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+            </div>
+            <span class="nav-label">ContractMaster (Registration)</span>
           </a>
+          <a routerLink="/contracts/properties" [class.active]="isRouteActive('/properties')" class="nav-item">
+            <div class="nav-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M9 3v18"/><path d="M15 3v18"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>
+            </div>
+            <span class="nav-label">ContractProperties</span>
+          </a>
+        </div>
+
+        <!-- Test Data Section -->
+        <div class="nav-group">
+          <span class="group-label">TEST DATA</span>
+          <div [class.active]="isRouteActive('/test-data')" class="nav-item" style="cursor: default;">
+            <div class="nav-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+            </div>
+            <span class="nav-label">TestDataManagement</span>
+          </div>
         </div>
       </nav>
 
@@ -192,6 +195,10 @@ import { Component, OnInit } from '@angular/core';
   `]
 })
 export class SidebarComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
   ngOnInit(): void {}
+
+  isRouteActive(route: string): boolean {
+    return this.router.url.includes(route);
+  }
 }

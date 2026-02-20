@@ -28,19 +28,23 @@ const routes: Routes = [
     component: ProjectFormComponent
   },
   {
-    path: 'projects/contracts/new',
+    path: 'contracts/new',
     component: ContractRegistrationComponent
   },
   {
-    path: 'projects/contracts/edit/:id',
+    path: 'contracts/edit/:id',
     component: ContractRegistrationComponent
   },
   {
-    path: 'projects/contracts/:contractId/properties',
+    path: 'contracts/properties',
     component: ContractPropertiesComponent
   },
   {
-    path: 'projects/contracts/:contractId/properties/:id',
+    path: 'contracts/:contractId/properties',
+    component: ContractPropertiesComponent
+  },
+  {
+    path: 'contracts/:contractId/properties/:id',
     component: ContractPropertiesComponent
   },
   {
