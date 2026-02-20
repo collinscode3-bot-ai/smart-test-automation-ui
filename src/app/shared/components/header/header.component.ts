@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HeaderService } from '../../../core/services/header.service';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   template: `
     <header class="header">
-      <div class="nav-brand">
-        <span class="brand-text">Projects</span>
-        <div class="brand-underline"></div>
+      <div class="header-left">
+        <app-breadcrumb [items]="(breadcrumbLabels$ | async) || []"></app-breadcrumb>
+        <h1 class="page-title">{{ title$ | async }}</h1>
       </div>
       <div class="header-actions">
         <button class="icon-btn notification-btn">
@@ -20,40 +22,30 @@ import { Component } from '@angular/core';
   `,
   styles: [`
     .header {
-      height: 64px;
-      padding: 0 40px;
+      padding: 24px 40px;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
       background: var(--card-bg);
       border-bottom: 1px solid var(--border-color);
     }
-    .nav-brand {
+    .header-left {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      position: relative;
-      cursor: pointer;
-      height: 100%;
-      justify-content: center;
+      gap: 8px;
     }
-    .brand-text {
-      font-weight: 700;
-      font-size: 16px;
-      color: var(--link-color);
-    }
-    .brand-underline {
-      width: 100%;
-      height: 3px;
-      background-color: var(--link-color);
-      border-radius: 2px 2px 0 0;
-      position: absolute;
-      bottom: 0;
+    .page-title {
+      font-size: 32px;
+      font-weight: 800;
+      color: #4338CA;
+      margin: 0;
+      letter-spacing: -0.01em;
     }
     .header-actions {
       display: flex;
       align-items: center;
       gap: 16px;
+      padding-top: 8px;
     }
     .icon-btn {
       background: none;
@@ -82,4 +74,16 @@ import { Component } from '@angular/core';
     }
   `]
 })
-export class HeaderComponent {}
+export class HeaderComponent implements OnInit {
+  title$: Observable<string>;
+  breadcrumbLabels$: Observable<string[]>;
+
+  constructor(private headerService: HeaderService) {
+    this.title$ = this.headerService.pageTitle$;
+    this.breadcrumbLabels$ = this.headerService.breadcrumbs$.pipe(
+      map(breadcrumbs => breadcrumbs.map(b => b.label))
+    );
+  }
+
+  ngOnInit(): void {}
+}

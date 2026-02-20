@@ -1,104 +1,151 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectService } from '../../../core/services/project.service';
-import { Project } from '../../../core/models/project.model';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
   template: `
     <aside class="sidebar">
-      <div class="sidebar-header">
-        <h3 class="sidebar-title">RECENT PROJECTS</h3>
-        <a href="javascript:void(0)" class="view-all" (click)="onNewProject()">+ New</a>
+      <div class="sidebar-logo">
+        <div class="logo-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+        </div>
+        <span class="logo-text">EntryTool</span>
       </div>
-      <div class="project-list">
-        <div *ngFor="let project of projects$ | async"
-             class="project-item"
-             (click)="onProjectClick(project)">
-          <div class="icon-box" [ngClass]="project.iconType">
-            <ng-container [ngSwitch]="project.iconType">
-              <svg *ngSwitchCase="'globe'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-              <svg *ngSwitchCase="'rocket'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-5c1.62-2.2 5-3 5-3l1 1"/><path d="M12 15v5s3.03-.55 5-2c2.2-1.62 3-5 3-5l-1-1"/></svg>
-              <svg *ngSwitchDefault xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
-            </ng-container>
+
+      <nav class="sidebar-nav">
+        <a routerLink="/projects" routerLinkActive="active" class="nav-item" [routerLinkActiveOptions]="{exact: false}">
+          <div class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
           </div>
-          <span class="project-name">{{ project.title }}</span>
+          <span class="nav-label">Projects</span>
+        </a>
+
+        <a routerLink="/test-suites" routerLinkActive="active" class="nav-item">
+          <div class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7 12 12 3 7"/><path d="m21 12-9 5-9-5"/><path d="m21 17-9 5-9-5"/><path d="M12 22V12"/></svg>
+          </div>
+          <span class="nav-label">Test Suite Management</span>
+        </a>
+
+        <a routerLink="/archives" routerLinkActive="active" class="nav-item">
+          <div class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8H3V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2Z"/><path d="M21 8v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8"/><path d="M10 12h4"/></svg>
+          </div>
+          <span class="nav-label">Archives</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <div class="user-avatar-small">
+            <img src="https://ui-avatars.com/api/?name=User&background=FFD5AD&color=1A1A1A" alt="User">
+          </div>
+          <div class="user-details">
+            <span class="user-name">User Name</span>
+            <span class="user-role">Administrator</span>
+          </div>
         </div>
       </div>
     </aside>
   `,
   styles: [`
     .sidebar {
-      width: 300px;
-    }
-    .sidebar-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    .sidebar-title {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--link-color);
-      letter-spacing: 0.5px;
-    }
-    .view-all {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--link-color);
-    }
-    .project-list {
+      width: 280px;
+      height: 100vh;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      background-color: #FFFFFF;
+      border-right: 1px solid var(--border-color);
     }
-    .project-item {
-      background: var(--card-bg);
-      padding: 16px 20px;
-      border-radius: 8px;
+    .sidebar-logo {
+      padding: 32px 24px;
       display: flex;
       align-items: center;
-      gap: 16px;
-      box-shadow: var(--shadow-sm);
-      cursor: pointer;
-      transition: transform 0.2s;
-      &:hover {
-        transform: translateY(-2px);
-      }
+      gap: 12px;
     }
-    .icon-box {
-      width: 36px;
-      height: 36px;
-      border-radius: 6px;
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      &.folder { background-color: #F5F3FF; color: #7C3AED; }
-      &.globe { background-color: #ECFDF5; color: #10B981; }
-      &.rocket { background-color: #FFFBEB; color: #F59E0B; }
     }
-    .project-name {
-      font-size: 15px;
-      font-weight: 500;
+    .logo-text {
+      font-size: 20px;
+      font-weight: 800;
       color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+    .sidebar-nav {
+      flex: 1;
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      color: var(--text-secondary);
+      font-weight: 500;
+      transition: all 0.2s;
+      text-decoration: none;
+      &:hover {
+        background-color: #F9FAFB;
+        color: var(--primary-color);
+      }
+      &.active {
+        background-color: #FFF5F0;
+        color: var(--primary-color);
+        font-weight: 600;
+        .nav-icon {
+          color: var(--primary-color);
+        }
+      }
+    }
+    .nav-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+    }
+    .sidebar-footer {
+      padding: 24px;
+      border-top: 1px solid var(--border-color);
+    }
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .user-avatar-small {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      overflow: hidden;
+      img { width: 100%; height: 100%; }
+    }
+    .user-details {
+      display: flex;
+      flex-direction: column;
+    }
+    .user-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .user-role {
+      font-size: 12px;
+      color: var(--text-muted);
     }
   `]
 })
 export class SidebarComponent implements OnInit {
-  projects$: Observable<Project[]>;
-
-  constructor(private projectService: ProjectService) {
-    this.projects$ = this.projectService.getProjects();
-  }
-
+  constructor() {}
   ngOnInit(): void {}
-
-  onProjectClick(project: Project): void {
-    this.projectService.selectProject(project);
-  }
-
-  onNewProject(): void {
-    this.projectService.selectProject(null);
-  }
 }
