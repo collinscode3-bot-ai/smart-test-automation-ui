@@ -205,10 +205,16 @@ export class TestCaseFormComponent implements OnInit {
   }
 
   /**
-   * Placeholder for adding verifications logic.
+   * Navigates to the Verifications view for the current test case.
    */
   addVerifications(): void {
-    console.log('Opening Add Verifications dialog/panel...');
+    const caseId = this.testCaseId || 'new';
+    if (this.suiteId) {
+      this.router.navigate(['/test-suites', this.suiteId, 'test-cases', caseId, 'verifications']);
+    } else {
+      // For standalone test case creation, use a placeholder suiteId
+      this.router.navigate(['/test-suites', 'temp', 'test-cases', caseId, 'verifications']);
+    }
   }
 
   /**
