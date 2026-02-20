@@ -1,0 +1,23 @@
+
+> project-entry-tool@0.0.0 start
+> ng serve
+
+- Generating browser application bundles (phase: setup)...
+✔ Browser application bundle generation complete.
+
+Initial Chunk Files   | Names         |  Raw Size
+vendor.js             | vendor        |   2.36 MB |
+main.js               | main          | 438.92 kB |
+polyfills.js          | polyfills     | 234.36 kB |
+styles.css, styles.js | styles        | 130.89 kB |
+runtime.js            | runtime       |   6.51 kB |
+
+| Initial Total |   3.15 MB
+
+Build at: 2026-02-20T13:49:24.812Z - Hash: bf9d4903a1795120 - Time: 20086ms
+
+** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+
+
+✔ Compiled successfully.
+Terminated
