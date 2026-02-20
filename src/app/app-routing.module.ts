@@ -4,6 +4,7 @@ import { ProjectDashboardComponent } from './features/projects/project-dashboard
 import { ProjectFormComponent } from './features/projects/project-form/project-form.component';
 import { TestSuiteDashboardComponent } from './features/test-suites/test-suite-dashboard/test-suite-dashboard.component';
 import { TestSuiteFormComponent } from './features/test-suites/test-suite-form/test-suite-form.component';
+import { TestCaseFormComponent } from './features/test-suites/test-case-form/test-case-form.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,14 @@ const routes: Routes = [
   {
     path: 'test-suites/edit/:id',
     component: TestSuiteFormComponent
+  },
+  {
+    path: 'test-suites/:suiteId/test-cases/new',
+    component: TestCaseFormComponent
+  },
+  {
+    path: 'test-suites/:suiteId/test-cases/edit/:id',
+    component: TestCaseFormComponent
   }
 ];
 

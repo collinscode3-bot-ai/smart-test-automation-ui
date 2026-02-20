@@ -130,4 +130,17 @@ export class TestSuiteFormComponent implements OnInit {
   onCancel(): void {
     this.router.navigate(['/test-suites']);
   }
+
+  /**
+   * Navigates to the TestCaseFormComponent to add a new test case.
+   */
+  addTestCase(): void {
+    if (this.suiteId) {
+      this.router.navigate(['/test-suites', this.suiteId, 'test-cases', 'new']);
+    } else {
+      // If no suiteId, we should probably save the suite first or use a temporary state
+      console.log('Save the suite before adding test cases, or implement temp state.');
+      this.router.navigate(['/test-suites', 'temp', 'test-cases', 'new']);
+    }
+  }
 }
