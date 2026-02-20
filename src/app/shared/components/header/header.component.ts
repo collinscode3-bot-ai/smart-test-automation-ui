@@ -9,6 +9,7 @@ import { Observable, map } from 'rxjs';
       <div class="header-left">
         <app-breadcrumb [items]="(breadcrumbLabels$ | async) || []"></app-breadcrumb>
         <h1 class="page-title">{{ title$ | async }}</h1>
+        <p class="page-description" *ngIf="description$ | async as desc">{{ desc }}</p>
       </div>
       <div class="header-actions">
         <button class="icon-btn notification-btn">
@@ -40,6 +41,12 @@ import { Observable, map } from 'rxjs';
       color: #4338CA;
       margin: 0;
       letter-spacing: -0.01em;
+    }
+    .page-description {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin: 0;
+      max-width: 600px;
     }
     .header-actions {
       display: flex;
@@ -77,9 +84,11 @@ import { Observable, map } from 'rxjs';
 export class HeaderComponent implements OnInit {
   title$: Observable<string>;
   breadcrumbLabels$: Observable<string[]>;
+  description$: Observable<string>;
 
   constructor(private headerService: HeaderService) {
     this.title$ = this.headerService.pageTitle$;
+    this.description$ = this.headerService.description$;
     this.breadcrumbLabels$ = this.headerService.breadcrumbs$.pipe(
       map(breadcrumbs => breadcrumbs.map(b => b.label))
     );

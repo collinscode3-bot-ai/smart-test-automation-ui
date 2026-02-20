@@ -52,10 +52,14 @@ export class ProjectFormComponent implements OnInit {
       this.loadProjectDetails(this.projectId);
     }
 
-    this.headerService.setHeader(this.isEditMode ? 'Update Project' : 'Create New Project', [
-      { label: 'Projects', route: '/projects' },
-      { label: this.isEditMode ? 'Update Project' : 'Create Project', route: this.router.url }
-    ]);
+    this.headerService.setHeader(
+      this.isEditMode ? 'Update Project' : 'Create New Project',
+      [
+        { label: 'Projects', route: '/projects' },
+        { label: this.isEditMode ? 'Update Project' : 'Create Project', route: this.router.url }
+      ],
+      'Configure a new project or update existing project details.'
+    );
   }
 
   /**

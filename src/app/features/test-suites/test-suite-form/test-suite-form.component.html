@@ -1,9 +1,4 @@
 <div class="form-container">
-  <!-- Title and Subtitle section based on design image -->
-  <div class="form-header">
-    <h1 class="form-title">{{ isEditMode ? 'Edit Test Suite' : 'Create New Test Suite' }}</h1>
-    <p class="form-subtitle">Configure a new automated testing suite for your project requirements.</p>
-  </div>
 
   <form [formGroup]="testSuiteForm" (ngSubmit)="saveSuite()">
     <div class="form-card">

@@ -68,7 +68,8 @@ export class TestSuiteFormComponent implements OnInit {
       { label: 'Test Suite Management', route: '/test-suites' },
       { label: title, route: this.router.url }
     ];
-    this.headerService.setHeader(title, breadcrumbs);
+    const description = 'Configure a new automated testing suite for your project requirements.';
+    this.headerService.setHeader(title, breadcrumbs, description);
   }
 
   /**

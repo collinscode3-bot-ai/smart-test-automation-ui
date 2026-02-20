@@ -1,8 +1,4 @@
 <div class="form-container">
-  <div class="form-header">
-    <h1 class="form-title">{{ isEditMode ? 'Edit TestCase Details' : 'TestCase Details' }}</h1>
-    <p class="form-subtitle">Configure your test case parameters and associated contracts.</p>
-  </div>
 
   <form [formGroup]="testCaseForm" (ngSubmit)="saveTestCase()">
     <div class="form-card">
