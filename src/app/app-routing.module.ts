@@ -77,6 +77,10 @@ const routes: Routes = [
     component: TestDataManagementComponent
   },
   {
+    path: 'test-suites/:suiteId/test-cases/:caseId/verifications/manage',
+    component: VerificationsComponent
+  },
+  {
     path: 'test-suites/:suiteId/test-cases/:caseId/verifications',
     component: VerificationsComponent
   }
