@@ -17,6 +17,7 @@ export class TestDataManagementComponent implements OnInit {
   isEditMode = false;
   testDataId: string | null = null;
   suiteId: string | null = null;
+  caseId: string | null = null;
 
   // Dynamic table state
   tableHeaders: string[] = [];
@@ -32,6 +33,7 @@ export class TestDataManagementComponent implements OnInit {
 
   ngOnInit(): void {
     this.suiteId = this.route.snapshot.paramMap.get('suiteId');
+    this.caseId = this.route.snapshot.paramMap.get('caseId');
     this.testDataId = this.route.snapshot.paramMap.get('id');
     this.isEditMode = !!this.testDataId;
 
@@ -48,7 +50,11 @@ export class TestDataManagementComponent implements OnInit {
     const breadcrumbs = [
       { label: 'Projects', route: '/projects' },
       { label: 'Test Suite', route: '/test-suites' },
-      { label: 'Test Data', route: '' }
+      {
+        label: 'TestCase Details',
+        route: (this.suiteId && this.caseId) ? `/test-suites/${this.suiteId}/test-cases/${this.caseId === 'new' ? 'new' : 'edit/' + this.caseId}` : '/test-suites'
+      },
+      { label: 'Test Data', route: this.router.url }
     ];
     this.headerService.setHeader(title, breadcrumbs, description);
   }
@@ -120,7 +126,19 @@ export class TestDataManagementComponent implements OnInit {
   }
 
   onCancel(): void {
-    this.router.navigate(['/test-suites']);
+    this.navigateBack();
+  }
+
+  private navigateBack(): void {
+    if (this.suiteId && this.caseId) {
+      if (this.caseId === 'new') {
+        this.router.navigate(['/test-suites', this.suiteId, 'test-cases', 'new']);
+      } else {
+        this.router.navigate(['/test-suites', this.suiteId, 'test-cases', 'edit', this.caseId]);
+      }
+    } else {
+      this.router.navigate(['/test-suites']);
+    }
   }
 
   saveTestData(): void {
@@ -138,7 +156,7 @@ export class TestDataManagementComponent implements OnInit {
 
     setTimeout(() => {
       this.loadingService.hide();
-      this.router.navigate(['/test-suites']);
+      this.navigateBack();
     }, 1000);
   }
 }

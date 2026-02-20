@@ -68,11 +68,11 @@ const routes: Routes = [
     component: TestCaseFormComponent
   },
   {
-    path: 'test-suites/:suiteId/test-data/new',
+    path: 'test-suites/:suiteId/test-cases/:caseId/test-data/new',
     component: TestDataManagementComponent
   },
   {
-    path: 'test-suites/:suiteId/test-data/edit/:id',
+    path: 'test-suites/:suiteId/test-cases/:caseId/test-data/edit/:id',
     component: TestDataManagementComponent
   }
 ];
