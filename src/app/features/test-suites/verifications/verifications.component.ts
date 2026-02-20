@@ -51,7 +51,7 @@ export class VerificationsComponent implements OnInit {
     this.loadingService.show();
     /*
        API Placeholder:
-       GET /api/test-suites/:suiteId/test-cases/:caseId/verifications
+       GET /api/test-suites/:suiteId/test-cases/:caseId/verifications/manage
     */
     setTimeout(() => {
       this.verifications = [
@@ -69,7 +69,7 @@ export class VerificationsComponent implements OnInit {
     this.loadingService.show();
     /*
        API Placeholder:
-       POST/PUT /api/test-suites/:suiteId/test-cases/:caseId/verifications
+       POST/PUT /api/test-suites/:suiteId/test-cases/:caseId/verifications/manage
     */
     setTimeout(() => {
       this.loadingService.hide();

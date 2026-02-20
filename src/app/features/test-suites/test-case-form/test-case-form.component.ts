@@ -210,10 +210,10 @@ export class TestCaseFormComponent implements OnInit {
   addVerifications(): void {
     const caseId = this.testCaseId || 'new';
     if (this.suiteId) {
-      this.router.navigate(['/test-suites', this.suiteId, 'test-cases', caseId, 'verifications']);
+      this.router.navigate(['/test-suites', this.suiteId, 'test-cases', caseId, 'verifications', 'manage']);
     } else {
       // For standalone test case creation, use a placeholder suiteId
-      this.router.navigate(['/test-suites', 'temp', 'test-cases', caseId, 'verifications']);
+      this.router.navigate(['/test-suites', 'temp', 'test-cases', caseId, 'verifications', 'manage']);
     }
   }
 
