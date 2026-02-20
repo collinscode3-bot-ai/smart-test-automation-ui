@@ -5,6 +5,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { ButtonComponent } from './components/button/button.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { PleaseWaitComponent } from './components/please-wait/please-wait.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
     SidebarComponent,
     SearchBarComponent,
     ButtonComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    PleaseWaitComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { RouterModule } from '@angular/router';
     SidebarComponent,
     SearchBarComponent,
     ButtonComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    PleaseWaitComponent
   ]
 })
 export class SharedModule { }

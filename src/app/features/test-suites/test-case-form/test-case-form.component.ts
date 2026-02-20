@@ -94,7 +94,8 @@ export class TestCaseFormComponent implements OnInit {
       { label: 'Test Suite', route: this.suiteId ? `/test-suites/edit/${this.suiteId}` : '/test-suites' },
       { label: 'TestCase Details', route: this.router.url }
     ];
-    this.headerService.setHeader(title, breadcrumbs);
+    const description = 'Configure your test case parameters and associated contracts.';
+    this.headerService.setHeader(title, breadcrumbs, description);
   }
 
   /**

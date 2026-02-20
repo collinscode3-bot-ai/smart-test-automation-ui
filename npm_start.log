@@ -8,15 +8,61 @@
 Initial Chunk Files   | Names         |  Raw Size
 vendor.js             | vendor        |   2.36 MB |
 polyfills.js          | polyfills     | 234.36 kB |
-main.js               | main          | 214.12 kB |
+main.js               | main          | 227.42 kB |
 styles.css, styles.js | styles        | 130.89 kB |
 runtime.js            | runtime       |   6.51 kB |
 
-| Initial Total |   2.93 MB
+| Initial Total |   2.94 MB
 
-Build at: 2026-02-20T03:29:28.822Z - Hash: 93f83291e06ebecf - Time: 12409ms
+Build at: 2026-02-20T04:00:09.376Z - Hash: 42f738794c1219a3 - Time: 12756ms
 
 ** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
 
+
+✔ Compiled successfully.
+✔ Browser application bundle generation complete.
+
+Initial Chunk Files | Names   |  Raw Size
+main.js             | main    | 227.61 kB |
+runtime.js          | runtime |   6.51 kB |
+
+3 unchanged chunks
+
+Build at: 2026-02-20T04:03:29.031Z - Hash: 6b6e42303930f11a - Time: 877ms
+
+✔ Compiled successfully.
+✔ Browser application bundle generation complete.
+
+Initial Chunk Files | Names   |  Raw Size
+main.js             | main    | 225.73 kB |
+runtime.js          | runtime |   6.51 kB |
+
+3 unchanged chunks
+
+Build at: 2026-02-20T04:04:03.669Z - Hash: de40939a8f855ba0 - Time: 363ms
+
+Error: src/app/app.component.html:8:29 - error TS2339: Property 'loading$' does not exist on type 'AppComponent'.
+
+8     <app-please-wait *ngIf="loading$ | async"></app-please-wait>
+                              ~~~~~~~~
+
+  src/app/app.component.ts:5:16
+    5   templateUrl: './app.component.html',
+                     ~~~~~~~~~~~~~~~~~~~~~~
+    Error occurs in the template of component AppComponent.
+
+
+
+
+✖ Failed to compile.
+✔ Browser application bundle generation complete.
+
+Initial Chunk Files | Names   |  Raw Size
+main.js             | main    | 227.42 kB |
+runtime.js          | runtime |   6.51 kB |
+
+3 unchanged chunks
+
+Build at: 2026-02-20T04:04:35.750Z - Hash: b00e300c325b1422 - Time: 801ms
 
 ✔ Compiled successfully.

@@ -57,10 +57,14 @@ export class TestSuiteDashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.headerService.setHeader('Test Suite Dashboard', [
-      { label: 'Projects', route: '/projects' },
-      { label: 'Test Suite Dashboard', route: '/test-suites' }
-    ]);
+    this.headerService.setHeader(
+      'Test Suite Dashboard',
+      [
+        { label: 'Projects', route: '/projects' },
+        { label: 'Test Suite Dashboard', route: '/test-suites' }
+      ],
+      'Manage and monitor your existing automated testing suites.'
+    );
 
     this.searchControl.valueChanges.subscribe(() => {
       this.currentPage$.next(1);

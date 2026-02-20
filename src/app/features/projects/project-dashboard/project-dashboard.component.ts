@@ -43,9 +43,11 @@ export class ProjectDashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.headerService.setHeader('Project Details', [
-      { label: 'Projects', route: '/projects' }
-    ]);
+    this.headerService.setHeader(
+      'Project Details',
+      [{ label: 'Projects', route: '/projects' }],
+      'Manage and monitor your existing projects.'
+    );
 
     this.searchControl.valueChanges.pipe(
       debounceTime(300),
