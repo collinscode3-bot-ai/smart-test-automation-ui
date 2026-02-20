@@ -94,7 +94,7 @@ export class VerificationsComponent implements OnInit {
   }
 
   onEdit(verification: any): void {
-    console.log('Editing verification:', verification);
+    this.router.navigate(['/test-suites', this.suiteId, 'test-cases', this.caseId, 'verifications', 'details', 'edit', verification.id]);
   }
 
   onDelete(verification: any): void {
@@ -105,8 +105,6 @@ export class VerificationsComponent implements OnInit {
   }
 
   onAddVerification(): void {
-    console.log('Adding verification');
-    const newSeq = this.verifications.length + 1;
-    this.verifications.push({ id: Date.now().toString(), name: 'New Verification', seq: newSeq });
+    this.router.navigate(['/test-suites', this.suiteId, 'test-cases', this.caseId, 'verifications', 'details', 'new']);
   }
 }
