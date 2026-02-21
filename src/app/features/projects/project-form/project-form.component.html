@@ -1,6 +1,6 @@
 <div class="form-container">
   <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
-    <div class="form-card">
+    <div class="form-section-card">
       <div class="form-body">
         <div class="form-group">
           <label for="projectName">Project Name <span class="required">*</span></label>
@@ -32,7 +32,7 @@
           variant="primary"
           [showArrow]="true"
           [disabled]="projectForm.invalid"
-          class="submit-btn">
+          class="submit-btn btn-save">
           {{ isEditMode ? 'Update and Proceed further' : 'Save and Proceed further' }}
         </app-button>
       </div>

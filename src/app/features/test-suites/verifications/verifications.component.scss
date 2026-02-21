@@ -1,22 +1,19 @@
+@import "styles/shared";
 .verifications-container {
-  padding: 40px 0;
-  max-width: 850px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .verifications-card {
-  background: #FFFFFF;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  border: 1px solid #E5E7EB;
-  margin-bottom: 24px;
+  @include form-section-card-styles;
+  padding: 0;
   overflow: hidden;
+  margin-bottom: 24px;
 }
 
 .card-header {
   padding: 24px 40px;
-  background-color: #FFF9F5;
-  border-bottom: 1px solid #FFE4D1;
+  background-color: #F9FAFB;
+  border-bottom: 1px solid var(--border-color);
 
   .header-title {
     display: flex;
@@ -24,12 +21,12 @@
     gap: 12px;
     font-size: 18px;
     font-weight: 700;
-    color: #4B0082;
+    color: var(--primary-color);
 
     .icon-badge {
       width: 24px;
       height: 24px;
-      background-color: #FF6200;
+      background-color: var(--primary-color);
       color: white;
       border-radius: 6px;
       display: flex;
@@ -41,7 +38,6 @@
 
 .card-body {
   padding: 32px 40px;
-  background-color: #FFFBF9;
 }
 
 .verifications-list {
@@ -57,13 +53,13 @@
   justify-content: space-between;
   padding: 16px 20px;
   background-color: #FFFFFF;
-  border: 1px solid #E5E7EB;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   transition: all 0.2s;
 
   &:hover {
-    border-color: #FF6200;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-sm);
   }
 
   .item-left {
@@ -78,12 +74,12 @@
     border-radius: 6px;
     font-size: 13px;
     font-weight: 700;
-    color: #4B5563;
+    color: var(--text-secondary);
   }
 
   .verification-name {
     font-weight: 600;
-    color: #1F2937;
+    color: var(--text-primary);
     font-size: 15px;
   }
 }
@@ -95,15 +91,15 @@
   .action-btn {
     background: none;
     border: none;
-    color: #9CA3AF;
+    color: var(--text-muted);
     cursor: pointer;
     padding: 6px;
     border-radius: 4px;
     transition: all 0.2s;
 
     &:hover {
-      color: #4338CA;
-      background-color: #EEF2FF;
+      color: var(--primary-color);
+      background-color: #F5F3FF;
     }
 
     &:nth-child(2):hover {
@@ -118,7 +114,7 @@
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
-  background-color: #FF6200;
+  background-color: var(--primary-color);
   color: #FFFFFF;
   border: none;
   border-radius: 8px;
@@ -128,7 +124,7 @@
   transition: all 0.2s;
 
   &:hover {
-    background-color: #E65900;
+    background-color: var(--primary-hover-color);
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(255, 98, 0, 0.2);
   }
@@ -143,15 +139,15 @@
   display: flex;
   justify-content: flex-end;
   gap: 16px;
-  border-top: 1px solid #F3F4F6;
+  border-top: 1px solid var(--border-color);
   background-color: #FFFFFF;
 }
 
 .cancel-btn {
   padding: 12px 28px;
   background-color: #FFFFFF;
-  color: #4B5563;
-  border: 1px solid #D1D5DB;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
@@ -160,13 +156,13 @@
 
   &:hover {
     background-color: #F9FAFB;
-    border-color: #9CA3AF;
+    border-color: var(--text-muted);
   }
 }
 
 .save-btn {
   padding: 12px 28px;
-  background-color: #4B0082;
+  background-color: var(--primary-color);
   color: #FFFFFF;
   border: none;
   border-radius: 8px;
@@ -176,7 +172,7 @@
   transition: all 0.2s;
 
   &:hover {
-    background-color: #3B006F;
+    background-color: var(--primary-hover-color);
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(75, 0, 130, 0.2);
   }
@@ -189,6 +185,6 @@
 .footer-copyright {
   text-align: center;
   font-size: 14px;
-  color: #9CA3AF;
+  color: var(--text-muted);
   margin-top: 40px;
 }

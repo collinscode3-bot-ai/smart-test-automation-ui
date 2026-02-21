@@ -1,6 +1,6 @@
 <div class="validations-container">
   <form [formGroup]="validationForm" (ngSubmit)="saveValidation()">
-    <div class="form-card">
+    <div class="form-section-card">
       <div class="form-grid">
         <div class="form-field">
           <label>Sequence No</label>
@@ -118,7 +118,7 @@
 
       <div class="form-footer">
         <app-button variant="secondary" type="button" (click)="onCancel()">Cancel</app-button>
-        <app-button variant="primary" type="submit">Save Validation</app-button>
+        <app-button variant="primary" type="submit" class="btn-save">Save Validation</app-button>
       </div>
     </div>
   </form>

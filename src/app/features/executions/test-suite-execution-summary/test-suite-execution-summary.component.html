@@ -1,6 +1,6 @@
 <div class="execution-summary-container" *ngIf="executionData">
   <!-- Suite Details Card -->
-  <div class="card suite-details-card">
+  <div class="form-section-card suite-details-card">
     <div class="card-header">
       <div class="header-left">
         <div class="info-icon">
@@ -61,7 +61,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download Report
       </button>
-      <button class="btn-rerun" (click)="onReRunSuite()">
+      <button class="btn-rerun btn-save" (click)="onReRunSuite()">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 22 14-8L5 6V22Z"/></svg>
         Re-run Suite
       </button>

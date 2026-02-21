@@ -23,40 +23,41 @@ import { Observable, map } from 'rxjs';
   `,
   styles: [`
     .header {
-      padding: 24px 40px;
+      padding: var(--header-padding-y) 40px;
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       background: var(--card-bg);
       border-bottom: 1px solid var(--border-color);
+      transition: padding 0.2s ease;
     }
     .header-left {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
     }
     .page-title {
       font-size: 32px;
       font-weight: 800;
-      color: #4338CA;
+      color: var(--primary-color);
       margin: 0;
       letter-spacing: -0.01em;
     }
     .page-description {
-      font-size: 16px;
+      font-size: 15px;
       color: var(--text-secondary);
       margin: 0;
-      max-width: 600px;
+      max-width: 800px;
     }
     .header-actions {
       display: flex;
       align-items: center;
       gap: 16px;
-      padding-top: 8px;
+      padding-top: 4px;
     }
     .icon-btn {
       background: none;
-      color: var(--link-color);
+      color: var(--primary-color);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -64,7 +65,7 @@ import { Observable, map } from 'rxjs';
       border-radius: 50%;
       transition: background 0.2s;
       &:hover {
-        background: rgba(79, 70, 229, 0.05);
+        background: rgba(75, 0, 130, 0.05);
       }
     }
     .user-avatar {

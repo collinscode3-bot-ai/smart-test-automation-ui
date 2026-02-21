@@ -1,38 +1,10 @@
+@import "styles/shared";
 .form-container {
-  padding: 40px 0;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.form-header {
-  text-align: center;
-  margin-bottom: 40px;
-
-  .form-title {
-    font-size: 36px;
-    font-weight: 800;
-    color: #4338CA; // Deep Purple as requested
-    margin-bottom: 12px;
-  }
-
-  .form-subtitle {
-    font-size: 18px;
-    color: #6B7280;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-}
-
-.form-card {
-  background: #FFFFFF;
-  border-radius: 12px;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
-  border: 1px solid #E5E7EB;
-  overflow: hidden;
+  width: 100%;
 }
 
 .form-body {
-  padding: 40px;
+  padding: 0 0 40px;
 }
 
 .form-group {
@@ -42,7 +14,7 @@
     display: block;
     font-size: 15px;
     font-weight: 700;
-    color: #4338CA; // Purple labels to match design
+    color: var(--primary-color);
     margin-bottom: 12px;
   }
 
@@ -50,16 +22,17 @@
     width: 100%;
     padding: 14px 18px;
     border-radius: 8px;
-    border: 1px solid #F3F4F6;
+    border: 1px solid var(--border-color);
     font-size: 16px;
-    color: #1F2937;
+    color: var(--text-primary);
     transition: all 0.2s;
     background-color: #F9FAFB;
 
     &:focus {
       outline: none;
-      border-color: #FF6200; // Using specified orange
+      border-color: var(--primary-color);
       background-color: #FFFFFF;
+      box-shadow: 0 0 0 4px rgba(75, 0, 130, 0.1);
     }
 
     &.invalid {
@@ -67,7 +40,7 @@
     }
 
     &::placeholder {
-      color: #9CA3AF;
+      color: var(--text-muted);
     }
   }
 
@@ -91,13 +64,14 @@
     right: 18px;
     top: 50%;
     transform: translateY(-50%);
-    color: #4338CA;
+    color: var(--primary-color);
     pointer-events: none;
   }
 }
 
 .test-cases-section {
-  padding: 0 40px 40px;
+  padding: 40px 0;
+  border-top: 1px solid var(--border-color);
 
   .section-header {
     display: flex;
@@ -108,24 +82,19 @@
     .section-title {
       font-size: 20px;
       font-weight: 700;
-      color: #4338CA;
+      color: var(--primary-color);
       margin-bottom: 4px;
     }
 
     .section-subtitle {
       font-size: 14px;
-      color: #6B7280;
+      color: var(--text-secondary);
     }
-  }
-
-  .add-btn {
-    --primary-color: #FF6200; // Local override for specific orange
-    --primary-hover-color: #E65900;
   }
 }
 
 .dashed-container {
-  border: 2px dashed #E5E7EB;
+  border: 2px dashed var(--border-color);
   border-radius: 12px;
   padding: 64px 40px;
   background-color: #FFFFFF;
@@ -133,6 +102,11 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: var(--primary-color);
+  }
 }
 
 .empty-state {
@@ -148,7 +122,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #4338CA;
+    color: var(--primary-color);
     margin-bottom: 20px;
     opacity: 0.6;
   }
@@ -156,31 +130,25 @@
   .empty-title {
     font-size: 18px;
     font-weight: 700;
-    color: #4B5563;
+    color: var(--text-primary);
     margin-bottom: 8px;
   }
 
   .empty-subtitle {
     font-size: 15px;
-    color: #9CA3AF;
+    color: var(--text-muted);
     max-width: 320px;
     line-height: 1.5;
   }
 }
 
 .form-footer {
-  padding: 24px 40px;
+  padding-top: 32px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 40px;
-  border-top: 1px solid #F3F4F6;
-  background-color: #FFFFFF;
-
-  app-button {
-    --primary-color: #FF6200;
-    --primary-hover-color: #E65900;
-  }
+  border-top: 1px solid var(--border-color);
 }
 
 .cancel-link {
@@ -188,13 +156,13 @@
   border: none;
   font-size: 16px;
   font-weight: 600;
-  color: #374151;
+  color: var(--text-primary);
   padding: 0;
   cursor: pointer;
   transition: opacity 0.2s;
 
   &:hover {
-    opacity: 0.7;
+    text-decoration: underline;
   }
 }
 
@@ -212,14 +180,14 @@
     gap: 8px;
     font-size: 11px;
     font-weight: 700;
-    color: #6B7280;
+    color: var(--text-muted);
     letter-spacing: 0.15em;
     opacity: 0.8;
   }
 
   .copyright {
     font-size: 11px;
-    color: #9CA3AF;
+    color: var(--text-muted);
     margin-top: 4px;
     text-transform: uppercase;
     letter-spacing: 0.05em;

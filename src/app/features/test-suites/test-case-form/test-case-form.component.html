@@ -1,7 +1,7 @@
 <div class="form-container">
 
   <form [formGroup]="testCaseForm" (ngSubmit)="saveTestCase()">
-    <div class="form-card">
+    <div class="form-section-card">
       <div class="form-body">
         <!-- TestCase Name Field -->
         <div class="form-group">
@@ -47,7 +47,7 @@
           </div>
 
           <!-- Add Contract Button -->
-          <button type="button" class="action-btn orange-btn" (click)="onAddContract()">
+          <button type="button" class="action-btn purple-btn" (click)="onAddContract()">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
             Add Contract
           </button>
@@ -55,7 +55,7 @@
 
         <!-- Add Verifications Button -->
         <div class="section-container">
-          <button type="button" class="action-btn orange-btn" (click)="addVerifications()">
+          <button type="button" class="action-btn purple-btn" (click)="addVerifications()">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
             Add Verifications
           </button>
@@ -63,7 +63,7 @@
 
         <!-- Add Test Button -->
         <div class="section-container">
-          <button type="button" class="action-btn orange-btn" (click)="addTestData()">
+          <button type="button" class="action-btn purple-btn" (click)="addTestData()">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
             Add Test Data
           </button>
@@ -77,7 +77,7 @@
           type="submit"
           variant="primary"
           [disabled]="testCaseForm.invalid"
-          class="save-btn">
+          class="btn-save">
           Save TestCases
         </app-button>
       </div>

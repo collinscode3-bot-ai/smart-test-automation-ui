@@ -1,18 +1,6 @@
+@import "styles/shared";
 .contract-container {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding-bottom: 40px;
-}
-
-.card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 32px;
-  box-shadow: var(--shadow-sm);
+  width: 100%;
 }
 
 .section-header {
@@ -37,8 +25,8 @@
   flex-shrink: 0;
 
   &.purple {
-    background-color: #EEF2FF;
-    color: #4338CA;
+    background-color: #F5F3FF;
+    color: var(--primary-color);
   }
 }
 
@@ -73,7 +61,7 @@
 
     &.active {
       background: white;
-      color: #4338CA;
+      color: var(--primary-color);
       box-shadow: 0 1px 2px rgba(0,0,0,0.05);
     }
   }
@@ -81,23 +69,24 @@
 
 .section-content {
   .drag-drop-area {
-    border: 2px dashed #D1D5DB;
-    border-radius: 8px;
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
     padding: 60px 20px;
     text-align: center;
     background-color: #F9FAFB;
-    transition: border-color 0.2s;
+    transition: all 0.2s;
 
     &.small {
       padding: 40px 20px;
     }
 
     &:hover {
-      border-color: #4338CA;
+      border-color: var(--primary-color);
+      background-color: #F5F3FF;
     }
 
     .upload-icon {
-      color: #9CA3AF;
+      color: var(--text-muted);
       margin-bottom: 16px;
     }
 
@@ -126,7 +115,8 @@
       resize: vertical;
       &:focus {
         outline: none;
-        border-color: #4338CA;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 4px rgba(75, 0, 130, 0.1);
       }
     }
   }
@@ -153,7 +143,7 @@
 
       .copy-btn {
         background: transparent;
-        color: #4338CA;
+        color: var(--primary-color);
         font-size: 13px;
         font-weight: 700;
         display: flex;
@@ -212,7 +202,7 @@
     height: 6px;
     border-radius: 50%;
     &.green { background-color: #10B981; }
-    &.purple { background-color: #8B5CF6; }
+    &.purple { background-color: var(--primary-color); }
   }
 
   .remove-chip {
@@ -229,18 +219,20 @@
 }
 
 .add-property-btn {
-  background-color: #4B0082; // Deep Purple as requested
+  background-color: var(--primary-color);
   color: white;
-  padding: 10px 20px;
+  padding: 10px 24px;
   border-radius: 8px;
-  font-weight: 600;
+  font-weight: 700;
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: background-color 0.2s;
+  transition: all 0.2s;
 
   &:hover {
-    background-color: #3B006B;
+    background-color: var(--primary-hover-color);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(75, 0, 130, 0.2);
   }
 }
 
@@ -250,6 +242,8 @@
   align-items: center;
   gap: 24px;
   padding: 24px 0;
+  border-top: 1px solid var(--border-color);
+  margin-top: 24px;
 }
 
 .cancel-btn {
@@ -262,24 +256,17 @@
   }
 }
 
-::ng-deep .submit-btn .btn.primary {
-  background-color: #FF6200 !important; // Forced orange as per high-fidelity requirement
-  &:hover {
-    background-color: #E65900 !important;
-  }
-}
-
 .pro-tip-box {
   background-color: #F5F3FF;
   border: 1px solid #DDD6FE;
-  border-radius: 8px;
-  padding: 20px;
+  border-radius: 12px;
+  padding: 24px;
   display: flex;
   gap: 16px;
-  margin-top: 16px;
+  margin-top: 24px;
 
   .info-icon {
-    color: #7C3AED;
+    color: var(--primary-color);
     flex-shrink: 0;
   }
 

@@ -1,7 +1,7 @@
 <form [formGroup]="contractForm" (ngSubmit)="onSubmit()" class="contract-container">
 
   <!-- SCHEMA CONTRACT SECTION -->
-  <div class="card section-card">
+  <div class="form-section-card">
     <div class="section-header">
       <div class="title-with-icon">
         <div class="section-icon purple">
@@ -35,7 +35,7 @@
   </div>
 
   <!-- BASE CONTRACT SECTION -->
-  <div class="card section-card">
+  <div class="form-section-card">
     <div class="section-header">
       <div class="title-with-icon">
         <div class="section-icon purple">
@@ -71,7 +71,7 @@
   </div>
 
   <!-- FIELD PROPERTIES SECTION -->
-  <div class="card section-card">
+  <div class="form-section-card">
     <div class="section-header">
       <div class="title-with-icon">
         <div class="section-icon purple">
@@ -104,7 +104,7 @@
   <!-- FOOTER ACTIONS -->
   <div class="form-footer">
     <button type="button" class="cancel-btn" (click)="onCancel()">Cancel</button>
-    <app-button type="submit" variant="primary" class="submit-btn">
+    <app-button type="submit" variant="primary" class="submit-btn btn-save">
       {{ isEditMode ? 'Update and Proceed further' : 'Save and Proceed further' }}
     </app-button>
   </div>
