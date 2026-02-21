@@ -1,0 +1,132 @@
+<div class="validations-container">
+  <form [formGroup]="validationForm" (ngSubmit)="saveValidation()">
+    <div class="form-card">
+      <div class="form-grid">
+        <div class="form-field">
+          <label>Sequence No</label>
+          <input type="text" formControlName="sequenceNo" placeholder="e.g. 1">
+        </div>
+
+        <div class="form-field full-width">
+          <label>Validation Name</label>
+          <input type="text" formControlName="validationName" placeholder="Enter descriptive validation name">
+        </div>
+
+        <div class="form-field">
+          <label>Payload ID</label>
+          <input type="text" formControlName="payloadId" placeholder="e.g. REQ_12345">
+        </div>
+
+        <div class="form-field">
+          <label>Payload Format</label>
+          <select formControlName="payloadFormat">
+            <option *ngFor="let format of payloadFormats" [value]="format">{{ format }}</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label>Validation Type</label>
+          <select formControlName="validationType">
+            <option *ngFor="let type of validationTypes" [value]="type">{{ type }}</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label>Validation Source Data</label>
+          <input type="text" formControlName="validationSourceData" placeholder="Source path or query">
+        </div>
+      </div>
+
+      <!-- Error Configuration Section -->
+      <div class="section-container error-section">
+        <div class="section-header">
+          <div class="header-left">
+            <div class="icon-circle">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <span>ERROR CONFIGURATION</span>
+          </div>
+          <button type="button" class="add-row-btn" (click)="addErrorConfiguration()">
+            <span>+</span> Add Error Code
+          </button>
+        </div>
+
+        <div formArrayName="errorConfigurations">
+          <div *ngFor="let err of errorConfigurations.controls; let i = index" [formGroupName]="i" class="dynamic-row">
+            <div class="row-fields">
+              <div class="form-field">
+                <label>Expected Outcome</label>
+                <input type="text" formControlName="expectedOutcome" placeholder="Success expected">
+              </div>
+              <div class="form-field">
+                <label>Error Code</label>
+                <input type="text" formControlName="errorCode" placeholder="e.g. ERR_VALID_01">
+              </div>
+              <div class="form-field wide">
+                <label>Error Message</label>
+                <textarea formControlName="errorMessage" placeholder="Detailed message displayed on validation failure"></textarea>
+              </div>
+            </div>
+            <button type="button" class="remove-btn" (click)="removeErrorConfiguration(i)" *ngIf="errorConfigurations.length > 1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Parameters Section -->
+      <div class="section-container params-section">
+        <div class="section-header">
+          <div class="header-left">
+            <span>PARAMETERS</span>
+          </div>
+          <button type="button" class="add-row-btn link-style" (click)="addParameter()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            Add Parameter
+          </button>
+        </div>
+
+        <div formArrayName="parameters">
+          <div class="params-table-header">
+            <div class="col-seq">Seq No</div>
+            <div class="col-type">Type</div>
+            <div class="col-value">Value</div>
+            <div class="col-datatype">Data Type</div>
+            <div class="col-action"></div>
+          </div>
+          <div *ngFor="let param of parameters.controls; let i = index" [formGroupName]="i" class="dynamic-row table-row">
+            <div class="col-seq">
+              <input type="number" formControlName="seqNo">
+            </div>
+            <div class="col-type">
+              <input type="text" formControlName="type" placeholder="e.g. Header">
+            </div>
+            <div class="col-value">
+              <input type="text" formControlName="value" placeholder="Value string">
+            </div>
+            <div class="col-datatype">
+              <input type="text" formControlName="dataType" placeholder="String, Int, Bool">
+            </div>
+            <div class="col-action">
+              <button type="button" class="remove-btn" (click)="removeParameter(i)" *ngIf="parameters.length > 1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-footer">
+        <app-button variant="secondary" type="button" (click)="onCancel()">Cancel</app-button>
+        <app-button variant="primary" type="submit">Save Validation</app-button>
+      </div>
+    </div>
+  </form>
+
+  <div class="note-card">
+    <div class="note-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+    </div>
+    <p><strong>Note:</strong> Changes to validations will take effect immediately in the next test execution cycle. Ensure all parameters are correctly mapped to your source data.</p>
+  </div>
+</div>
