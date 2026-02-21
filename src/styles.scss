@@ -4,6 +4,8 @@
 :root {
   --primary-color: #{$primary-color};
   --primary-hover-color: #{$primary-hover};
+  --accent-color: #{$accent-color};
+  --accent-hover-color: #{$accent-hover};
   --bg-color: #{$bg-color};
   --card-bg: #{$card-bg};
   --text-primary: #{$text-primary};
@@ -59,5 +61,24 @@ input, textarea {
   color: white !important;
   &:hover {
     background-color: var(--primary-hover-color) !important;
+  }
+}
+
+.btn-cancel {
+  background-color: white !important;
+  color: var(--text-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #F9FAFB !important;
+    border-color: var(--text-muted) !important;
+    color: var(--text-primary) !important;
+    text-decoration: none !important;
   }
 }

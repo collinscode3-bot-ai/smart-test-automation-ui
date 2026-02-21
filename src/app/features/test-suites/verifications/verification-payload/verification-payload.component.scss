@@ -28,7 +28,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #F9FAFB;
+    background-color: #FFF7ED;
 
     .header-left {
       display: flex;
@@ -37,7 +37,7 @@
     }
 
     .header-icon {
-      color: var(--primary-color);
+      color: var(--accent-color);
       &.rotate-180 {
         transform: rotate(180deg);
       }
@@ -46,14 +46,14 @@
     .card-title {
       font-size: 14px;
       font-weight: 700;
-      color: var(--primary-color);
+      color: var(--accent-color);
       margin: 0;
       letter-spacing: 0.5px;
     }
 
     .total-badge {
-      background-color: #F5F3FF;
-      color: var(--primary-color);
+      background-color: #FFEDD5;
+      color: var(--accent-color);
       font-size: 11px;
       font-weight: 800;
       padding: 4px 8px;
@@ -116,9 +116,9 @@
       transition: all 0.2s;
 
       &:hover {
-        background: #F3F4F6;
-        color: var(--primary-color);
-        border-color: var(--primary-color);
+        background: #FFF7ED;
+        color: var(--accent-color);
+        border-color: var(--accent-color);
       }
 
       &.delete:hover {
@@ -163,9 +163,9 @@
 
     &:focus {
       outline: none;
-      border-color: var(--primary-color);
+      border-color: var(--accent-color);
       background-color: #FFFFFF;
-      box-shadow: 0 0 0 3px rgba(75, 0, 130, 0.1);
+      box-shadow: 0 0 0 3px rgba(255, 98, 0, 0.1);
     }
 
     &::placeholder {
@@ -184,7 +184,7 @@
 .upload-link {
   background: none;
   border: none;
-  color: var(--primary-color);
+  color: var(--accent-color);
   font-size: 12px;
   font-weight: 800;
   display: flex;

@@ -16,7 +16,7 @@
           (change)="onFileUpload($event)"
           accept=".xlsx, .csv"
           style="display: none">
-        <app-button variant="primary" (click)="$event.stopPropagation(); fileInput.click()">
+        <app-button variant="accent" (click)="$event.stopPropagation(); fileInput.click()">
           Browse Files
         </app-button>
       </div>
@@ -77,7 +77,7 @@
 
   <!-- Section 3: Actions (Footer) -->
   <div class="actions-footer">
-    <button type="button" class="cancel-btn" (click)="onCancel()">Cancel</button>
+    <app-button type="button" variant="secondary" (click)="onCancel()">Cancel</app-button>
     <app-button variant="primary" (click)="saveTestData()" class="btn-save">
       {{ isEditMode ? 'Update Test Data' : 'Save Test Data' }}
     </app-button>

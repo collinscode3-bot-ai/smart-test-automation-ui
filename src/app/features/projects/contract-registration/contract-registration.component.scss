@@ -28,6 +28,11 @@
     background-color: #F5F3FF;
     color: var(--primary-color);
   }
+
+  &.orange {
+    background-color: #FFF7ED;
+    color: var(--accent-color);
+  }
 }
 
 .title-group {
@@ -61,7 +66,7 @@
 
     &.active {
       background: white;
-      color: var(--primary-color);
+      color: var(--accent-color);
       box-shadow: 0 1px 2px rgba(0,0,0,0.05);
     }
   }
@@ -81,8 +86,8 @@
     }
 
     &:hover {
-      border-color: var(--primary-color);
-      background-color: #F5F3FF;
+      border-color: var(--accent-color);
+      background-color: #FFF7ED;
     }
 
     .upload-icon {
@@ -115,8 +120,8 @@
       resize: vertical;
       &:focus {
         outline: none;
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 4px rgba(75, 0, 130, 0.1);
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 4px rgba(255, 98, 0, 0.1);
       }
     }
   }
@@ -143,7 +148,7 @@
 
       .copy-btn {
         background: transparent;
-        color: var(--primary-color);
+        color: var(--accent-color);
         font-size: 13px;
         font-weight: 700;
         display: flex;
@@ -202,7 +207,7 @@
     height: 6px;
     border-radius: 50%;
     &.green { background-color: #10B981; }
-    &.purple { background-color: var(--primary-color); }
+    &.purple { background-color: var(--accent-color); }
   }
 
   .remove-chip {
@@ -219,7 +224,7 @@
 }
 
 .add-property-btn {
-  background-color: var(--primary-color);
+  background-color: var(--accent-color);
   color: white;
   padding: 10px 24px;
   border-radius: 8px;
@@ -230,9 +235,9 @@
   transition: all 0.2s;
 
   &:hover {
-    background-color: var(--primary-hover-color);
+    background-color: var(--accent-hover-color);
     transform: translateY(-1px);
-    box-shadow: 0 4px 6px rgba(75, 0, 130, 0.2);
+    box-shadow: 0 4px 6px rgba(255, 98, 0, 0.2);
   }
 }
 
@@ -257,8 +262,8 @@
 }
 
 .pro-tip-box {
-  background-color: #F5F3FF;
-  border: 1px solid #DDD6FE;
+  background-color: #FFF7ED;
+  border: 1px solid #FFEDD5;
   border-radius: 12px;
   padding: 24px;
   display: flex;
@@ -266,7 +271,7 @@
   margin-top: 24px;
 
   .info-icon {
-    color: var(--primary-color);
+    color: var(--accent-color);
     flex-shrink: 0;
   }
 

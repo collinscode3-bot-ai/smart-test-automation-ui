@@ -35,11 +35,25 @@ import { Component, Input } from '@angular/core';
         cursor: not-allowed;
       }
     }
-    .secondary {
-      background-color: transparent;
-      color: var(--text-primary);
+    .accent {
+      background-color: var(--accent-color);
+      color: white;
       &:hover:not(:disabled) {
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: var(--accent-hover-color);
+      }
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+    .secondary {
+      background-color: white;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+      &:hover:not(:disabled) {
+        background-color: #F9FAFB;
+        border-color: var(--text-muted);
+        color: var(--text-primary);
       }
     }
     .arrow-icon {
@@ -49,7 +63,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ButtonComponent {
   @Input() type: 'button' | 'submit' = 'button';
-  @Input() variant: 'primary' | 'secondary' = 'primary';
+  @Input() variant: 'primary' | 'secondary' | 'accent' = 'primary';
   @Input() disabled = false;
   @Input() showArrow = false;
 }

@@ -12,7 +12,7 @@
 
 .card-header {
   padding: 24px 40px;
-  background-color: #F9FAFB;
+  background-color: #FFF7ED;
   border-bottom: 1px solid var(--border-color);
 
   .header-title {
@@ -21,12 +21,12 @@
     gap: 12px;
     font-size: 18px;
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--accent-color);
 
     .icon-badge {
       width: 24px;
       height: 24px;
-      background-color: var(--primary-color);
+      background-color: var(--accent-color);
       color: white;
       border-radius: 6px;
       display: flex;
@@ -58,7 +58,7 @@
   transition: all 0.2s;
 
   &:hover {
-    border-color: var(--primary-color);
+    border-color: var(--accent-color);
     box-shadow: var(--shadow-sm);
   }
 
@@ -114,7 +114,7 @@
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
-  background-color: var(--primary-color);
+  background-color: var(--accent-color);
   color: #FFFFFF;
   border: none;
   border-radius: 8px;
@@ -124,7 +124,7 @@
   transition: all 0.2s;
 
   &:hover {
-    background-color: var(--primary-hover-color);
+    background-color: var(--accent-hover-color);
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(255, 98, 0, 0.2);
   }

@@ -36,15 +36,15 @@
         <div class="form-group">
           <label>Verify If Previous is success</label>
           <div class="toggle-group">
-            <button type="button" [class.active]="verificationForm.get('verifyIfPreviousSuccess')?.value === true" (click)="toggleBoolean('verifyIfPreviousSuccess', true)">Yes</button>
-            <button type="button" [class.active]="verificationForm.get('verifyIfPreviousSuccess')?.value === false" (click)="toggleBoolean('verifyIfPreviousSuccess', false)">No</button>
+            <button type="button" [class.active]="verificationForm.get('verifyIfPreviousSuccess')?.value === true" (click)="toggleBoolean('verifyIfPreviousSuccess', true)" class="toggle-btn">Yes</button>
+            <button type="button" [class.active]="verificationForm.get('verifyIfPreviousSuccess')?.value === false" (click)="toggleBoolean('verifyIfPreviousSuccess', false)" class="toggle-btn">No</button>
           </div>
         </div>
         <div class="form-group">
           <label>VerificationKeyTypeIsComposite</label>
           <div class="toggle-group">
-            <button type="button" [class.active]="verificationForm.get('isCompositeKey')?.value === true" (click)="toggleBoolean('isCompositeKey', true)">Yes</button>
-            <button type="button" [class.active]="verificationForm.get('isCompositeKey')?.value === false" (click)="toggleBoolean('isCompositeKey', false)">No</button>
+            <button type="button" [class.active]="verificationForm.get('isCompositeKey')?.value === true" (click)="toggleBoolean('isCompositeKey', true)" class="toggle-btn">Yes</button>
+            <button type="button" [class.active]="verificationForm.get('isCompositeKey')?.value === false" (click)="toggleBoolean('isCompositeKey', false)" class="toggle-btn">No</button>
           </div>
         </div>
       </div>
@@ -65,7 +65,7 @@
       <div class="params-section">
         <div class="section-header">
           <div class="header-left">
-            <div class="icon-purple">
+            <div class="icon-orange">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="2" y1="14" x2="6" y2="14"/><line x1="10" y1="8" x2="14" y2="8"/><line x1="18" y1="16" x2="22" y2="16"/></svg>
             </div>
             <span>VERIFICATION PARAMETERS</span>
@@ -113,17 +113,17 @@
               </tr>
             </tbody>
           </table>
-          <button type="button" class="add-param-btn" (click)="addParameter()">
+          <app-button type="button" variant="accent" (click)="addParameter()">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             Add Verification Param
-          </button>
+          </app-button>
         </div>
       </div>
     </div>
 
     <div class="card-footer">
-      <button type="button" class="cancel-btn" (click)="onCancel()">Cancel</button>
-      <button type="submit" class="save-btn" [disabled]="verificationForm.invalid">Save Verification</button>
+      <app-button variant="secondary" (click)="onCancel()">Cancel</app-button>
+      <app-button type="submit" variant="primary" [disabled]="verificationForm.invalid">Save Verification</app-button>
     </div>
   </form>
 

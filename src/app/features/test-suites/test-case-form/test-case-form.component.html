@@ -47,32 +47,32 @@
           </div>
 
           <!-- Add Contract Button -->
-          <button type="button" class="action-btn purple-btn" (click)="onAddContract()">
+          <app-button type="button" variant="accent" (click)="onAddContract()">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
             Add Contract
-          </button>
+          </app-button>
         </div>
 
         <!-- Add Verifications Button -->
         <div class="section-container">
-          <button type="button" class="action-btn purple-btn" (click)="addVerifications()">
+          <app-button type="button" variant="accent" (click)="addVerifications()">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
             Add Verifications
-          </button>
+          </app-button>
         </div>
 
         <!-- Add Test Button -->
         <div class="section-container">
-          <button type="button" class="action-btn purple-btn" (click)="addTestData()">
+          <app-button type="button" variant="accent" (click)="addTestData()">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
             Add Test Data
-          </button>
+          </app-button>
         </div>
       </div>
 
       <!-- Form Footer -->
       <div class="form-footer">
-        <button type="button" class="cancel-btn" (click)="onCancel()">Cancel</button>
+        <app-button type="button" variant="secondary" (click)="onCancel()">Cancel</app-button>
         <app-button
           type="submit"
           variant="primary"
