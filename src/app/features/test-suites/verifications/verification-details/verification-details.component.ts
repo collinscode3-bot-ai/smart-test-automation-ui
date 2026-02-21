@@ -2,15 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { HeaderService } from '../../../../core/services/header.service';
 import { LoadingService } from '../../../../core/services/loading.service';
 import { SharedModule } from '../../../../shared/shared.module';
 import { VerificationDetails, VerificationParam } from '../../../../core/models/verification.model';
+import { VerificationParameterModalComponent } from '../verification-parameter-modal/verification-parameter-modal.component';
 
 @Component({
   selector: 'app-verification-details',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule, SharedModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, SharedModule, MatDialogModule],
   templateUrl: './verification-details.component.html',
   styleUrls: ['./verification-details.component.scss']
 })
@@ -26,7 +28,8 @@ export class VerificationDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private headerService: HeaderService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private dialog: MatDialog
   ) {
     this.verificationForm = this.fb.group({
       appName: ['', Validators.required],
@@ -52,8 +55,6 @@ export class VerificationDetailsComponent implements OnInit {
 
     if (this.isEditMode && this.verificationId) {
       this.loadVerificationData(this.verificationId);
-    } else {
-      this.addParameter();
     }
   }
 
@@ -75,16 +76,48 @@ export class VerificationDetailsComponent implements OnInit {
   }
 
   addParameter(param?: VerificationParam): void {
+    if (!param) {
+      const dialogRef = this.dialog.open(VerificationParameterModalComponent, {
+        width: '800px',
+        data: { mode: 'add', sequence: this.parameters.length + 1 },
+        disableClose: true
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.pushParameterToForm(result);
+        }
+      });
+    } else {
+      this.pushParameterToForm(param);
+    }
+  }
+
+  private pushParameterToForm(param: VerificationParam): void {
     const paramGroup = this.fb.group({
-      sequence: [param ? param.sequence : this.parameters.length + 1, Validators.required],
-      key: [param ? param.key : '', Validators.required]
+      sequence: [param.sequence, Validators.required],
+      key: [param.key, Validators.required],
+      valuePath: [param.valuePath || '', Validators.required],
+      valueSource: [param.valueSource || '', Validators.required],
+      dataType: [param.dataType || '', Validators.required],
+      value: [param.value || '', Validators.required]
     });
     this.parameters.push(paramGroup);
   }
 
   onEditParameter(index: number): void {
-    console.log('Editing parameter at index:', index);
-    // Logic for editing if not inline
+    const param = this.parameters.at(index).value;
+    const dialogRef = this.dialog.open(VerificationParameterModalComponent, {
+      width: '800px',
+      data: { mode: 'edit', parameter: param },
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.parameters.at(index).patchValue(result);
+      }
+    });
   }
 
   removeParameter(index: number): void {
@@ -109,8 +142,8 @@ export class VerificationDetailsComponent implements OnInit {
         isCompositeKey: false,
         delimiter: ':',
         parameters: [
-          { sequence: 1, key: 'tracking_number' },
-          { sequence: 2, key: 'api_key' }
+          { sequence: 1, key: 'tracking_number', valuePath: '$.trackingNumber', valueSource: 'Payload', dataType: 'String', value: '123456789' },
+          { sequence: 2, key: 'api_key', valuePath: '$.apiKey', valueSource: 'Config', dataType: 'String', value: 'SECRET_KEY' }
         ]
       };
 

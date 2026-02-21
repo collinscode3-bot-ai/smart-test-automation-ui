@@ -75,8 +75,11 @@
           <table class="params-table">
             <thead>
               <tr>
-                <th>Param Sequence</th>
-                <th>Param Key</th>
+                <th>Sequence</th>
+                <th>Key</th>
+                <th>Path</th>
+                <th>Source</th>
+                <th>Value</th>
                 <th class="text-right">Actions</th>
               </tr>
             </thead>
@@ -86,7 +89,16 @@
                   <input type="number" formControlName="sequence" class="table-input" readonly>
                 </td>
                 <td>
-                  <input type="text" formControlName="key" class="table-input" placeholder="Enter key">
+                  <input type="text" formControlName="key" class="table-input" readonly>
+                </td>
+                <td>
+                  <input type="text" formControlName="valuePath" class="table-input" readonly>
+                </td>
+                <td>
+                  <input type="text" formControlName="valueSource" class="table-input" readonly>
+                </td>
+                <td>
+                  <input type="text" formControlName="value" class="table-input" readonly>
                 </td>
                 <td class="text-right">
                   <div class="action-group">
