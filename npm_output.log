@@ -1,23 +1,22 @@
 
 > project-entry-tool@0.0.0 start
-> ng serve --host 0.0.0.0 --disable-host-check
+> ng serve
 
-Warning: Running a server with --disable-host-check is a security risk. See https://medium.com/webpack/webpack-dev-server-middleware-security-issues-1489d950874a for more information.
 - Generating browser application bundles (phase: setup)...
 ✔ Browser application bundle generation complete.
 
 Initial Chunk Files   | Names         |  Raw Size
-vendor.js             | vendor        |   2.36 MB |
-main.js               | main          | 391.93 kB |
+vendor.js             | vendor        |   3.28 MB |
+main.js               | main          | 512.52 kB |
+styles.css, styles.js | styles        | 248.76 kB |
 polyfills.js          | polyfills     | 234.36 kB |
-styles.css, styles.js | styles        | 130.89 kB |
 runtime.js            | runtime       |   6.51 kB |
 
-| Initial Total |   3.10 MB
+| Initial Total |   4.26 MB
 
-Build at: 2026-02-20T12:23:53.321Z - Hash: 7f95915c7b7c9186 - Time: 19172ms
+Build at: 2026-02-21T06:46:04.074Z - Hash: 88739a9c3419e1d5 - Time: 7134ms
 
-** Angular Live Development Server is listening on 0.0.0.0:4200, open your browser on http://localhost:4200/ **
+** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
 
 
 ✔ Compiled successfully.
