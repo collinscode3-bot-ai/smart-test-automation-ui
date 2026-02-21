@@ -1,28 +1,28 @@
 .validations-container {
-  padding: 24px;
+  padding: 40px 0;
   max-width: 900px;
   margin: 0 auto;
 
   .form-card {
     background: #fff;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
     border: 1px solid #e5e7eb;
-    padding: 32px;
+    padding: 40px;
     margin-bottom: 24px;
   }
 
   .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-bottom: 32px;
+    gap: 32px;
+    margin-bottom: 40px;
   }
 
   .form-field {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
 
     &.full-width {
       grid-column: span 2;
@@ -33,23 +33,25 @@
     }
 
     label {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 700;
-      color: #1a1a1a;
+      color: #4338CA; // Deep Purple for labels
     }
 
     input, select, textarea {
-      padding: 12px 16px;
-      border: 1px solid #e5e7eb;
+      width: 100%;
+      padding: 14px 18px;
+      border: 1px solid #F3F4F6;
       border-radius: 8px;
-      font-size: 15px;
-      color: #4b5563;
-      background-color: #fff;
-      transition: border-color 0.2s;
+      font-size: 16px;
+      color: #1F2937;
+      background-color: #F9FAFB;
+      transition: all 0.2s;
 
       &:focus {
         outline: none;
-        border-color: #FF6200;
+        border-color: #FF6200; // Primary Orange on focus
+        background-color: #FFFFFF;
       }
 
       &::placeholder {
@@ -58,24 +60,27 @@
     }
 
     textarea {
-      min-height: 80px;
+      min-height: 100px;
       resize: vertical;
+      line-height: 1.6;
     }
   }
 
   .section-container {
     border-radius: 12px;
-    padding: 24px;
-    margin-bottom: 24px;
+    padding: 32px 0;
+    margin-bottom: 32px;
+    border-top: 1px solid #F3F4F6;
 
     &.error-section {
-      background-color: #FFF5F5;
-      border: 1px solid #FED7D7;
+      background-color: transparent; // Removed background
+      border-bottom: 1px solid #F3F4F6;
     }
 
     &.params-section {
-      background-color: #F0F7FF;
-      border: 1px solid #DBEAFE;
+      background-color: transparent; // Removed background
+      padding-bottom: 0;
+      border-bottom: none;
     }
   }
 
@@ -83,21 +88,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 
     .header-left {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       font-weight: 800;
-      color: #4B0082;
-      font-size: 14px;
-      letter-spacing: 0.5px;
+      color: #4338CA;
+      font-size: 15px;
+      letter-spacing: 0.05em;
 
       .icon-circle {
         width: 24px;
         height: 24px;
-        background-color: #4B0082;
+        background-color: #4338CA;
         color: #fff;
         border-radius: 50%;
         display: flex;
@@ -117,8 +122,8 @@
     font-weight: 700;
     font-size: 14px;
     cursor: pointer;
-    padding: 4px 8px;
-    border-radius: 4px;
+    padding: 8px 16px;
+    border-radius: 8px;
     transition: background-color 0.2s;
 
     &:hover {
@@ -126,14 +131,10 @@
     }
 
     &.link-style {
-      color: #2563EB;
+      color: #FF6200; // Switched to theme orange
       &:hover {
-        background-color: rgba(37, 99, 235, 0.05);
+        background-color: rgba(255, 98, 0, 0.05);
       }
-    }
-
-    span {
-      font-size: 18px;
     }
   }
 
@@ -141,16 +142,16 @@
     display: flex;
     align-items: flex-start;
     gap: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
     background: #fff;
-    padding: 16px;
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid #F3F4F6;
 
     .row-fields {
       flex: 1;
       display: flex;
-      gap: 16px;
+      gap: 24px;
 
       .form-field {
         flex: 1;
@@ -158,20 +159,29 @@
     }
 
     &.table-row {
-      padding: 0;
+      padding: 12px 0;
       background: none;
       border: none;
+      border-radius: 0;
       align-items: center;
       margin-bottom: 8px;
+      border-bottom: 1px solid #F9FAFB;
+
+      input {
+        padding: 10px 14px;
+        font-size: 14px;
+      }
     }
   }
 
   .params-table-header {
     display: flex;
-    padding: 0 0 8px 0;
+    padding: 0 0 12px 0;
     font-size: 13px;
     font-weight: 700;
-    color: #4b5563;
+    color: #4338CA;
+    border-bottom: 1px solid #F3F4F6;
+    margin-bottom: 8px;
 
     div {
       padding: 0 8px;
@@ -185,45 +195,55 @@
   .col-action { width: 40px; }
 
   .remove-btn {
-    background: none;
+    background: #F3F4F6;
     border: none;
     color: #ef4444;
     cursor: pointer;
-    padding: 8px;
-    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.2s;
+    transition: all 0.2s;
+    margin-top: 32px; // Align with fields
 
     &:hover {
       background-color: #fee2e2;
+      transform: scale(1.1);
     }
+  }
+
+  .table-row .remove-btn {
+    margin-top: 0;
   }
 
   .form-footer {
     display: flex;
     justify-content: flex-end;
     gap: 16px;
-    margin-top: 32px;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid #F3F4F6;
   }
 
   .note-card {
-    background-color: #f3f4f6;
-    border-radius: 8px;
-    padding: 16px 20px;
+    background-color: #F9FAFB;
+    border: 1px solid #F3F4F6;
+    border-radius: 12px;
+    padding: 24px;
     display: flex;
     gap: 16px;
     align-items: center;
 
     .note-icon {
-      color: #4B0082;
+      color: #4338CA;
       flex-shrink: 0;
     }
 
     p {
       font-size: 14px;
-      color: #4b5563;
+      color: #6B7280;
       margin: 0;
       line-height: 1.6;
     }
