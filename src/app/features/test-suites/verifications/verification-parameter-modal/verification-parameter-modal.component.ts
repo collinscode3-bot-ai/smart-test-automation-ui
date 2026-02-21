@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
@@ -12,24 +12,24 @@ import { VerificationParam } from '../../../../core/models/verification.model';
   styleUrls: ['./verification-parameter-modal.component.scss']
 })
 export class VerificationParameterModalComponent implements OnInit {
+  public dialogRef = inject(MatDialogRef<VerificationParameterModalComponent>);
+  public data = inject(MAT_DIALOG_DATA);
   paramForm: FormGroup;
   isEditMode = false;
   dataTypes: string[] = ['String', 'Number', 'Boolean', 'JSON', 'Date', 'Array'];
 
   constructor(
-    private fb: FormBuilder,
-    public dialogRef: MatDialogRef<VerificationParameterModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { mode: 'add' | 'edit', parameter?: VerificationParam, sequence?: number }
+    private fb: FormBuilder
   ) {
-    this.isEditMode = data.mode === 'edit';
+    this.isEditMode = this.data.mode === 'edit';
 
     this.paramForm = this.fb.group({
-      sequence: [data.parameter?.sequence ?? data.sequence ?? 1, Validators.required],
-      key: [data.parameter?.key ?? '', Validators.required],
-      valuePath: [data.parameter?.valuePath ?? '', Validators.required],
-      valueSource: [data.parameter?.valueSource ?? '', Validators.required],
-      dataType: [data.parameter?.dataType ?? '', Validators.required],
-      value: [data.parameter?.value ?? '', Validators.required]
+      sequence: [this.data.parameter?.sequence ?? this.data.sequence ?? 1, Validators.required],
+      key: [this.data.parameter?.key ?? '', Validators.required],
+      valuePath: [this.data.parameter?.valuePath ?? '', Validators.required],
+      valueSource: [this.data.parameter?.valueSource ?? '', Validators.required],
+      dataType: [this.data.parameter?.dataType ?? '', Validators.required],
+      value: [this.data.parameter?.value ?? '', Validators.required]
     });
   }
 

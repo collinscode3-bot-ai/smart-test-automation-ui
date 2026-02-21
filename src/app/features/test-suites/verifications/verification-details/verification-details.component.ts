@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -17,6 +17,7 @@ import { VerificationParameterModalComponent } from '../verification-parameter-m
   styleUrls: ['./verification-details.component.scss']
 })
 export class VerificationDetailsComponent implements OnInit {
+  private dialog = inject(MatDialog);
   verificationForm: FormGroup;
   isEditMode = false;
   verificationId: string | null = null;
@@ -28,8 +29,7 @@ export class VerificationDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private headerService: HeaderService,
-    private loadingService: LoadingService,
-    private dialog: MatDialog
+    private loadingService: LoadingService
   ) {
     this.verificationForm = this.fb.group({
       appName: ['', Validators.required],
