@@ -26,6 +26,10 @@
       background-color: #F5F3FF;
       color: var(--primary-color);
     }
+    &.orange {
+      background-color: #FFF7ED;
+      color: var(--accent-color);
+    }
   }
 
   .header-text {
@@ -81,8 +85,8 @@
 
     &:focus {
       outline: none;
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(75, 0, 130, 0.1);
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(255, 98, 0, 0.1);
     }
 
     &::placeholder {
@@ -173,7 +177,7 @@
   }
 
   input:checked + .slider {
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
   }
 
   input:checked + .slider:before {
@@ -320,10 +324,10 @@
 
       .tag {
         &.mandatory {
-          color: var(--primary-color);
+          color: var(--accent-color);
         }
         &.auto-gen {
-          color: var(--primary-color);
+          color: var(--accent-color);
         }
       }
     }

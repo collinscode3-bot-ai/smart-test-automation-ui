@@ -4,7 +4,7 @@
   <div class="form-section-card">
     <div class="section-header">
       <div class="title-with-icon">
-        <div class="section-icon purple">
+        <div class="section-icon orange">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
         </div>
         <div class="title-group">
@@ -38,7 +38,7 @@
   <div class="form-section-card">
     <div class="section-header">
       <div class="title-with-icon">
-        <div class="section-icon purple">
+        <div class="section-icon orange">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         </div>
         <div class="title-group">
@@ -74,7 +74,7 @@
   <div class="form-section-card">
     <div class="section-header">
       <div class="title-with-icon">
-        <div class="section-icon purple">
+        <div class="section-icon orange">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M9 3v18"/><path d="M15 3v18"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>
         </div>
         <div class="title-group">
@@ -103,7 +103,7 @@
 
   <!-- FOOTER ACTIONS -->
   <div class="form-footer">
-    <button type="button" class="cancel-btn" (click)="onCancel()">Cancel</button>
+    <app-button type="button" variant="secondary" (click)="onCancel()">Cancel</app-button>
     <app-button type="submit" variant="primary" class="submit-btn btn-save">
       {{ isEditMode ? 'Update and Proceed further' : 'Save and Proceed further' }}
     </app-button>

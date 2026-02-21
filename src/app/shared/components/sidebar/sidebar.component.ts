@@ -124,7 +124,7 @@ import { Router } from '@angular/router';
     .logo-icon {
       width: 40px;
       height: 40px;
-      background-color: var(--primary-color);
+      background-color: var(--accent-color);
       color: white;
       border-radius: 10px;
       display: flex;
@@ -169,15 +169,15 @@ import { Router } from '@angular/router';
       transition: all 0.2s;
       text-decoration: none;
       &:hover {
-        background-color: #F9FAFB;
-        color: var(--primary-color);
+        background-color: #FFF7ED;
+        color: var(--accent-color);
       }
       &.active {
-        background-color: #F5F3FF;
-        color: var(--primary-color);
+        background-color: #FFF7ED;
+        color: var(--accent-color);
         font-weight: 600;
         .nav-icon {
-          color: var(--primary-color);
+          color: var(--accent-color);
         }
       }
     }

@@ -48,7 +48,7 @@
             <h2 class="section-title">Test Cases</h2>
             <p class="section-subtitle">Add individual test cases to be executed within this suite.</p>
           </div>
-          <app-button type="button" variant="primary" class="add-btn" (click)="addTestCase()">
+          <app-button type="button" variant="accent" class="add-btn" (click)="addTestCase()">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
             Add TestCases
           </app-button>
@@ -67,7 +67,7 @@
 
       <!-- Form Footer with Cancel and Submit buttons -->
       <div class="form-footer">
-        <button type="button" class="cancel-link" (click)="onCancel()">Cancel</button>
+        <app-button type="button" variant="secondary" (click)="onCancel()">Cancel</app-button>
         <app-button
           type="submit"
           variant="primary"

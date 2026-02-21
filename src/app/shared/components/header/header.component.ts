@@ -57,7 +57,7 @@ import { Observable, map } from 'rxjs';
     }
     .icon-btn {
       background: none;
-      color: var(--primary-color);
+      color: var(--accent-color);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -65,7 +65,7 @@ import { Observable, map } from 'rxjs';
       border-radius: 50%;
       transition: background 0.2s;
       &:hover {
-        background: rgba(75, 0, 130, 0.05);
+        background: rgba(255, 98, 0, 0.05);
       }
     }
     .user-avatar {

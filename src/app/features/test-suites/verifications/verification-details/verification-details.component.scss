@@ -43,8 +43,8 @@
 
     &:focus {
       outline: none;
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(75, 0, 130, 0.1);
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(255, 98, 0, 0.1);
     }
 
     &::placeholder {
@@ -99,7 +99,7 @@
     transition: all 0.2s;
 
     &.active {
-      background-color: var(--primary-color);
+      background-color: var(--accent-color);
       color: #FFFFFF;
     }
 
@@ -157,7 +157,7 @@
   }
 
   input:checked + .slider {
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
   }
 
   input:checked + .slider:before {
@@ -186,11 +186,11 @@
       gap: 12px;
       font-size: 14px;
       font-weight: 700;
-      color: var(--primary-color);
+      color: var(--accent-color);
       text-transform: uppercase;
 
-      .icon-purple {
-        color: var(--primary-color);
+      .icon-orange {
+        color: var(--accent-color);
         display: flex;
         align-items: center;
       }
@@ -254,8 +254,8 @@
     transition: all 0.2s;
 
     &.edit:hover {
-      color: var(--primary-color);
-      background-color: #F5F3FF;
+      color: var(--accent-color);
+      background-color: #FFF7ED;
     }
 
     &.delete:hover {
