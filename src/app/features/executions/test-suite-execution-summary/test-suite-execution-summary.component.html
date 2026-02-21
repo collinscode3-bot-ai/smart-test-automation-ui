@@ -1,0 +1,218 @@
+<div class="execution-summary-container" *ngIf="executionData">
+  <!-- Suite Details Card -->
+  <div class="card suite-details-card">
+    <div class="card-header">
+      <div class="header-left">
+        <div class="info-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        </div>
+        <h3>Suite Details</h3>
+      </div>
+      <div class="status-badge success">
+        <span class="dot"></span> SUCCESS
+      </div>
+    </div>
+
+    <div class="card-content">
+      <div class="details-grid">
+        <div class="detail-item">
+          <label>NAME</label>
+          <div class="value">{{executionData.name}}</div>
+        </div>
+        <div class="detail-item description">
+          <label>DESCRIPTION</label>
+          <div class="value">{{executionData.description}}</div>
+        </div>
+        <div class="detail-item">
+          <label>START TIME</label>
+          <div class="value">
+            <svg class="icon-small" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            {{executionData.startTime}}
+          </div>
+        </div>
+        <div class="detail-item">
+          <label>END TIME</label>
+          <div class="value">
+            <svg class="icon-small" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            {{executionData.endTime}}
+          </div>
+        </div>
+        <div class="detail-item duration">
+          <div class="duration-header">
+            <label>DURATION</label>
+            <span class="duration-value">{{executionData.duration}}</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" [style.width.%]="executionData.durationPercent"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-header">
+    <h2>Executed Test Cases</h2>
+    <div class="header-actions">
+      <div class="stats-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="21" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="21" y1="18" x2="3" y2="18"/></svg>
+        {{executionData.totalTestCases}} Total Tests
+      </div>
+      <button class="btn-secondary" (click)="onDownloadReport()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Report
+      </button>
+      <button class="btn-rerun" (click)="onReRunSuite()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 22 14-8L5 6V22Z"/></svg>
+        Re-run Suite
+      </button>
+    </div>
+  </div>
+
+  <!-- Test Case Accordion -->
+  <div class="test-case-list">
+    <div *ngFor="let tc of paginatedTestCases" class="test-case-card" [class.expanded]="tc.isExpanded" [class.passed]="tc.status === 'PASSED'" [class.failed]="tc.status === 'FAILED'" [class.skipped]="tc.status === 'SKIPPED'">
+      <div class="test-case-header" (click)="toggleTestCase(tc)">
+        <div class="tc-info">
+          <span class="tc-id">{{tc.id}}</span>
+          <div class="tc-details">
+            <div class="tc-name">{{tc.name}}</div>
+            <div class="tc-desc">{{tc.description}}</div>
+          </div>
+        </div>
+
+        <div class="tc-status-row">
+          <div class="status-badge-small" [ngClass]="tc.status.toLowerCase()">{{tc.status}}</div>
+          <svg class="expand-icon" [class.rotated]="tc.isExpanded" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+
+        <div class="service-flow-container" *ngIf="tc.serviceFlow && tc.serviceFlow.length > 0">
+          <div class="service-breadcrumb" *ngFor="let service of tc.serviceFlow; let last = last" [ngClass]="service.colorClass">
+            {{service.name}}
+          </div>
+        </div>
+      </div>
+
+      <div class="test-case-content" *ngIf="tc.isExpanded">
+        <div class="view-all-logs">
+          <button class="btn-text">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            View All Logs
+          </button>
+        </div>
+
+        <div class="service-results" *ngFor="let result of tc.results">
+          <table class="results-table">
+            <thead>
+              <tr>
+                <th>SERVICE NAME</th>
+                <th>INPUT PAYLOAD</th>
+                <th>OUTPUT PAYLOAD</th>
+                <th>RESULT SUMMARY</th>
+                <th>ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{result.serviceName}}</td>
+                <td class="payload-cell">
+                  <code>{{result.inputPayload}}</code>
+                  <button class="icon-btn" (click)="copyToClipboard(result.inputPayload)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  </button>
+                </td>
+                <td class="payload-cell">
+                  <code>{{result.outputPayload}}</code>
+                  <button class="icon-btn" (click)="copyToClipboard(result.outputPayload)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  </button>
+                </td>
+                <td>
+                  <span class="result-status">
+                    <span class="dot green"></span>
+                    {{result.resultSummary}}
+                  </span>
+                </td>
+                <td>
+                  <button class="btn-download-small">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="validations-section">
+            <table class="validations-table">
+              <thead>
+                <tr>
+                  <th>FIELD VALIDATION NAME</th>
+                  <th>VALUE</th>
+                  <th>RESULT</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let val of result.fieldValidations">
+                  <td>{{val.name}}</td>
+                  <td><code>{{val.value}}</code></td>
+                  <td>
+                    <span class="badge-mini" [ngClass]="val.result.toLowerCase()">
+                      <svg *ngIf="val.result === 'PASSED'" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                      <svg *ngIf="val.result === 'FAILED'" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                      {{val.result}}
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="json-validations-header">
+            <h4>Full JSON Validations</h4>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+
+          <div class="json-validations-grid">
+            <div class="payload-blocks">
+              <div class="payload-block">
+                <label>ENTRY PAYLOAD</label>
+                <pre><code>{{result.entryPayload}}</code></pre>
+              </div>
+              <div class="payload-block">
+                <label>EXIT PAYLOAD</label>
+                <pre><code>{{result.exitPayload}}</code></pre>
+              </div>
+            </div>
+            <div class="validation-checks">
+              <label>VALIDATION NAME & RESULT</label>
+              <div class="check-list">
+                <div class="check-item" *ngFor="let jval of result.jsonValidations">
+                  <span>{{jval.name}}</span>
+                  <div class="check-icon" [ngClass]="jval.result.toLowerCase()">
+                    <svg *ngIf="jval.result === 'PASSED'" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    <svg *ngIf="jval.result === 'FAILED'" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination-footer">
+    <div class="pagination-info">
+      Showing {{ (currentPage - 1) * itemsPerPage + 1 }} to {{ Math.min(currentPage * itemsPerPage, totalItems) }} of {{ totalItems }} test cases
+    </div>
+    <div class="pagination-controls">
+      <button class="page-btn" [disabled]="currentPage === 1" (click)="onPageChange(currentPage - 1)">Previous</button>
+      <button class="page-btn" [disabled]="currentPage === totalPages" (click)="onPageChange(currentPage + 1)">Next</button>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    GENERATED BY TEST SUITE AUTOMATED REPORTER V4.2.1
+  </div>
+</div>

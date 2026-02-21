@@ -12,6 +12,7 @@ import { VerificationsComponent } from './features/test-suites/verifications/ver
 import { VerificationPayloadComponent } from './features/test-suites/verifications/verification-payload/verification-payload.component';
 import { VerificationDetailsComponent } from './features/test-suites/verifications/verification-details/verification-details.component';
 import { ValidationsComponent } from './features/test-suites/validations/validations.component';
+import { TestSuiteExecutionSummaryComponent } from './features/executions/test-suite-execution-summary/test-suite-execution-summary.component';
 
 const routes: Routes = [
   {
@@ -106,6 +107,10 @@ const routes: Routes = [
   {
     path: 'test-suites/:suiteId/test-cases/:caseId/verifications/validations/edit/:id',
     component: ValidationsComponent
+  },
+  {
+    path: 'executions/:id',
+    component: TestSuiteExecutionSummaryComponent
   }
 ];
 
