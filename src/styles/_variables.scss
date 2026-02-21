@@ -1,0 +1,26 @@
+// Global Theme and Layout Variables
+
+// Colors
+$primary-color: #4B0082;
+$primary-hover: #3B006B;
+$bg-color: #F8F9FB;
+$card-bg: #FFFFFF;
+$text-primary: #1A1A1A;
+$text-secondary: #4B5563;
+$text-muted: #9CA3AF;
+$border-color: #E5E7EB;
+$link-color: #4F46E5;
+
+// Layout
+$sidebar-width: 308px;
+$header-padding-y: 20px;
+$header-height: 72px;
+$content-max-width: 1200px;
+$section-spacing: 24px;
+
+// Typography
+$font-family: Inter, sans-serif;
+
+// Shadows
+$shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);

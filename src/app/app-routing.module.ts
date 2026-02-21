@@ -53,6 +53,10 @@ const routes: Routes = [
     component: ContractPropertiesComponent
   },
   {
+    path: 'contracts/payload',
+    component: VerificationPayloadComponent
+  },
+  {
     path: 'test-suites',
     component: TestSuiteDashboardComponent
   },

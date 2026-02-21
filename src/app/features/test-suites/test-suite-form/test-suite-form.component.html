@@ -1,7 +1,7 @@
 <div class="form-container">
 
   <form [formGroup]="testSuiteForm" (ngSubmit)="saveSuite()">
-    <div class="form-card">
+    <div class="form-section-card">
       <!-- Main Form Fields -->
       <div class="form-body">
         <div class="form-group">
@@ -72,7 +72,8 @@
           type="submit"
           variant="primary"
           [showArrow]="true"
-          [disabled]="testSuiteForm.invalid">
+          [disabled]="testSuiteForm.invalid"
+          class="btn-save">
           {{ isEditMode ? 'Update and Proceed further' : 'Save and Proceed further' }}
         </app-button>
       </div>

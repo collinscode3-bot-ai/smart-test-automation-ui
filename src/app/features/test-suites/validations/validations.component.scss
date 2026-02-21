@@ -1,16 +1,6 @@
+@import "styles/shared";
 .validations-container {
-  padding: 40px 0;
-  max-width: 900px;
-  margin: 0 auto;
-
-  .form-card {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
-    border: 1px solid #e5e7eb;
-    padding: 40px;
-    margin-bottom: 24px;
-  }
+  width: 100%;
 
   .form-grid {
     display: grid;
@@ -35,27 +25,28 @@
     label {
       font-size: 15px;
       font-weight: 700;
-      color: #4338CA; // Deep Purple for labels
+      color: var(--primary-color);
     }
 
     input, select, textarea {
       width: 100%;
       padding: 14px 18px;
-      border: 1px solid #F3F4F6;
+      border: 1px solid var(--border-color);
       border-radius: 8px;
       font-size: 16px;
-      color: #1F2937;
+      color: var(--text-primary);
       background-color: #F9FAFB;
       transition: all 0.2s;
 
       &:focus {
         outline: none;
-        border-color: #FF6200; // Primary Orange on focus
+        border-color: var(--primary-color);
         background-color: #FFFFFF;
+        box-shadow: 0 0 0 4px rgba(75, 0, 130, 0.1);
       }
 
       &::placeholder {
-        color: #9ca3af;
+        color: var(--text-muted);
       }
     }
 
@@ -67,18 +58,16 @@
   }
 
   .section-container {
-    border-radius: 12px;
     padding: 32px 0;
     margin-bottom: 32px;
-    border-top: 1px solid #F3F4F6;
+    border-top: 1px solid var(--border-color);
 
     &.error-section {
-      background-color: transparent; // Removed background
-      border-bottom: 1px solid #F3F4F6;
+      background-color: transparent;
     }
 
     &.params-section {
-      background-color: transparent; // Removed background
+      background-color: transparent;
       padding-bottom: 0;
       border-bottom: none;
     }
@@ -95,14 +84,14 @@
       align-items: center;
       gap: 12px;
       font-weight: 800;
-      color: #4338CA;
+      color: var(--primary-color);
       font-size: 15px;
       letter-spacing: 0.05em;
 
       .icon-circle {
         width: 24px;
         height: 24px;
-        background-color: #4338CA;
+        background-color: var(--primary-color);
         color: #fff;
         border-radius: 50%;
         display: flex;
@@ -118,7 +107,7 @@
     gap: 8px;
     background: none;
     border: none;
-    color: #FF6200;
+    color: var(--primary-color);
     font-weight: 700;
     font-size: 14px;
     cursor: pointer;
@@ -127,13 +116,14 @@
     transition: background-color 0.2s;
 
     &:hover {
-      background-color: rgba(255, 98, 0, 0.05);
+      background-color: rgba(75, 0, 130, 0.05);
+      text-decoration: underline;
     }
 
     &.link-style {
-      color: #FF6200; // Switched to theme orange
+      color: var(--primary-color);
       &:hover {
-        background-color: rgba(255, 98, 0, 0.05);
+        background-color: rgba(75, 0, 130, 0.05);
       }
     }
   }
@@ -146,7 +136,7 @@
     background: #fff;
     padding: 24px;
     border-radius: 12px;
-    border: 1px solid #F3F4F6;
+    border: 1px solid var(--border-color);
 
     .row-fields {
       flex: 1;
@@ -179,8 +169,8 @@
     padding: 0 0 12px 0;
     font-size: 13px;
     font-weight: 700;
-    color: #4338CA;
-    border-bottom: 1px solid #F3F4F6;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--border-color);
     margin-bottom: 8px;
 
     div {
@@ -206,7 +196,7 @@
     align-items: center;
     justify-content: center;
     transition: all 0.2s;
-    margin-top: 32px; // Align with fields
+    margin-top: 32px;
 
     &:hover {
       background-color: #fee2e2;
@@ -221,29 +211,30 @@
   .form-footer {
     display: flex;
     justify-content: flex-end;
-    gap: 16px;
+    gap: 24px;
     margin-top: 40px;
     padding-top: 32px;
-    border-top: 1px solid #F3F4F6;
+    border-top: 1px solid var(--border-color);
   }
 
   .note-card {
     background-color: #F9FAFB;
-    border: 1px solid #F3F4F6;
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 24px;
     display: flex;
     gap: 16px;
     align-items: center;
+    margin-top: 24px;
 
     .note-icon {
-      color: #4338CA;
+      color: var(--primary-color);
       flex-shrink: 0;
     }
 
     p {
       font-size: 14px;
-      color: #6B7280;
+      color: var(--text-secondary);
       margin: 0;
       line-height: 1.6;
     }

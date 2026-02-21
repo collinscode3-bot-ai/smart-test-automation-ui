@@ -1,6 +1,6 @@
 <div class="test-data-container">
   <!-- Section 1: Data Upload Area -->
-  <div class="card upload-card">
+  <div class="form-section-card upload-card">
     <div class="upload-area" (click)="fileInput.click()">
       <div class="upload-content">
         <div class="icon-box">
@@ -24,8 +24,8 @@
   </div>
 
   <!-- Section 2: Data Preview Table -->
-  <div class="card table-card">
-    <div class="card-header">
+  <div class="data-table-container">
+    <div class="table-header">
       <div class="header-left">
         <div class="title-with-bar">
           <h3>Data Preview</h3>
@@ -78,7 +78,7 @@
   <!-- Section 3: Actions (Footer) -->
   <div class="actions-footer">
     <button type="button" class="cancel-btn" (click)="onCancel()">Cancel</button>
-    <app-button variant="primary" (click)="saveTestData()">
+    <app-button variant="primary" (click)="saveTestData()" class="btn-save">
       {{ isEditMode ? 'Update Test Data' : 'Save Test Data' }}
     </app-button>
   </div>
