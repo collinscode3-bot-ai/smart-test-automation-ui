@@ -1,6 +1,10 @@
 export interface VerificationParam {
   sequence: number;
   key: string;
+  valuePath: string;
+  valueSource: string;
+  dataType: string;
+  value: string;
 }
 
 export interface VerificationDetails {
