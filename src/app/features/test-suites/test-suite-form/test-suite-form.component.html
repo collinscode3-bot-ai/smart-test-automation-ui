@@ -1,44 +1,46 @@
 <div class="form-container">
   <form [formGroup]="testSuiteForm" (ngSubmit)="saveSuite()">
-    <div class="card shadow-sm border-0 mb-4">
-      <div class="card-body p-4">
-        <!-- Main Form Fields -->
-        <div class="mb-4">
-          <label for="testSuiteName" class="form-label">TestSuite Name</label>
-          <input
-            id="testSuiteName"
-            type="text"
-            formControlName="testSuiteName"
-            placeholder="Enter suite name (e.g. Core API Validation Suite)"
-            class="form-control py-2"
-            [class.is-invalid]="testSuiteForm.get('testSuiteName')?.invalid && testSuiteForm.get('testSuiteName')?.touched">
-        </div>
+    <div class="form-section-card">
+      <div class="row">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <!-- Main Form Fields -->
+          <div class="mb-4">
+            <label for="testSuiteName" class="form-label">TestSuite Name</label>
+            <input
+              id="testSuiteName"
+              type="text"
+              formControlName="testSuiteName"
+              placeholder="Enter suite name (e.g. Core API Validation Suite)"
+              class="form-control"
+              [class.is-invalid]="testSuiteForm.get('testSuiteName')?.invalid && testSuiteForm.get('testSuiteName')?.touched">
+          </div>
 
-        <div class="mb-4">
-          <label for="suiteDescription" class="form-label">Suite Description</label>
-          <textarea
-            id="suiteDescription"
-            formControlName="suiteDescription"
-            placeholder="Describe the purpose and scope of this test suite..."
-            class="form-control py-2"
-            rows="5"></textarea>
-        </div>
+          <div class="mb-4">
+            <label for="suiteDescription" class="form-label">Suite Description</label>
+            <textarea
+              id="suiteDescription"
+              formControlName="suiteDescription"
+              placeholder="Describe the purpose and scope of this test suite..."
+              class="form-control"
+              rows="5"></textarea>
+          </div>
 
-        <div class="mb-4">
-          <label for="suiteType" class="form-label">Suite Type</label>
-          <select
-            id="suiteType"
-            formControlName="suiteType"
-            class="form-select py-2"
-            [class.is-invalid]="testSuiteForm.get('suiteType')?.invalid && testSuiteForm.get('suiteType')?.touched">
-            <option value="" disabled selected>Select suite type</option>
-            <option *ngFor="let type of suiteTypes" [value]="type">{{ type }}</option>
-          </select>
+          <div class="mb-4">
+            <label for="suiteType" class="form-label">Suite Type</label>
+            <select
+              id="suiteType"
+              formControlName="suiteType"
+              class="form-select"
+              [class.is-invalid]="testSuiteForm.get('suiteType')?.invalid && testSuiteForm.get('suiteType')?.touched">
+              <option value="" disabled selected>Select suite type</option>
+              <option *ngFor="let type of suiteTypes" [value]="type">{{ type }}</option>
+            </select>
+          </div>
         </div>
       </div>
 
       <!-- Test Cases Section -->
-      <div class="card-body p-4 border-top">
+      <div class="mt-5 pt-4 border-top">
         <div class="d-flex justify-content-between align-items-center mb-4">
           <div>
             <h2 class="fs-5 fw-bold mb-1" style="color: var(--primary-color);">Test Cases</h2>
@@ -62,7 +64,7 @@
       </div>
 
       <!-- Form Footer -->
-      <div class="card-footer bg-white border-0 p-4 d-flex justify-content-end gap-3">
+      <div class="d-flex justify-content-end gap-3 mt-4 pt-4 border-top">
         <button type="button" class="btn btn-outline-secondary px-4 py-2" (click)="onCancel()">Cancel</button>
         <button
           type="submit"
