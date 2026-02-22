@@ -1,40 +1,39 @@
 <div class="form-container">
   <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
-    <div class="form-section-card">
-      <div class="form-body">
-        <div class="form-group">
-          <label for="projectName">Project Name <span class="required">*</span></label>
+    <div class="card shadow-sm border-0 mb-4">
+      <div class="card-body p-4">
+        <div class="mb-4">
+          <label for="projectName" class="form-label fw-semibold text-secondary">Project Name <span class="text-danger">*</span></label>
           <input
             id="projectName"
             type="text"
             formControlName="projectName"
             placeholder="e.g. Q4 Marketing Campaign"
-            class="form-control"
-            [class.invalid]="projectForm.get('projectName')?.invalid && projectForm.get('projectName')?.touched">
+            class="form-control py-2"
+            [class.is-invalid]="projectForm.get('projectName')?.invalid && projectForm.get('projectName')?.touched">
         </div>
 
-        <div class="form-group">
-          <label for="projectDescription">Project Description</label>
+        <div class="mb-4">
+          <label for="projectDescription" class="form-label fw-semibold text-secondary">Project Description</label>
           <textarea
             id="projectDescription"
             formControlName="projectDescription"
             placeholder="Describe the goals, scope, and key deliverables of this project..."
-            class="form-control textarea"
+            class="form-control py-2"
             rows="6"></textarea>
-          <span class="hint">Recommended: 100-200 words for clarity.</span>
+          <div class="form-text mt-2">Recommended: 100-200 words for clarity.</div>
         </div>
       </div>
 
-      <div class="form-footer">
-        <app-button type="button" variant="secondary" (click)="onCancel()">Cancel</app-button>
-        <app-button
+      <div class="card-footer bg-white border-0 p-4 d-flex justify-content-end gap-3">
+        <button type="button" class="btn btn-outline-secondary px-4 py-2" (click)="onCancel()">Cancel</button>
+        <button
           type="submit"
-          variant="primary"
-          [showArrow]="true"
           [disabled]="projectForm.invalid"
-          class="submit-btn btn-save">
+          class="btn btn-theme-purple px-4 py-2 d-flex align-items-center gap-2">
           {{ isEditMode ? 'Update and Proceed further' : 'Save and Proceed further' }}
-        </app-button>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
       </div>
     </div>
   </form>

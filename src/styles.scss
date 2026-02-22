@@ -1,6 +1,25 @@
 @import "styles/shared";
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 
+/*
+ * Bootstrap 5 Grid System Overrides
+ * We are customizing the xxl breakpoint to match the required 1625px max-width.
+ */
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1625px
+);
+
+@import "bootstrap/scss/bootstrap-grid";
+@import "bootstrap/scss/bootstrap-utilities";
+@import "bootstrap/scss/card";
+@import "bootstrap/scss/tables";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/transitions";
+
 :root {
   --primary-color: #{$primary-color};
   --primary-hover-color: #{$primary-hover};
@@ -61,6 +80,31 @@ input, textarea {
   color: white !important;
   &:hover {
     background-color: var(--primary-hover-color) !important;
+  }
+}
+
+/*
+ * Theme Buttons
+ * .btn-theme-purple: Primary action (Save/Update) using Deep Purple (#4B0082)
+ * .btn-theme-orange: Accent action (Add/Create) using Orange (#FF6200)
+ */
+.btn-theme-purple {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+  border: none !important;
+  &:hover {
+    background-color: var(--primary-hover-color) !important;
+    color: white !important;
+  }
+}
+
+.btn-theme-orange {
+  background-color: var(--accent-color) !important;
+  color: white !important;
+  border: none !important;
+  &:hover {
+    background-color: var(--accent-hover-color) !important;
+    color: white !important;
   }
 }
 

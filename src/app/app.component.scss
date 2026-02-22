@@ -24,17 +24,6 @@
 .content-area {
   flex: 1;
   overflow-y: auto;
-  padding: 0;
   background-color: var(--bg-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  // This ensures children can use the full width up to the new max-width
-  & > * {
-    width: 100%;
-    max-width: var(--content-max-width);
-    margin: 0 auto;
-    padding: 40px;
-  }
+  // Manual margin, padding, and align-items removed to use Bootstrap grid
 }
