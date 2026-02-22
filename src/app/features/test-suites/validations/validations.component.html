@@ -5,36 +5,36 @@
         <div class="row g-4">
           <div class="col-md-2">
             <label class="form-label fw-bold small text-muted text-uppercase">Sequence No</label>
-            <input type="text" formControlName="sequenceNo" class="form-control" placeholder="e.g. 1">
+            <input type="text" formControlName="sequenceNo" class="form-control py-2" placeholder="e.g. 1">
           </div>
 
           <div class="col-md-10">
             <label class="form-label fw-bold small text-muted text-uppercase">Validation Name</label>
-            <input type="text" formControlName="validationName" class="form-control" placeholder="Enter descriptive validation name">
+            <input type="text" formControlName="validationName" class="form-control py-2" placeholder="Enter descriptive validation name">
           </div>
 
           <div class="col-md-3">
             <label class="form-label fw-bold small text-muted text-uppercase">Payload ID</label>
-            <input type="text" formControlName="payloadId" class="form-control" placeholder="e.g. REQ_12345">
+            <input type="text" formControlName="payloadId" class="form-control py-2" placeholder="e.g. REQ_12345">
           </div>
 
           <div class="col-md-3">
             <label class="form-label fw-bold small text-muted text-uppercase">Payload Format</label>
-            <select formControlName="payloadFormat" class="form-select">
+            <select formControlName="payloadFormat" class="form-select py-2">
               <option *ngFor="let format of payloadFormats" [value]="format">{{ format }}</option>
             </select>
           </div>
 
           <div class="col-md-3">
             <label class="form-label fw-bold small text-muted text-uppercase">Validation Type</label>
-            <select formControlName="validationType" class="form-select">
+            <select formControlName="validationType" class="form-select py-2">
               <option *ngFor="let type of validationTypes" [value]="type">{{ type }}</option>
             </select>
           </div>
 
           <div class="col-md-3">
             <label class="form-label fw-bold small text-muted text-uppercase">Validation Source Data</label>
-            <input type="text" formControlName="validationSourceData" class="form-control" placeholder="Source path or query">
+            <input type="text" formControlName="validationSourceData" class="form-control py-2" placeholder="Source path or query">
           </div>
         </div>
       </div>
