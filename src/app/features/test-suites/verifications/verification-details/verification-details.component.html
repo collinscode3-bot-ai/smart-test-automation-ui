@@ -1,133 +1,135 @@
 <div class="verification-details-container">
-  <form [formGroup]="verificationForm" (ngSubmit)="onSubmit()" class="details-card">
-
-    <div class="card-body">
-      <div class="form-grid">
-        <div class="form-group">
-          <label>App Name</label>
-          <input type="text" formControlName="appName" placeholder="Shipment Tracking">
-        </div>
-        <div class="form-group">
-          <label>Service Name</label>
-          <input type="text" formControlName="serviceName" placeholder="TrackServiceV1">
-        </div>
-        <div class="form-group">
-          <label>Sequence No</label>
-          <input type="text" formControlName="sequenceNo" placeholder="10">
-        </div>
-        <div class="form-group">
-          <label>VerificationParamsType</label>
-          <div class="select-wrapper">
-            <select formControlName="verificationParamsType">
+  <form [formGroup]="verificationForm" (ngSubmit)="onSubmit()">
+    <div class="card shadow-sm border-0 mb-4">
+      <div class="card-body p-4">
+        <div class="row g-4 mb-4">
+          <div class="col-md-3">
+            <label class="form-label fw-bold small text-muted text-uppercase">App Name</label>
+            <input type="text" formControlName="appName" class="form-control py-2" placeholder="Shipment Tracking">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label fw-bold small text-muted text-uppercase">Service Name</label>
+            <input type="text" formControlName="serviceName" class="form-control py-2" placeholder="TrackServiceV1">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label fw-bold small text-muted text-uppercase">Sequence No</label>
+            <input type="text" formControlName="sequenceNo" class="form-control py-2" placeholder="10">
+          </div>
+          <div class="col-md-3">
+            <label class="form-label fw-bold small text-muted text-uppercase">VerificationParamsType</label>
+            <select formControlName="verificationParamsType" class="form-select py-2">
               <option value="Query Param">Query Param</option>
               <option value="Header">Header</option>
               <option value="Body">Body</option>
             </select>
           </div>
         </div>
-      </div>
 
-      <div class="form-group full-width">
-        <label>Base URL</label>
-        <input type="text" formControlName="baseUrl" placeholder="https://api.fedex.com/track/v1">
-      </div>
+        <div class="mb-4">
+          <label class="form-label fw-bold small text-muted text-uppercase">Base URL</label>
+          <input type="text" formControlName="baseUrl" class="form-control py-2" placeholder="https://api.fedex.com/track/v1">
+        </div>
 
-      <div class="form-grid">
-        <div class="form-group">
-          <label>Verify If Previous is success</label>
-          <div class="toggle-group">
-            <button type="button" [class.active]="verificationForm.get('verifyIfPreviousSuccess')?.value === true" (click)="toggleBoolean('verifyIfPreviousSuccess', true)" class="toggle-btn">Yes</button>
-            <button type="button" [class.active]="verificationForm.get('verifyIfPreviousSuccess')?.value === false" (click)="toggleBoolean('verifyIfPreviousSuccess', false)" class="toggle-btn">No</button>
+        <div class="row g-4 mb-4">
+          <div class="col-md-6">
+            <label class="form-label fw-bold small text-muted text-uppercase mb-3 d-block">Verify If Previous is success</label>
+            <div class="btn-group w-100 shadow-sm">
+              <button type="button" class="btn btn-sm py-2" [class.btn-primary]="verificationForm.get('verifyIfPreviousSuccess')?.value === true" [class.btn-light]="verificationForm.get('verifyIfPreviousSuccess')?.value !== true" (click)="toggleBoolean('verifyIfPreviousSuccess', true)">Yes</button>
+              <button type="button" class="btn btn-sm py-2" [class.btn-primary]="verificationForm.get('verifyIfPreviousSuccess')?.value === false" [class.btn-light]="verificationForm.get('verifyIfPreviousSuccess')?.value !== false" (click)="toggleBoolean('verifyIfPreviousSuccess', false)">No</button>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-bold small text-muted text-uppercase mb-3 d-block">VerificationKeyTypeIsComposite</label>
+            <div class="btn-group w-100 shadow-sm">
+              <button type="button" class="btn btn-sm py-2" [class.btn-primary]="verificationForm.get('isCompositeKey')?.value === true" [class.btn-light]="verificationForm.get('isCompositeKey')?.value !== true" (click)="toggleBoolean('isCompositeKey', true)">Yes</button>
+              <button type="button" class="btn btn-sm py-2" [class.btn-primary]="verificationForm.get('isCompositeKey')?.value === false" [class.btn-light]="verificationForm.get('isCompositeKey')?.value !== false" (click)="toggleBoolean('isCompositeKey', false)">No</button>
+            </div>
           </div>
         </div>
-        <div class="form-group">
-          <label>VerificationKeyTypeIsComposite</label>
-          <div class="toggle-group">
-            <button type="button" [class.active]="verificationForm.get('isCompositeKey')?.value === true" (click)="toggleBoolean('isCompositeKey', true)" class="toggle-btn">Yes</button>
-            <button type="button" [class.active]="verificationForm.get('isCompositeKey')?.value === false" (click)="toggleBoolean('isCompositeKey', false)" class="toggle-btn">No</button>
-          </div>
-        </div>
-      </div>
 
-      <div class="form-group full-width">
-        <label>VerificationKeyTypeDelimiter</label>
-        <div class="delimiter-input-wrapper">
-          <input type="text" formControlName="delimiter" placeholder=":" [readonly]="!verificationForm.get('delimiterEnabled')?.value">
-          <!-- Integrated toggle switch -->
-          <label class="switch">
-            <input type="checkbox" formControlName="delimiterEnabled">
-            <span class="slider round"></span>
-          </label>
+        <div class="mb-4">
+          <label class="form-label fw-bold small text-muted text-uppercase">VerificationKeyTypeDelimiter</label>
+          <div class="input-group">
+            <input type="text" formControlName="delimiter" class="form-control py-2" placeholder=":" [readonly]="!verificationForm.get('delimiterEnabled')?.value">
+            <div class="input-group-text bg-white">
+              <div class="form-check form-switch mb-0">
+                <input class="form-check-input" type="checkbox" formControlName="delimiterEnabled">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- VERIFICATION PARAMETERS SECTION -->
-      <div class="params-section">
-        <div class="section-header">
-          <div class="header-left">
-            <div class="icon-orange">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="2" y1="14" x2="6" y2="14"/><line x1="10" y1="8" x2="14" y2="8"/><line x1="18" y1="16" x2="22" y2="16"/></svg>
-            </div>
-            <span>VERIFICATION PARAMETERS</span>
+      <div class="card-body p-4 border-top">
+        <div class="d-flex align-items-center gap-2 mb-4">
+          <div class="bg-warning bg-opacity-10 text-warning rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="2" y1="14" x2="6" y2="14"/><line x1="10" y1="8" x2="14" y2="8"/><line x1="18" y1="16" x2="22" y2="16"/></svg>
           </div>
+          <h4 class="fs-6 fw-bold mb-0 text-uppercase" style="letter-spacing: 0.05em;">VERIFICATION PARAMETERS</h4>
         </div>
-        <div class="section-content">
-          <table class="params-table">
-            <thead>
+
+        <div class="table-responsive rounded-3 border mb-4">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="bg-light">
               <tr>
-                <th>Sequence</th>
-                <th>Key</th>
-                <th>Path</th>
-                <th>Source</th>
-                <th>Value</th>
-                <th class="text-right">Actions</th>
+                <th class="ps-4 small fw-bold text-muted text-uppercase py-3">Sequence</th>
+                <th class="small fw-bold text-muted text-uppercase py-3">Key</th>
+                <th class="small fw-bold text-muted text-uppercase py-3">Path</th>
+                <th class="small fw-bold text-muted text-uppercase py-3">Source</th>
+                <th class="small fw-bold text-muted text-uppercase py-3">Value</th>
+                <th class="pe-4 text-end small fw-bold text-muted text-uppercase py-3">Actions</th>
               </tr>
             </thead>
             <tbody formArrayName="parameters">
               <tr *ngFor="let param of parameters.controls; let i = index" [formGroupName]="i">
-                <td>
-                  <input type="number" formControlName="sequence" class="table-input" readonly>
+                <td class="ps-4">
+                  <input type="number" formControlName="sequence" class="form-control form-control-sm border-0 bg-transparent" readonly>
                 </td>
                 <td>
-                  <input type="text" formControlName="key" class="table-input" readonly>
+                  <input type="text" formControlName="key" class="form-control form-control-sm border-0 bg-transparent" readonly>
                 </td>
                 <td>
-                  <input type="text" formControlName="valuePath" class="table-input" readonly>
+                  <input type="text" formControlName="valuePath" class="form-control form-control-sm border-0 bg-transparent" readonly>
                 </td>
                 <td>
-                  <input type="text" formControlName="valueSource" class="table-input" readonly>
+                  <input type="text" formControlName="valueSource" class="form-control form-control-sm border-0 bg-transparent" readonly>
                 </td>
                 <td>
-                  <input type="text" formControlName="value" class="table-input" readonly>
+                  <input type="text" formControlName="value" class="form-control form-control-sm border-0 bg-transparent" readonly>
                 </td>
-                <td class="text-right">
-                  <div class="action-group">
-                    <button type="button" class="action-btn edit" (click)="onEditParameter(i)" title="Edit">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                <td class="pe-4 text-end">
+                  <div class="d-flex justify-content-end gap-2">
+                    <button type="button" class="btn btn-outline-secondary btn-sm p-1 rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;" (click)="onEditParameter(i)" title="Edit">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
                     </button>
-                    <button type="button" class="action-btn delete" (click)="removeParameter(i)" title="Delete">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+                    <button type="button" class="btn btn-outline-danger btn-sm p-1 rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;" (click)="removeParameter(i)" title="Delete">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
                     </button>
                   </div>
                 </td>
               </tr>
             </tbody>
           </table>
-          <app-button type="button" variant="accent" (click)="addParameter()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            Add Verification Param
-          </app-button>
         </div>
-      </div>
-    </div>
 
-    <div class="card-footer">
-      <app-button variant="secondary" (click)="onCancel()">Cancel</app-button>
-      <app-button type="submit" variant="primary" [disabled]="verificationForm.invalid">Save Verification</app-button>
+        <button type="button" class="btn btn-theme-orange px-4 py-2 d-flex align-items-center gap-2 fw-bold" (click)="addParameter()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add Verification Param
+        </button>
+      </div>
+
+      <div class="card-footer bg-white border-0 p-4 d-flex justify-content-end gap-3">
+        <button type="button" class="btn btn-outline-secondary px-4 py-2" (click)="onCancel()">Cancel</button>
+        <button type="submit" class="btn btn-theme-purple px-4 py-2 fw-bold d-flex align-items-center gap-2" [disabled]="verificationForm.invalid">
+          Save Verification
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 3 7 15 8"/></svg>
+        </button>
+      </div>
     </div>
   </form>
 
-  <div class="footer-copyright">
+  <div class="text-center py-4 text-muted small fw-bold opacity-50" style="letter-spacing: 0.05em;">
     © 2024 FedEx Technical Platform. All rights reserved.
   </div>
 </div>

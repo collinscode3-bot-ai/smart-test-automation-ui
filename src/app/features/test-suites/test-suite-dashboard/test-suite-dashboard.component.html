@@ -1,59 +1,70 @@
 <div class="dashboard-container">
-
-  <div class="search-section">
-    <div class="search-input-wrapper">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-      <input
-        type="text"
-        [formControl]="searchControl"
-        placeholder="Search test suites..."
-        class="search-input">
+  <!-- Search Card -->
+  <div class="card shadow-sm border-0 mb-4">
+    <div class="card-body p-4">
+      <div class="search-input-wrapper position-relative">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input
+          type="text"
+          [formControl]="searchControl"
+          placeholder="Search test suites..."
+          class="form-control ps-5 py-3 border-0 bg-light rounded-3"
+          style="font-size: 16px;">
+      </div>
     </div>
   </div>
 
-  <div class="content-section">
-    <div class="list-header">
-      <h2 class="section-title">ALL TEST SUITES</h2>
-      <app-button variant="accent" (click)="onCreateTestSuite()">
+  <div class="card shadow-sm border-0 mb-4">
+    <div class="card-header bg-white border-0 pt-4 px-4 d-flex justify-content-between align-items-center">
+      <h2 class="section-title mb-0 fs-5 fw-bold text-uppercase" style="letter-spacing: 0.05em; color: var(--primary-color);">ALL TEST SUITES</h2>
+      <button class="btn btn-theme-orange px-4 py-2 d-flex align-items-center gap-2" (click)="onCreateTestSuite()">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
         Create New Test Suite
-      </app-button>
+      </button>
     </div>
 
-    <div class="test-suite-list">
-      <div class="test-suite-card" *ngFor="let suite of paginatedSuites$ | async">
-        <div class="suite-info">
-          <div class="icon-box folder">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
+    <div class="card-body p-4">
+      <div class="test-suite-list d-flex flex-column gap-3">
+        <div class="test-suite-card-item p-3 border rounded-3 d-flex justify-content-between align-items-center bg-white" *ngFor="let suite of paginatedSuites$ | async">
+          <div class="suite-info d-flex align-items-center gap-3">
+            <div class="icon-box p-3 rounded-3 d-flex align-items-center justify-content-center" style="width: 56px; height: 56px; background-color: #F3F4F6;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
+            </div>
+            <div class="text-details">
+              <h3 class="suite-title mb-1 fs-6 fw-bold">{{ suite.name }}</h3>
+              <span class="badge rounded-pill px-2 py-1" [ngClass]="{
+                'bg-primary bg-opacity-10 text-primary': suite.type === 'Functional',
+                'bg-success bg-opacity-10 text-success': suite.type === 'Regression',
+                'bg-info bg-opacity-10 text-info': suite.type === 'Integration'
+              }" style="font-size: 10px;">
+                {{ suite.type }}
+              </span>
+            </div>
           </div>
-          <div class="text-details">
-            <h3 class="suite-title">{{ suite.name }}</h3>
-            <span class="type-tag" [ngClass]="suite.type.toLowerCase().replace(' ', '-')">
-              {{ suite.type }}
-            </span>
+          <div class="suite-actions d-flex gap-2">
+            <button class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-1" (click)="onEditTestSuite(suite)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+              Edit
+            </button>
+            <button class="btn btn-outline-danger btn-sm d-flex align-items-center gap-1" (click)="onDeleteTestSuite(suite)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+              Delete
+            </button>
           </div>
         </div>
-        <div class="suite-actions">
-          <button class="action-btn edit-btn" (click)="onEditTestSuite(suite)">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
-            Edit
-          </button>
-          <button class="action-btn delete-btn" (click)="onDeleteTestSuite(suite)">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
-            Delete
-          </button>
-        </div>
-      </div>
 
-      <div class="pagination-container" *ngIf="(totalPages$ | async)?.length">
-        <div class="pagination-controls">
-          <button
-            *ngFor="let page of totalPages$ | async"
-            class="page-btn"
-            [class.active]="currentPage === page"
-            (click)="onPageChange(page)">
-            {{ page }}
-          </button>
+        <div class="pagination-container mt-4 d-flex justify-content-center" *ngIf="(totalPages$ | async)?.length">
+          <div class="pagination-controls d-flex gap-2">
+            <button
+              *ngFor="let page of totalPages$ | async"
+              class="btn btn-light rounded-circle"
+              [class.btn-primary]="currentPage === page"
+              [class.text-white]="currentPage === page"
+              (click)="onPageChange(page)"
+              style="width: 40px; height: 40px;">
+              {{ page }}
+            </button>
+          </div>
         </div>
       </div>
     </div>
