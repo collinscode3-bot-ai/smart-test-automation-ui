@@ -1,33 +1,36 @@
 <div class="form-container">
   <form [formGroup]="testCaseForm" (ngSubmit)="saveTestCase()">
-    <div class="card shadow-sm border-0 mb-4">
-      <div class="card-body p-4">
-        <!-- TestCase Name Field -->
-        <div class="mb-4">
-          <label for="testcaseName" class="form-label">Testcase Name</label>
-          <input
-            id="testcaseName"
-            type="text"
-            formControlName="testcaseName"
-            placeholder="e.g. User Authentication Flow"
-            class="form-control py-2"
-            [class.is-invalid]="testCaseForm.get('testcaseName')?.invalid && testCaseForm.get('testcaseName')?.touched">
-        </div>
+    <div class="form-section-card">
+      <div class="row">
+        <div class="col-12 col-lg-10 col-xl-9">
+          <!-- TestCase Name Field -->
+          <div class="mb-4">
+            <label for="testcaseName" class="form-label">Testcase Name</label>
+            <input
+              id="testcaseName"
+              type="text"
+              formControlName="testcaseName"
+              placeholder="e.g. User Authentication Flow"
+              class="form-control"
+              [class.is-invalid]="testCaseForm.get('testcaseName')?.invalid && testCaseForm.get('testcaseName')?.touched">
+          </div>
 
-        <!-- Description Field -->
-        <div class="mb-4">
-          <label for="description" class="form-label">Description</label>
-          <textarea
-            id="description"
-            formControlName="description"
-            placeholder="Describe the purpose of this test case..."
-            class="form-control py-2"
-            rows="5"
-            [class.is-invalid]="testCaseForm.get('description')?.invalid && testCaseForm.get('description')?.touched"></textarea>
+          <!-- Description Field -->
+          <div class="mb-4">
+            <label for="description" class="form-label">Description</label>
+            <textarea
+              id="description"
+              formControlName="description"
+              placeholder="Describe the purpose of this test case..."
+              class="form-control"
+              rows="5"
+              [class.is-invalid]="testCaseForm.get('description')?.invalid && testCaseForm.get('description')?.touched"></textarea>
+          </div>
         </div>
+      </div>
 
         <!-- Contract Management Section -->
-        <div class="mb-5">
+        <div class="mb-5 mt-4 pt-4 border-top">
           <h2 class="fs-6 fw-bold mb-3 text-secondary text-uppercase" style="letter-spacing: 0.05em;">CONTRACT MANAGEMENT</h2>
 
           <div formArrayName="contracts" class="d-flex flex-column gap-2 mb-3">
@@ -66,10 +69,9 @@
             </button>
           </div>
         </div>
-      </div>
 
       <!-- Form Footer -->
-      <div class="card-footer bg-white border-0 p-4 d-flex justify-content-end gap-3">
+      <div class="d-flex justify-content-end gap-3 mt-4 pt-4 border-top">
         <button type="button" class="btn btn-outline-secondary px-4 py-2" (click)="onCancel()">Cancel</button>
         <button
           type="submit"

@@ -1,8 +1,8 @@
 <form [formGroup]="contractForm" (ngSubmit)="onSubmit()" class="contract-container">
 
   <!-- SCHEMA CONTRACT SECTION -->
-  <div class="card shadow-sm border-0 mb-4">
-    <div class="card-header bg-white border-0 pt-4 px-4 d-flex justify-content-between align-items-center">
+  <div class="form-section-card">
+    <div class="bg-white border-0 d-flex justify-content-between align-items-center mb-4">
       <div class="d-flex align-items-center gap-3">
         <div class="p-2 rounded-3" style="background-color: #FFF7ED; color: var(--accent-color);">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg>
@@ -18,7 +18,7 @@
       </div>
     </div>
 
-    <div class="card-body p-4">
+    <div>
       <div *ngIf="contractForm.get('schemaMode')?.value === 'file'" class="border-2 border-dashed rounded-3 p-5 text-center bg-light" style="border-style: dashed !important;">
         <div class="upload-content">
           <div class="mb-3 text-muted">
@@ -35,8 +35,8 @@
   </div>
 
   <!-- BASE CONTRACT SECTION -->
-  <div class="card shadow-sm border-0 mb-4">
-    <div class="card-header bg-white border-0 pt-4 px-4 d-flex justify-content-between align-items-center">
+  <div class="form-section-card">
+    <div class="bg-white border-0 d-flex justify-content-between align-items-center mb-4">
       <div class="d-flex align-items-center gap-3">
         <div class="p-2 rounded-3" style="background-color: #FFF7ED; color: var(--accent-color);">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
@@ -52,7 +52,7 @@
       </div>
     </div>
 
-    <div class="card-body p-4">
+    <div>
       <div *ngIf="contractForm.get('baseMode')?.value === 'json'" class="json-config-container border rounded-3 overflow-hidden">
         <div class="json-header bg-light border-bottom p-3 d-flex justify-content-between align-items-center">
           <span class="fw-bold small text-secondary">JSON CONFIGURATION</span>
@@ -70,8 +70,8 @@
   </div>
 
   <!-- FIELD PROPERTIES SECTION -->
-  <div class="card shadow-sm border-0 mb-4">
-    <div class="card-header bg-white border-0 pt-4 px-4 d-flex align-items-center gap-3">
+  <div class="form-section-card">
+    <div class="bg-white border-0 d-flex align-items-center gap-3 mb-4">
       <div class="p-2 rounded-3" style="background-color: #FFF7ED; color: var(--accent-color);">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M9 3v18"/><path d="M15 3v18"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>
       </div>
@@ -81,7 +81,7 @@
       </div>
     </div>
 
-    <div class="card-body p-4">
+    <div>
       <h3 class="field-label fs-6 fw-bold mb-3 text-secondary">CONFIGURED FIELD PROPERTIES</h3>
       <div class="chips-container d-flex flex-wrap gap-2 mb-4">
         <div *ngFor="let prop of fieldProperties.controls; let i = index" class="badge rounded-pill bg-light text-dark border p-2 px-3 d-flex align-items-center gap-2 shadow-sm" style="font-weight: 500;">
@@ -99,7 +99,7 @@
   </div>
 
   <!-- FOOTER ACTIONS -->
-  <div class="card-footer bg-transparent border-0 p-0 d-flex justify-content-end gap-3 mb-4">
+  <div class="d-flex justify-content-end gap-3 mb-5">
     <button type="button" class="btn btn-outline-secondary px-4 py-2" (click)="onCancel()">Cancel</button>
     <button type="submit" class="btn btn-theme-purple px-4 py-2 d-flex align-items-center gap-2">
       {{ isEditMode ? 'Update and Proceed further' : 'Save and Proceed further' }}
