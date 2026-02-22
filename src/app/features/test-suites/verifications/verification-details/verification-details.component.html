@@ -4,19 +4,19 @@
       <div class="card-body p-4">
         <div class="row g-4 mb-4">
           <div class="col-md-3">
-            <label class="form-label fw-bold small text-muted text-uppercase">App Name</label>
+            <label class="form-label">App Name</label>
             <input type="text" formControlName="appName" class="form-control py-2" placeholder="Shipment Tracking">
           </div>
           <div class="col-md-3">
-            <label class="form-label fw-bold small text-muted text-uppercase">Service Name</label>
+            <label class="form-label">Service Name</label>
             <input type="text" formControlName="serviceName" class="form-control py-2" placeholder="TrackServiceV1">
           </div>
           <div class="col-md-3">
-            <label class="form-label fw-bold small text-muted text-uppercase">Sequence No</label>
+            <label class="form-label">Sequence No</label>
             <input type="text" formControlName="sequenceNo" class="form-control py-2" placeholder="10">
           </div>
           <div class="col-md-3">
-            <label class="form-label fw-bold small text-muted text-uppercase">VerificationParamsType</label>
+            <label class="form-label">VerificationParamsType</label>
             <select formControlName="verificationParamsType" class="form-select py-2">
               <option value="Query Param">Query Param</option>
               <option value="Header">Header</option>
@@ -26,20 +26,20 @@
         </div>
 
         <div class="mb-4">
-          <label class="form-label fw-bold small text-muted text-uppercase">Base URL</label>
+          <label class="form-label">Base URL</label>
           <input type="text" formControlName="baseUrl" class="form-control py-2" placeholder="https://api.fedex.com/track/v1">
         </div>
 
         <div class="row g-4 mb-4">
           <div class="col-md-6">
-            <label class="form-label fw-bold small text-muted text-uppercase mb-3 d-block">Verify If Previous is success</label>
+            <label class="form-label mb-3">Verify If Previous is success</label>
             <div class="btn-group w-100 shadow-sm">
               <button type="button" class="btn btn-sm py-2" [class.btn-primary]="verificationForm.get('verifyIfPreviousSuccess')?.value === true" [class.btn-light]="verificationForm.get('verifyIfPreviousSuccess')?.value !== true" (click)="toggleBoolean('verifyIfPreviousSuccess', true)">Yes</button>
               <button type="button" class="btn btn-sm py-2" [class.btn-primary]="verificationForm.get('verifyIfPreviousSuccess')?.value === false" [class.btn-light]="verificationForm.get('verifyIfPreviousSuccess')?.value !== false" (click)="toggleBoolean('verifyIfPreviousSuccess', false)">No</button>
             </div>
           </div>
           <div class="col-md-6">
-            <label class="form-label fw-bold small text-muted text-uppercase mb-3 d-block">VerificationKeyTypeIsComposite</label>
+            <label class="form-label mb-3">VerificationKeyTypeIsComposite</label>
             <div class="btn-group w-100 shadow-sm">
               <button type="button" class="btn btn-sm py-2" [class.btn-primary]="verificationForm.get('isCompositeKey')?.value === true" [class.btn-light]="verificationForm.get('isCompositeKey')?.value !== true" (click)="toggleBoolean('isCompositeKey', true)">Yes</button>
               <button type="button" class="btn btn-sm py-2" [class.btn-primary]="verificationForm.get('isCompositeKey')?.value === false" [class.btn-light]="verificationForm.get('isCompositeKey')?.value !== false" (click)="toggleBoolean('isCompositeKey', false)">No</button>
@@ -48,7 +48,7 @@
         </div>
 
         <div class="mb-4">
-          <label class="form-label fw-bold small text-muted text-uppercase">VerificationKeyTypeDelimiter</label>
+          <label class="form-label">VerificationKeyTypeDelimiter</label>
           <div class="input-group">
             <input type="text" formControlName="delimiter" class="form-control py-2" placeholder=":" [readonly]="!verificationForm.get('delimiterEnabled')?.value">
             <div class="input-group-text bg-white">
@@ -73,12 +73,12 @@
           <table class="table table-hover align-middle mb-0">
             <thead class="bg-light">
               <tr>
-                <th class="ps-4 small fw-bold text-muted text-uppercase py-3">Sequence</th>
-                <th class="small fw-bold text-muted text-uppercase py-3">Key</th>
-                <th class="small fw-bold text-muted text-uppercase py-3">Path</th>
-                <th class="small fw-bold text-muted text-uppercase py-3">Source</th>
-                <th class="small fw-bold text-muted text-uppercase py-3">Value</th>
-                <th class="pe-4 text-end small fw-bold text-muted text-uppercase py-3">Actions</th>
+                <th class="ps-4 form-label py-3">Sequence</th>
+                <th class="form-label py-3">Key</th>
+                <th class="form-label py-3">Path</th>
+                <th class="form-label py-3">Source</th>
+                <th class="form-label py-3">Value</th>
+                <th class="pe-4 text-end form-label py-3">Actions</th>
               </tr>
             </thead>
             <tbody formArrayName="parameters">

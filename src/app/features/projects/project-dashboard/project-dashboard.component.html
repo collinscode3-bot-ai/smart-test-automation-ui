@@ -2,14 +2,16 @@
   <!-- Search Section Card -->
   <div class="card shadow-sm border-0 mb-4">
     <div class="card-body p-4">
-      <div class="search-input-wrapper position-relative">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <div class="input-group border rounded-3 overflow-hidden">
+        <span class="input-group-text bg-white border-0 ps-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </span>
         <input
           type="text"
           [formControl]="searchControl"
           placeholder="Search existing projects..."
-          class="form-control ps-5 py-3 border-0 bg-light rounded-3"
-          style="font-size: 16px;">
+          class="form-control border-0 py-3 bg-white"
+          style="font-size: 16px; box-shadow: none;">
       </div>
     </div>
   </div>
