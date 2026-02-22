@@ -16,22 +16,22 @@
     <div class="card-body p-4">
       <div class="row g-4">
         <div class="col-md-3">
-          <label class="form-label fw-bold small text-muted text-uppercase d-block mb-1">NAME</label>
+          <label class="form-label">NAME</label>
           <div class="fw-bold">{{executionData.name}}</div>
         </div>
         <div class="col-md-9">
-          <label class="form-label fw-bold small text-muted text-uppercase d-block mb-1">DESCRIPTION</label>
+          <label class="form-label">DESCRIPTION</label>
           <div class="text-secondary">{{executionData.description}}</div>
         </div>
         <div class="col-md-3">
-          <label class="form-label fw-bold small text-muted text-uppercase d-block mb-1">START TIME</label>
+          <label class="form-label">START TIME</label>
           <div class="d-flex align-items-center gap-2">
             <svg class="text-muted" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             {{executionData.startTime}}
           </div>
         </div>
         <div class="col-md-3">
-          <label class="form-label fw-bold small text-muted text-uppercase d-block mb-1">END TIME</label>
+          <label class="form-label">END TIME</label>
           <div class="d-flex align-items-center gap-2">
             <svg class="text-muted" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             {{executionData.endTime}}
@@ -39,7 +39,7 @@
         </div>
         <div class="col-md-6">
           <div class="d-flex justify-content-between align-items-end mb-1">
-            <label class="form-label fw-bold small text-muted text-uppercase mb-0">DURATION</label>
+            <label class="form-label mb-0">DURATION</label>
             <span class="fw-bold text-primary">{{executionData.duration}}</span>
           </div>
           <div class="progress" style="height: 8px;">
@@ -109,11 +109,11 @@
             <table class="table table-hover align-middle mb-0">
               <thead class="bg-light">
                 <tr>
-                  <th class="ps-4 small fw-bold text-muted text-uppercase">SERVICE NAME</th>
-                  <th class="small fw-bold text-muted text-uppercase">INPUT PAYLOAD</th>
-                  <th class="small fw-bold text-muted text-uppercase">OUTPUT PAYLOAD</th>
-                  <th class="small fw-bold text-muted text-uppercase">RESULT SUMMARY</th>
-                  <th class="pe-4 small fw-bold text-muted text-uppercase text-end">ACTIONS</th>
+                  <th class="ps-4 form-label">SERVICE NAME</th>
+                  <th class="form-label">INPUT PAYLOAD</th>
+                  <th class="form-label">OUTPUT PAYLOAD</th>
+                  <th class="form-label">RESULT SUMMARY</th>
+                  <th class="pe-4 form-label text-end">ACTIONS</th>
                 </tr>
               </thead>
               <tbody>
@@ -157,9 +157,9 @@
               <table class="table table-sm align-middle mb-0">
                 <thead class="bg-light">
                   <tr>
-                    <th class="ps-4 small fw-bold text-muted text-uppercase py-3">FIELD VALIDATION NAME</th>
-                    <th class="small fw-bold text-muted text-uppercase py-3">VALUE</th>
-                    <th class="pe-4 small fw-bold text-muted text-uppercase py-3 text-end">RESULT</th>
+                    <th class="ps-4 form-label py-3">FIELD VALIDATION NAME</th>
+                    <th class="form-label py-3">VALUE</th>
+                    <th class="pe-4 form-label py-3 text-end">RESULT</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -189,17 +189,17 @@
               <div class="col-lg-8">
                 <div class="row g-3">
                   <div class="col-md-6">
-                    <label class="form-label fw-bold small text-muted text-uppercase">ENTRY PAYLOAD</label>
+                    <label class="form-label">ENTRY PAYLOAD</label>
                     <pre class="bg-dark text-light p-3 rounded-3 mb-0" style="font-size: 12px; max-height: 200px; overflow-y: auto;"><code>{{result.entryPayload}}</code></pre>
                   </div>
                   <div class="col-md-6">
-                    <label class="form-label fw-bold small text-muted text-uppercase">EXIT PAYLOAD</label>
+                    <label class="form-label">EXIT PAYLOAD</label>
                     <pre class="bg-dark text-light p-3 rounded-3 mb-0" style="font-size: 12px; max-height: 200px; overflow-y: auto;"><code>{{result.exitPayload}}</code></pre>
                   </div>
                 </div>
               </div>
               <div class="col-lg-4">
-                <label class="form-label fw-bold small text-muted text-uppercase">VALIDATION NAME & RESULT</label>
+                <label class="form-label">VALIDATION NAME & RESULT</label>
                 <div class="d-flex flex-column gap-2">
                   <div class="d-flex justify-content-between align-items-center p-2 px-3 border rounded-3" *ngFor="let jval of result.jsonValidations">
                     <span class="small fw-medium">{{jval.name}}</span>

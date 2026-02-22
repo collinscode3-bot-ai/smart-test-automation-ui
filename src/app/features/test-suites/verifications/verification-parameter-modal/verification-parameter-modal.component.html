@@ -9,32 +9,32 @@
   <form [formGroup]="paramForm" (ngSubmit)="onSave()" class="modal-body py-4">
     <div class="row g-4">
       <div class="col-md-6">
-        <label for="sequence" class="form-label fw-bold small text-muted text-uppercase">Param Sequence</label>
+        <label for="sequence" class="form-label">Param Sequence</label>
         <input type="number" id="sequence" formControlName="sequence" class="form-control py-2" placeholder="e.g. 1">
       </div>
       <div class="col-md-6">
-        <label for="key" class="form-label fw-bold small text-muted text-uppercase">Param Key</label>
+        <label for="key" class="form-label">Param Key</label>
         <input type="text" id="key" formControlName="key" class="form-control py-2" placeholder="Enter key name">
       </div>
 
       <div class="col-md-6">
-        <label for="valuePath" class="form-label fw-bold small text-muted text-uppercase">Param Value Path</label>
+        <label for="valuePath" class="form-label">Param Value Path</label>
         <input type="text" id="valuePath" formControlName="valuePath" class="form-control py-2" placeholder="Enter value path">
       </div>
       <div class="col-md-6">
-        <label for="valueSource" class="form-label fw-bold small text-muted text-uppercase">Param Value Source</label>
+        <label for="valueSource" class="form-label">Param Value Source</label>
         <input type="text" id="valueSource" formControlName="valueSource" class="form-control py-2" placeholder="Enter source">
       </div>
 
       <div class="col-md-6">
-        <label for="dataType" class="form-label fw-bold small text-muted text-uppercase">Value Data Type</label>
+        <label for="dataType" class="form-label">Value Data Type</label>
         <select id="dataType" formControlName="dataType" class="form-select py-2">
           <option value="" disabled selected>Select data type</option>
           <option *ngFor="let type of dataTypes" [value]="type">{{ type }}</option>
         </select>
       </div>
       <div class="col-md-6">
-        <label for="value" class="form-label fw-bold small text-muted text-uppercase">Param Value</label>
+        <label for="value" class="form-label">Param Value</label>
         <input type="text" id="value" formControlName="value" class="form-control py-2" placeholder="Enter value">
       </div>
     </div>

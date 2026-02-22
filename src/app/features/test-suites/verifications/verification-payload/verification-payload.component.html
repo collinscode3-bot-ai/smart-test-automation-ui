@@ -38,12 +38,12 @@
         <div class="card-body p-4">
           <form [formGroup]="entryForm">
             <div class="mb-4">
-              <label for="entryPayloadId" class="form-label fw-bold small text-muted text-uppercase">PAYLOAD ID</label>
+              <label for="entryPayloadId" class="form-label">PAYLOAD ID</label>
               <input type="text" id="entryPayloadId" formControlName="payloadId" placeholder="e.g. entry_request_v1" class="form-control py-2">
             </div>
             <div class="mb-4">
               <div class="d-flex justify-content-between align-items-center mb-2">
-                <label for="entrySchema" class="form-label fw-bold small text-muted text-uppercase mb-0">SCHEMA CONTRACT (JSON)</label>
+                <label for="entrySchema" class="form-label mb-0">SCHEMA CONTRACT (JSON)</label>
                 <button type="button" class="btn btn-link btn-sm text-decoration-none d-flex align-items-center gap-2" (click)="onUploadEntry()">
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                   UPLOAD
@@ -97,12 +97,12 @@
         <div class="card-body p-4">
           <form [formGroup]="exitForm">
             <div class="mb-4">
-              <label for="exitPayloadId" class="form-label fw-bold small text-muted text-uppercase">PAYLOAD ID</label>
+              <label for="exitPayloadId" class="form-label">PAYLOAD ID</label>
               <input type="text" id="exitPayloadId" formControlName="payloadId" placeholder="e.g. exit_response_v1" class="form-control py-2">
             </div>
             <div class="mb-4">
               <div class="d-flex justify-content-between align-items-center mb-2">
-                <label for="exitSchema" class="form-label fw-bold small text-muted text-uppercase mb-0">SCHEMA CONTRACT (JSON)</label>
+                <label for="exitSchema" class="form-label mb-0">SCHEMA CONTRACT (JSON)</label>
                 <button type="button" class="btn btn-link btn-sm text-decoration-none d-flex align-items-center gap-2" (click)="onUploadExit()">
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                   UPLOAD

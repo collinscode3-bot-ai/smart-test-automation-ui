@@ -4,36 +4,36 @@
       <div class="card-body p-4">
         <div class="row g-4">
           <div class="col-md-2">
-            <label class="form-label fw-bold small text-muted text-uppercase">Sequence No</label>
+            <label class="form-label">Sequence No</label>
             <input type="text" formControlName="sequenceNo" class="form-control py-2" placeholder="e.g. 1">
           </div>
 
           <div class="col-md-10">
-            <label class="form-label fw-bold small text-muted text-uppercase">Validation Name</label>
+            <label class="form-label">Validation Name</label>
             <input type="text" formControlName="validationName" class="form-control py-2" placeholder="Enter descriptive validation name">
           </div>
 
           <div class="col-md-3">
-            <label class="form-label fw-bold small text-muted text-uppercase">Payload ID</label>
+            <label class="form-label">Payload ID</label>
             <input type="text" formControlName="payloadId" class="form-control py-2" placeholder="e.g. REQ_12345">
           </div>
 
           <div class="col-md-3">
-            <label class="form-label fw-bold small text-muted text-uppercase">Payload Format</label>
+            <label class="form-label">Payload Format</label>
             <select formControlName="payloadFormat" class="form-select py-2">
               <option *ngFor="let format of payloadFormats" [value]="format">{{ format }}</option>
             </select>
           </div>
 
           <div class="col-md-3">
-            <label class="form-label fw-bold small text-muted text-uppercase">Validation Type</label>
+            <label class="form-label">Validation Type</label>
             <select formControlName="validationType" class="form-select py-2">
               <option *ngFor="let type of validationTypes" [value]="type">{{ type }}</option>
             </select>
           </div>
 
           <div class="col-md-3">
-            <label class="form-label fw-bold small text-muted text-uppercase">Validation Source Data</label>
+            <label class="form-label">Validation Source Data</label>
             <input type="text" formControlName="validationSourceData" class="form-control py-2" placeholder="Source path or query">
           </div>
         </div>
@@ -58,15 +58,15 @@
           <div *ngFor="let err of errorConfigurations.controls; let i = index" [formGroupName]="i" class="p-4 border rounded-3 bg-light bg-opacity-50 position-relative">
             <div class="row g-4">
               <div class="col-md-4">
-                <label class="form-label fw-bold small text-muted text-uppercase">Expected Outcome</label>
+                <label class="form-label">Expected Outcome</label>
                 <input type="text" formControlName="expectedOutcome" class="form-control" placeholder="Success expected">
               </div>
               <div class="col-md-4">
-                <label class="form-label fw-bold small text-muted text-uppercase">Error Code</label>
+                <label class="form-label">Error Code</label>
                 <input type="text" formControlName="errorCode" class="form-control" placeholder="e.g. ERR_VALID_01">
               </div>
               <div class="col-md-4">
-                <label class="form-label fw-bold small text-muted text-uppercase">Error Message</label>
+                <label class="form-label">Error Message</label>
                 <textarea formControlName="errorMessage" class="form-control" rows="1" placeholder="Detailed message displayed on validation failure"></textarea>
               </div>
             </div>
@@ -91,10 +91,10 @@
           <table class="table align-middle mb-0">
             <thead class="bg-light">
               <tr>
-                <th class="ps-4 small fw-bold text-muted text-uppercase">Seq No</th>
-                <th class="small fw-bold text-muted text-uppercase">Type</th>
-                <th class="small fw-bold text-muted text-uppercase">Value</th>
-                <th class="small fw-bold text-muted text-uppercase">Data Type</th>
+                <th class="ps-4 form-label">Seq No</th>
+                <th class="form-label">Type</th>
+                <th class="form-label">Value</th>
+                <th class="form-label">Data Type</th>
                 <th class="pe-4 text-end"></th>
               </tr>
             </thead>
