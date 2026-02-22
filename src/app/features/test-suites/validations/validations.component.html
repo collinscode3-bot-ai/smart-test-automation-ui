@@ -1,44 +1,46 @@
 <div class="validations-container">
   <form [formGroup]="validationForm" (ngSubmit)="saveValidation()">
-    <div class="form-section-card">
-      <div class="row g-4">
-        <div class="col-md-2">
-          <label class="form-label">Sequence No</label>
-          <input type="text" formControlName="sequenceNo" class="form-control" placeholder="e.g. 1">
-        </div>
+    <div class="card shadow-sm border-0 mb-4">
+      <div class="card-body p-4">
+        <div class="row g-4">
+          <div class="col-md-2">
+            <label class="form-label">Sequence No</label>
+            <input type="text" formControlName="sequenceNo" class="form-control py-2" placeholder="e.g. 1">
+          </div>
 
-        <div class="col-md-10">
-          <label class="form-label">Validation Name</label>
-          <input type="text" formControlName="validationName" class="form-control" placeholder="Enter descriptive validation name">
-        </div>
+          <div class="col-md-10">
+            <label class="form-label">Validation Name</label>
+            <input type="text" formControlName="validationName" class="form-control py-2" placeholder="Enter descriptive validation name">
+          </div>
 
-        <div class="col-md-3">
-          <label class="form-label">Payload ID</label>
-          <input type="text" formControlName="payloadId" class="form-control" placeholder="e.g. REQ_12345">
-        </div>
+          <div class="col-md-3">
+            <label class="form-label">Payload ID</label>
+            <input type="text" formControlName="payloadId" class="form-control py-2" placeholder="e.g. REQ_12345">
+          </div>
 
-        <div class="col-md-3">
-          <label class="form-label">Payload Format</label>
-          <select formControlName="payloadFormat" class="form-select">
-            <option *ngFor="let format of payloadFormats" [value]="format">{{ format }}</option>
-          </select>
-        </div>
+          <div class="col-md-3">
+            <label class="form-label">Payload Format</label>
+            <select formControlName="payloadFormat" class="form-select py-2">
+              <option *ngFor="let format of payloadFormats" [value]="format">{{ format }}</option>
+            </select>
+          </div>
 
-        <div class="col-md-3">
-          <label class="form-label">Validation Type</label>
-          <select formControlName="validationType" class="form-select">
-            <option *ngFor="let type of validationTypes" [value]="type">{{ type }}</option>
-          </select>
-        </div>
+          <div class="col-md-3">
+            <label class="form-label">Validation Type</label>
+            <select formControlName="validationType" class="form-select py-2">
+              <option *ngFor="let type of validationTypes" [value]="type">{{ type }}</option>
+            </select>
+          </div>
 
-        <div class="col-md-3">
-          <label class="form-label">Validation Source Data</label>
-          <input type="text" formControlName="validationSourceData" class="form-control" placeholder="Source path or query">
+          <div class="col-md-3">
+            <label class="form-label">Validation Source Data</label>
+            <input type="text" formControlName="validationSourceData" class="form-control py-2" placeholder="Source path or query">
+          </div>
         </div>
       </div>
 
       <!-- Error Configuration Section -->
-      <div class="mt-5 pt-4 border-top">
+      <div class="card-body p-4 border-top">
         <div class="d-flex justify-content-between align-items-center mb-4">
           <div class="d-flex align-items-center gap-2">
             <div class="bg-danger bg-opacity-10 text-danger rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
@@ -113,7 +115,7 @@
         </div>
       </div>
 
-      <div class="d-flex justify-content-end gap-3 mt-4 pt-4 border-top">
+      <div class="card-footer bg-white border-0 p-4 d-flex justify-content-end gap-3">
         <button type="button" class="btn btn-outline-secondary px-4 py-2" (click)="onCancel()">Cancel</button>
         <button type="submit" class="btn btn-theme-purple px-4 py-2 fw-bold">Save Validation</button>
       </div>

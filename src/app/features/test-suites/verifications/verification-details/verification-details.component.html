@@ -1,23 +1,23 @@
 <div class="verification-details-container">
   <form [formGroup]="verificationForm" (ngSubmit)="onSubmit()">
-    <div class="form-section-card">
-      <div>
+    <div class="card shadow-sm border-0 mb-4">
+      <div class="card-body p-4">
         <div class="row g-4 mb-4">
           <div class="col-md-3">
             <label class="form-label">App Name</label>
-            <input type="text" formControlName="appName" class="form-control" placeholder="Shipment Tracking">
+            <input type="text" formControlName="appName" class="form-control py-2" placeholder="Shipment Tracking">
           </div>
           <div class="col-md-3">
             <label class="form-label">Service Name</label>
-            <input type="text" formControlName="serviceName" class="form-control" placeholder="TrackServiceV1">
+            <input type="text" formControlName="serviceName" class="form-control py-2" placeholder="TrackServiceV1">
           </div>
           <div class="col-md-3">
             <label class="form-label">Sequence No</label>
-            <input type="text" formControlName="sequenceNo" class="form-control" placeholder="10">
+            <input type="text" formControlName="sequenceNo" class="form-control py-2" placeholder="10">
           </div>
           <div class="col-md-3">
             <label class="form-label">VerificationParamsType</label>
-            <select formControlName="verificationParamsType" class="form-select">
+            <select formControlName="verificationParamsType" class="form-select py-2">
               <option value="Query Param">Query Param</option>
               <option value="Header">Header</option>
               <option value="Body">Body</option>
@@ -27,7 +27,7 @@
 
         <div class="mb-4">
           <label class="form-label">Base URL</label>
-          <input type="text" formControlName="baseUrl" class="form-control" placeholder="https://api.fedex.com/track/v1">
+          <input type="text" formControlName="baseUrl" class="form-control py-2" placeholder="https://api.fedex.com/track/v1">
         </div>
 
         <div class="row g-4 mb-4">
@@ -50,7 +50,7 @@
         <div class="mb-4">
           <label class="form-label">VerificationKeyTypeDelimiter</label>
           <div class="input-group">
-            <input type="text" formControlName="delimiter" class="form-control" placeholder=":" [readonly]="!verificationForm.get('delimiterEnabled')?.value">
+            <input type="text" formControlName="delimiter" class="form-control py-2" placeholder=":" [readonly]="!verificationForm.get('delimiterEnabled')?.value">
             <div class="input-group-text bg-white">
               <div class="form-check form-switch mb-0">
                 <input class="form-check-input" type="checkbox" formControlName="delimiterEnabled">
@@ -61,7 +61,7 @@
       </div>
 
       <!-- VERIFICATION PARAMETERS SECTION -->
-      <div class="mt-5 pt-4 border-top">
+      <div class="card-body p-4 border-top">
         <div class="d-flex align-items-center gap-2 mb-4">
           <div class="bg-warning bg-opacity-10 text-warning rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="2" y1="14" x2="6" y2="14"/><line x1="10" y1="8" x2="14" y2="8"/><line x1="18" y1="16" x2="22" y2="16"/></svg>
@@ -119,7 +119,7 @@
         </button>
       </div>
 
-      <div class="d-flex justify-content-end gap-3 mt-4 pt-4 border-top">
+      <div class="card-footer bg-white border-0 p-4 d-flex justify-content-end gap-3">
         <button type="button" class="btn btn-outline-secondary px-4 py-2" (click)="onCancel()">Cancel</button>
         <button type="submit" class="btn btn-theme-purple px-4 py-2 fw-bold d-flex align-items-center gap-2" [disabled]="verificationForm.invalid">
           Save Verification
