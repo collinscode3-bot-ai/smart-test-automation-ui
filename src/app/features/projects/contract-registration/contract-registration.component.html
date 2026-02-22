@@ -29,7 +29,7 @@
         </div>
       </div>
       <div *ngIf="contractForm.get('schemaMode')?.value === 'json'" class="json-editor-area">
-        <textarea formControlName="schemaContent" class="form-control font-monospace p-3" rows="10" placeholder="Paste your JSON Schema here..." style="background-color: #F9FAFB;"></textarea>
+        <textarea formControlName="schemaContent" class="form-control font-monospace p-3" rows="10" placeholder="Paste your JSON Schema here..." style="background-color: #F9FAFB; font-size: 14px;"></textarea>
       </div>
     </div>
   </div>
@@ -61,7 +61,7 @@
             Copy
           </button>
         </div>
-        <textarea formControlName="baseContent" class="form-control font-monospace border-0 p-3" rows="10" style="background-color: #F9FAFB;"></textarea>
+        <textarea formControlName="baseContent" class="form-control font-monospace border-0 p-3" rows="10" style="background-color: #F9FAFB; font-size: 14px;"></textarea>
       </div>
       <div *ngIf="contractForm.get('baseMode')?.value === 'file'" class="border-2 border-dashed rounded-3 p-5 text-center bg-light" style="border-style: dashed !important;">
          <p class="mb-0 text-muted">File Upload Mode active. Click to select file.</p>

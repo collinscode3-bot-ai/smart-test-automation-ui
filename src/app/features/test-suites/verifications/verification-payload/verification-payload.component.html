@@ -49,7 +49,7 @@
                   UPLOAD
                 </button>
               </div>
-              <textarea id="entrySchema" formControlName="schema" placeholder='{ "type": "object", "properties": { ... } }' class="form-control font-monospace p-3 bg-light" rows="10"></textarea>
+              <textarea id="entrySchema" formControlName="schema" placeholder='{ "type": "object", "properties": { ... } }' class="form-control font-monospace p-3 bg-light" rows="10" style="font-size: 13px;"></textarea>
             </div>
             <button type="button" class="btn btn-theme-orange w-100 py-2 fw-bold" (click)="registerEntryPayload()">
               {{ isEditingEntry ? 'UPDATE PAYLOAD' : 'REGISTER ENTRY PAYLOAD' }}
@@ -108,7 +108,7 @@
                   UPLOAD
                 </button>
               </div>
-              <textarea id="exitSchema" formControlName="schema" placeholder='{ "type": "object", "properties": { ... } }' class="form-control font-monospace p-3 bg-light" rows="10"></textarea>
+              <textarea id="exitSchema" formControlName="schema" placeholder='{ "type": "object", "properties": { ... } }' class="form-control font-monospace p-3 bg-light" rows="10" style="font-size: 13px;"></textarea>
             </div>
             <button type="button" class="btn btn-theme-orange w-100 py-2 fw-bold" (click)="registerExitPayload()">
               {{ isEditingExit ? 'UPDATE PAYLOAD' : 'REGISTER EXIT PAYLOAD' }}
