@@ -1,8 +1,10 @@
-<div class="verification-details-container">
-  <form [formGroup]="verificationForm" (ngSubmit)="onSubmit()">
-    <div class="form-section-card">
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-10">
+      <form [formGroup]="verificationForm" (ngSubmit)="onSubmit()">
+        <div class="form-section-card">
       <div>
-        <div class="row g-4 mb-4">
+        <div class="row gy-5 gx-4 mb-5">
           <div class="col-md-3">
             <label class="form-label">App Name</label>
             <input type="text" formControlName="appName" class="form-control" placeholder="Shipment Tracking">
@@ -30,7 +32,7 @@
           <input type="text" formControlName="baseUrl" class="form-control" placeholder="https://api.fedex.com/track/v1">
         </div>
 
-        <div class="row g-4 mb-4">
+        <div class="row gy-5 gx-4 mb-5">
           <div class="col-md-6">
             <label class="form-label mb-3">Verify If Previous is success</label>
             <div class="btn-group w-100 shadow-sm">
@@ -119,17 +121,19 @@
         </button>
       </div>
 
-      <div class="d-flex justify-content-end gap-3 mt-4 pt-4 border-top">
-        <button type="button" class="btn btn-outline-secondary px-4 py-2" (click)="onCancel()">Cancel</button>
-        <button type="submit" class="btn btn-theme-purple px-4 py-2 fw-bold d-flex align-items-center gap-2" [disabled]="verificationForm.invalid">
-          Save Verification
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 3 7 15 8"/></svg>
-        </button>
+          <div class="d-flex justify-content-end gap-3 mt-4 pt-4 border-top">
+            <button type="button" class="btn btn-outline-secondary px-4 py-2" (click)="onCancel()">Cancel</button>
+            <button type="submit" class="btn btn-theme-purple px-4 py-2 fw-bold d-flex align-items-center gap-2" [disabled]="verificationForm.invalid">
+              Save Verification
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 3 7 15 8"/></svg>
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <div class="text-center py-4 text-muted small fw-bold opacity-50" style="letter-spacing: 0.05em;">
+        © 2024 FedEx Technical Platform. All rights reserved.
       </div>
     </div>
-  </form>
-
-  <div class="text-center py-4 text-muted small fw-bold opacity-50" style="letter-spacing: 0.05em;">
-    © 2024 FedEx Technical Platform. All rights reserved.
   </div>
 </div>

@@ -1,7 +1,9 @@
-<div class="validations-container">
-  <form [formGroup]="validationForm" (ngSubmit)="saveValidation()">
-    <div class="form-section-card">
-      <div class="row g-4">
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-10">
+      <form [formGroup]="validationForm" (ngSubmit)="saveValidation()">
+        <div class="form-section-card">
+      <div class="row gy-5 gx-4">
         <div class="col-md-2">
           <label class="form-label">Sequence No</label>
           <input type="text" formControlName="sequenceNo" class="form-control" placeholder="e.g. 1">
@@ -54,7 +56,7 @@
 
         <div formArrayName="errorConfigurations" class="d-flex flex-column gap-3">
           <div *ngFor="let err of errorConfigurations.controls; let i = index" [formGroupName]="i" class="p-4 border rounded-3 bg-light bg-opacity-50 position-relative">
-            <div class="row g-4">
+            <div class="row gy-4 gx-4">
               <div class="col-md-4">
                 <label class="form-label">Expected Outcome</label>
                 <input type="text" formControlName="expectedOutcome" class="form-control" placeholder="Success expected">
@@ -113,12 +115,12 @@
         </div>
       </div>
 
-      <div class="d-flex justify-content-end gap-3 mt-4 pt-4 border-top">
-        <button type="button" class="btn btn-outline-secondary px-4 py-2" (click)="onCancel()">Cancel</button>
-        <button type="submit" class="btn btn-theme-purple px-4 py-2 fw-bold">Save Validation</button>
-      </div>
-    </div>
-  </form>
+          <div class="d-flex justify-content-end gap-3 mt-4 pt-4 border-top">
+            <button type="button" class="btn btn-outline-secondary px-4 py-2" (click)="onCancel()">Cancel</button>
+            <button type="submit" class="btn btn-theme-purple px-4 py-2 fw-bold">Save Validation</button>
+          </div>
+        </div>
+      </form>
 
   <div class="alert alert-info border-0 shadow-sm d-flex gap-3 p-4 rounded-3 bg-white mb-4">
     <div class="text-info">
@@ -126,6 +128,8 @@
     </div>
     <div class="small text-muted">
       <strong class="text-dark">Note:</strong> Changes to validations will take effect immediately in the next test execution cycle. Ensure all parameters are correctly mapped to your source data.
+    </div>
+  </div>
     </div>
   </div>
 </div>

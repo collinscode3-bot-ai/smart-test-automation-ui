@@ -1,33 +1,34 @@
-<div class="form-container">
-  <form [formGroup]="testCaseForm" (ngSubmit)="saveTestCase()">
-    <div class="form-section-card">
-      <div class="row">
-        <div class="col-12">
-          <!-- TestCase Name Field -->
-          <div class="mb-4">
-            <label for="testcaseName" class="form-label">Testcase Name</label>
-            <input
-              id="testcaseName"
-              type="text"
-              formControlName="testcaseName"
-              placeholder="e.g. User Authentication Flow"
-              class="form-control"
-              [class.is-invalid]="testCaseForm.get('testcaseName')?.invalid && testCaseForm.get('testcaseName')?.touched">
-          </div>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <form [formGroup]="testCaseForm" (ngSubmit)="saveTestCase()">
+        <div class="form-section-card">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+              <!-- TestCase Name Field -->
+              <div class="mb-4">
+                <label for="testcaseName" class="form-label">Testcase Name *</label>
+                <input
+                  id="testcaseName"
+                  type="text"
+                  formControlName="testcaseName"
+                  placeholder="e.g. User Authentication Flow"
+                  class="form-control"
+                  [class.is-invalid]="testCaseForm.get('testcaseName')?.invalid && testCaseForm.get('testcaseName')?.touched">
+              </div>
 
-          <!-- Description Field -->
-          <div class="mb-4">
-            <label for="description" class="form-label">Description</label>
-            <textarea
-              id="description"
-              formControlName="description"
-              placeholder="Describe the purpose of this test case..."
-              class="form-control"
-              rows="5"
-              [class.is-invalid]="testCaseForm.get('description')?.invalid && testCaseForm.get('description')?.touched"></textarea>
+              <div class="mb-4">
+                <label for="description" class="form-label">Description</label>
+                <textarea
+                  id="description"
+                  formControlName="description"
+                  placeholder="Describe the purpose of this test case..."
+                  class="form-control"
+                  rows="5"
+                  [class.is-invalid]="testCaseForm.get('description')?.invalid && testCaseForm.get('description')?.touched"></textarea>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
         <!-- Contract Management Section -->
         <div class="mb-5 mt-4 pt-4 border-top">
@@ -70,19 +71,21 @@
           </div>
         </div>
 
-      <!-- Form Footer -->
-      <div class="d-flex justify-content-end gap-3 mt-4 pt-4 border-top">
-        <button type="button" class="btn btn-outline-secondary px-4 py-2" (click)="onCancel()">Cancel</button>
-        <button
-          type="submit"
-          [disabled]="testCaseForm.invalid"
-          class="btn btn-theme-purple px-4 py-2 d-flex align-items-center gap-2 fw-bold">
-          Save TestCases
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-        </button>
-      </div>
+          <!-- Form Footer -->
+          <div class="d-flex justify-content-end gap-3 mt-4 pt-4 border-top">
+            <button type="button" class="btn btn-outline-secondary px-4 py-2" (click)="onCancel()">Cancel</button>
+            <button
+              type="submit"
+              [disabled]="testCaseForm.invalid"
+              class="btn btn-theme-purple px-4 py-2 d-flex align-items-center gap-2 fw-bold">
+              Save TestCases
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
-  </form>
+  </div>
 
   <!-- Environment Banner -->
   <div class="alert alert-info border-0 shadow-sm d-flex align-items-center gap-3 p-4 rounded-3 bg-white mb-4">
